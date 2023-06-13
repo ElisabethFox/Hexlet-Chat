@@ -1,5 +1,7 @@
 const Autorization = () => {
-    return (  );
+    return ( 
+        <div>Login</div>
+    );
 }
  
 export default Autorization;

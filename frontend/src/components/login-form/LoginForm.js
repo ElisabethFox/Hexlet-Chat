@@ -13,23 +13,29 @@ const LoginForm = () => {
             {() => (
                 <div className="container">
                     <div className="form-card">
-                        <Form>
-                            <div className="form-group">
-                                <label htmlFor="name"></label>
+                        <Form className="col-12 col-md-6 mt-3 mt-mb-0">
+                            <div className="form-floating mb-3">
+                                <label htmlFor="name" className="form-label">Ваш ник</label>
                                 <Field
                                     id="name"
                                     type="text"
                                     name="name"
                                     className="form-control"
+                                    placeholder="Ваш ник"
+                                    autocomplete="username"
+                                    required
                                 />
                             </div>
-                            <div className="form-group">
-                                <label htmlFor="password"></label>
+                            <div className="form-floating mb-4">
+                                <label htmlFor="password" className="form-label">Пароль</label>
                                 <Field
                                     id="password"
                                     type="password"
                                     name="password"
                                     className="form-control"
+                                    placeholder="Ваш пароль"
+                                    autocomplete="current-password"
+                                    required
                                 />
                             </div>
                             <Button title="Войти" />

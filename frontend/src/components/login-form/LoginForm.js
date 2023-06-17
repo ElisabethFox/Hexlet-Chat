@@ -1,4 +1,5 @@
 import { Formik, Form, Field } from 'formik';
+import Title from "../title/Title";
 import Button from "../buttton/Button";
 import './style.css';
 
@@ -11,11 +12,9 @@ const LoginForm = () => {
                 }}
         >
             {() => (
-                <div className="container">
-                    <div className="form-card">
                         <Form className="col-12 col-md-6 mt-3 mt-mb-0">
+                            <Title title="Войти"/>
                             <div className="form-floating mb-3">
-                                <label htmlFor="name" className="form-label">Ваш ник</label>
                                 <Field
                                     id="name"
                                     type="text"
@@ -25,9 +24,9 @@ const LoginForm = () => {
                                     autocomplete="username"
                                     required
                                 />
+                                <label htmlFor="name" className="form-label">Ваш ник</label>
                             </div>
                             <div className="form-floating mb-4">
-                                <label htmlFor="password" className="form-label">Пароль</label>
                                 <Field
                                     id="password"
                                     type="password"
@@ -37,11 +36,10 @@ const LoginForm = () => {
                                     autocomplete="current-password"
                                     required
                                 />
+                                <label htmlFor="password" className="form-label">Пароль</label>
                             </div>
                             <Button title="Войти" />
                         </Form>
-                    </div>
-                </div>
             )}
         </Formik>
     );

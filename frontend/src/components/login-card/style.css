@@ -1,0 +1,9 @@
+.card-body {
+    display: flex;
+    flex-direction: row;
+}
+
+.login-img {
+    width: 200px;
+    height: 200px;
+}

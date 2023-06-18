@@ -1,7 +1,20 @@
 import {NavLink} from "react-router-dom";
-import Title from "../../components/title/Title"
+import * as Yup from 'yup';
+import Title from "../../components/title/Title";
 import './style.css';
 import notFoundImg from "../../img/404.jpg"
+
+const SignupSchema = Yup.object().shape({
+    name: Yup.string()
+        .min(2, 'Минимум 2 буквы')
+        .max(50, 'Максимум 20 букв')
+        .required('Обязательное поле'),
+    password: Yup.string()
+        .min(6, 'Минимум 6 буквы')
+        .max(50, 'Максимум 50 букв')
+        .required('Обязательное поле'),
+    email: Yup.string().email('Неверный email').required('Обязательное поле'),
+});
 
 const NotFound = () => {
     return ( 

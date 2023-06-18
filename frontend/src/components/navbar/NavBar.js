@@ -1,8 +1,6 @@
 import {NavLink} from "react-router-dom";
 import './style.css';
-import LoginButton from "../buttons/login-button/LoginButton";
 import LogoutButton from "../buttons/logout-button/LogoutButton";
-
 
 const NavBar = () => {
     return (

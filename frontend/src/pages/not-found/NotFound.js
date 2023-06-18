@@ -1,5 +1,5 @@
 import {NavLink} from "react-router-dom";
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 import Title from "../../components/title/Title";
 import './style.css';
 import notFoundImg from "../../img/404.jpg"

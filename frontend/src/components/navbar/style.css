@@ -1,0 +1,14 @@
+.navbar {
+    padding: 8px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 0 12px;
+    margin: 0 auto;
+
+    width: 960px;
+    height: 40px;
+}

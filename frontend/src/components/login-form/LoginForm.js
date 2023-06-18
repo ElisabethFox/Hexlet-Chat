@@ -1,6 +1,6 @@
 import { Formik, Form, Field } from 'formik';
 import Title from "../title/Title";
-import Button from "../buttton/Button";
+import LoginButton from '../buttons/login-button/LoginButton'
 import './style.css';
 
 const LoginForm = () => {
@@ -38,7 +38,7 @@ const LoginForm = () => {
                                 />
                                 <label htmlFor="password" className="form-label">Пароль</label>
                             </div>
-                            <Button title="Войти" />
+                            <LoginButton title="Войти" />
                         </Form>
             )}
         </Formik>

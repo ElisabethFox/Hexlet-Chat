@@ -1,4 +1,4 @@
-.button {
+.login-button {
     padding: 5px 0;
 
     font-size: 18px;
@@ -9,13 +9,16 @@
     border-radius: 5px;
 }
 
-.button:hover {
+.login-button:hover {
     color: #ffffff;
     background-color: #E7A5E2;
     cursor: pointer;
 }
 
-.button:active {
+.login-button:active {
     color: #ffffff;
     background-color: #D268CC;
+
+    position: relative;
+    top: 2px;
 }

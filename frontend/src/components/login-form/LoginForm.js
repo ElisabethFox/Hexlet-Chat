@@ -1,10 +1,14 @@
 import { Formik, Form, Field } from 'formik';
+import {useContext} from "react";
 import axios from "axios";
+import UserDataContextProvider from "../../context/Provider";
 import Title from "../title/Title";
 import LoginButton from '../buttons/login-button/LoginButton'
 import './style.css';
 
 const LoginForm = () => {
+    const context = useContext(UserDataContextProvider);
+    console.log(context)
 
     const handleSubmit = async () => {
         await axios

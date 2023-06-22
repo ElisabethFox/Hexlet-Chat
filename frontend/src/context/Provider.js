@@ -9,7 +9,7 @@ const UserDataContextProvider = ({ children }) => {
     // console.log(userName, userToken);
 
     const [userData, setUserData] = useState(currentUser);
-    console.log(userData)
+    // console.log(userData)
 
     const logIn = () => {
         localStorage.setItem('user', JSON.stringify(setUserData(userData)));

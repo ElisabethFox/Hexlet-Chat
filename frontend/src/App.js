@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Login from './pages/login/Login';
 import NotFound from './pages/not-found/NotFound';
 import NavBar from "./components/navbar/NavBar";
+import UserDataContextProvider from "./context/Provider";
 
 function App() {
   // const HomePage = () => {
@@ -26,14 +27,16 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-        <NavBar />
-          <Routes>
-            <Route path="*" element={<NotFound />} />
-            <Route path="/" element={<Home />}/>
-            <Route path="/login" element={<LoginPage />}/>
-          </Routes>
-    </BrowserRouter>
+        <BrowserRouter>
+            <NavBar />
+              <UserDataContextProvider>
+                <Routes>
+                  <Route path="*" element={<NotFound />} />
+                  <Route path="/" element={<Home />}/>
+                  <Route path="/login" element={<LoginPage />}/>
+                </Routes>
+              </UserDataContextProvider>
+        </BrowserRouter>
   );
 }
 

@@ -1,15 +1,22 @@
 import { Formik, Form, Field } from 'formik';
+import axios from "axios";
 import Title from "../title/Title";
 import LoginButton from '../buttons/login-button/LoginButton'
 import './style.css';
 
 const LoginForm = () => {
+
+    const handleSubmit = async () => {
+        await axios
+                .post('/api/v1/login', { username: 'admin', password: 'admin' })
+                .then((response) => {
+                    localStorage.setItem('user', JSON.stringify(response.data));
+        });
+    };
+
     return ( 
         <Formik initialValues={{ name: "", password: "" }}
-                onSubmit={({ setSubmitting }) => {
-                    console.log("Form is validated! Submitting the form...");
-                    setSubmitting(false);
-                }}
+                onSubmit={handleSubmit}
         >
             {() => (
                         <Form className="col-12 col-md-6 mt-3 mt-mb-0">
@@ -21,7 +28,7 @@ const LoginForm = () => {
                                     name="name"
                                     className="form-control"
                                     placeholder="Ваш ник"
-                                    autocomplete="username"
+                                    autoComplete="username"
                                     required
                                 />
                                 <label htmlFor="name" className="form-label">Ваш ник</label>
@@ -33,7 +40,7 @@ const LoginForm = () => {
                                     name="password"
                                     className="form-control"
                                     placeholder="Ваш пароль"
-                                    autocomplete="current-password"
+                                    autoComplete="current-password"
                                     required
                                 />
                                 <label htmlFor="password" className="form-label">Пароль</label>

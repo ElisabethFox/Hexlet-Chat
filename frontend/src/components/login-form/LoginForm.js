@@ -32,7 +32,7 @@ const LoginForm = () => {
             console.log('Неверные имя пользователя или пароль')
         }
     },
-    })
+    });
 
     return (
             <Form onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">

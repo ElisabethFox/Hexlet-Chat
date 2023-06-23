@@ -1,24 +1,30 @@
 import { Formik, Form, Field } from 'formik';
-import {useContext} from "react";
+import React, {useContext} from "react";
+import {Navigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import UserDataContextProvider from "../../context/Provider";
+import UserDataContext from "../../context/UserDataContext";
 import Title from "../title/Title";
 import LoginButton from '../buttons/login-button/LoginButton'
 import './style.css';
 
 const LoginForm = () => {
-    const context = useContext(UserDataContextProvider);
-    console.log(context)
+    const { userData, logIn, logOut } = useContext(UserDataContext);
+    console.log(logIn)
+
+    const navigate = useNavigate();
 
     const handleSubmit = async () => {
         await axios
                 .post('/api/v1/login', { username: 'admin', password: 'admin' })
                 .then((response) => {
-                    localStorage.setItem('user', JSON.stringify(response.data));
+                    logIn(response);
+                    navigate('/');
         });
     };
 
-    return ( 
+    return (
         <Formik initialValues={{ name: "", password: "" }}
                 onSubmit={handleSubmit}
         >
@@ -55,5 +61,5 @@ const LoginForm = () => {
         </Formik>
     );
 }
- 
+
 export default LoginForm;

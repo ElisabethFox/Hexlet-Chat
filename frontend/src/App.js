@@ -9,14 +9,14 @@ import NavBar from "./components/navbar/NavBar";
 import UserDataContextProvider from "./context/Provider";
 
 function App() {
-  // const HomePage = () => {
-  //   if (logged) {
-  //     return <Navigate to="/login" />
-  //   } else {
-  //     return <Home />
-  //   }
-  //
-  // }
+  const HomePage = () => {
+    if (localStorage.getItem('user') === null) {
+      return <Navigate to="/login" />
+    } else {
+      return <Home />
+    }
+
+  }
 
   const LoginPage = () => {
     if (localStorage.getItem('user') !== null) {
@@ -32,7 +32,7 @@ function App() {
               <UserDataContextProvider>
                 <Routes>
                   <Route path="*" element={<NotFound />} />
-                  <Route path="/" element={<Home />}/>
+                  <Route path="/" element={<HomePage />}/>
                   <Route path="/login" element={<LoginPage />}/>
                 </Routes>
               </UserDataContextProvider>

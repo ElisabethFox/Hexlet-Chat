@@ -1,5 +1,4 @@
 import LoginCard from "../../components/login-card/LoginCard";
-import axios from "axios";
 
 const Login = () => {
 
@@ -11,5 +10,5 @@ const Login = () => {
         </div>
     );
 }
- 
+
 export default Login;

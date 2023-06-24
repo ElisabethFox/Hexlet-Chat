@@ -1,12 +1,12 @@
 import Form from 'react-bootstrap/Form';
 import React, {useContext, useState} from "react";
-import logInSchema from "../../validation/logInShema";
+import logInSchema from "../../../validation/logInShema";
 import {useNavigate} from "react-router-dom";
 import {useFormik} from "formik";
 import axios from "axios";
-import UserDataContext from "../../context/UserDataContext";
-import Title from "../title/Title";
-import LoginButton from '../buttons/login-button/LoginButton'
+import UserDataContext from "../../../context/UserDataContext";
+import Title from "../../title/Title";
+import LoginButton from '../../buttons/login-button/LoginButton'
 import './style.css';
 
 const LoginForm = () => {
@@ -24,7 +24,7 @@ const LoginForm = () => {
             await axios
                 .post('/api/v1/login', { username: name, password: password })
                 .then((response) => {
-                    logIn(response);
+                    logIn(response.data);
                     navigate('/');
                 });
         } catch {

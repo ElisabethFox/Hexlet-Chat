@@ -1,22 +1,22 @@
 .login-button {
     padding: 5px 0;
 
-    color: #385A64;
+    color: var(--grey-dark);
 
-    background-color: #F3D2F1;
-    border: 1px solid #D268CC;
+    background-color: var(--lilac-light);
+    border: 1px solid var(--lilac-dark);
     border-radius: 5px;
 }
 
 .login-button:hover {
-    color: #ffffff;
-    background-color: #E7A5E2;
+    color: var(--white-grey-light);
+    background-color: var(--lilac-middle);
     cursor: pointer;
 }
 
 .login-button:active {
-    color: #ffffff;
-    background-color: #D268CC;
+    color: var(--white-grey-light);
+    background-color: var(--lilac-dark);
 
     position: relative;
     top: 2px;

@@ -1,5 +1,20 @@
 @import 'bootstrap';
 
+:root {
+  --lilac-dark: #BA68C8;
+  --lilac-middle: #D9ABE1;
+  --lilac-light: #EAD1EE;
+
+  --grey-dark: #263238;
+  --grey-middle: #37474F;
+  --grey-light: #455A64;
+
+  --white-grey-dark: #E0E0E0;
+  --white-grey-middle: #E6E6E6;
+  --white-grey-light: #FAFAFA;
+  --white: #FFFFFF;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,4 +27,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.container-fluid {
+  background: var(--white-grey-light);
 }

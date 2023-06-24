@@ -2,7 +2,7 @@ import LoginForm from "../login-form/LoginForm";
 
 import './style.css';
 
-import loginImg from '../../img/login.jpg';
+import loginImg from '../../../img/login.png';
 import LoginFooter from "../login-card-footer/LoginFooter";
 
 const LoginCard = () => {

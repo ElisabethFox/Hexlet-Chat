@@ -5,6 +5,7 @@ import UserDataContext from "../context/UserDataContext";
 import {useContext} from "react";
 import ChannelsPanel from "../components/chat/channels-panel/ChannelsPanel";
 import ChatPanel from "../components/chat/chat-panel/ChatPanel";
+import ChatCard from "../components/chat/chat-card/ChatCard";
 
 const Chat = () => {
 
@@ -24,10 +25,7 @@ const Chat = () => {
 
     return (
         <div className="container h-100 my-4 overflow-hidden rounded shadow">
-            <div className="row h-100 bg-white flex-md-row">
-                <ChannelsPanel />
-                <ChatPanel />
-            </div>
+            <ChatCard />
         </div>
     );
 }

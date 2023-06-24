@@ -1,17 +1,17 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
-import Home from './pages/Home';
+import Chat from './pages/Chat';
 import Login from './pages/Login';
 import NotFound from './pages/not-found/NotFound';
 import NavBar from "./components/navbar/NavBar";
 import UserDataContextProvider from "./context/Provider";
 
 function App() {
-  const HomePage = () => {
+  const ChatPage = () => {
     if (localStorage.getItem('user') === null) {
       return <Navigate to="/login" />
     } else {
-      return <Home />
+      return <Chat />
     }
 
   }
@@ -30,7 +30,7 @@ function App() {
               <UserDataContextProvider>
                 <Routes>
                   <Route path="*" element={<NotFound />} />
-                  <Route path="/" element={<HomePage />}/>
+                  <Route path="/" element={<ChatPage />}/>
                   <Route path="/login" element={<LoginPage />}/>
                 </Routes>
               </UserDataContextProvider>

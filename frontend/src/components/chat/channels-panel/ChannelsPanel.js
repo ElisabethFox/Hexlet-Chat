@@ -1,15 +1,12 @@
-import {useSelector, useDispatch} from "react-redux";
-import {addChannel, deleteChannel} from "../../../slices/channelsSlice";
+import {useSelector} from "react-redux";
 
 import { BiMessageSquareAdd } from "react-icons/bi";
 import './style.css'
-import axios from "axios";
-import {prettyDOM} from "@testing-library/react";
+
 const ChannelsPanel = () => {
 
     const channels = useSelector((state) => state.channels.channels);
-    console.log(channels)
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const mapped = channels.map((channel) => {
         return (

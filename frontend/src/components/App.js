@@ -1,6 +1,4 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { addChannel, deleteChannel } from "../slices/channelsSlice";
 import './App.css';
 import Chat from '../pages/Chat';
 import Login from '../pages/Login';

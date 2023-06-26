@@ -1,0 +1,7 @@
+.channel-name {
+    color: var(--grey-dark);
+}
+
+.message-count {
+    color: var(--lilac-middle)
+}

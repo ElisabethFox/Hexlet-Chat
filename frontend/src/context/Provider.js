@@ -3,13 +3,8 @@ import {useState} from "react";
 
 const UserDataContextProvider = ({ children }) => {
     const currentUser = JSON.parse(localStorage.getItem('user'));
-    // console.log(currentUser);
-    // const userName = currentUser.username;
-    // const userToken = currentUser.token;
-    // console.log(userName, userToken);
 
     const [userData, setUserData] = useState(currentUser);
-    // console.log(userData)
 
     const logIn = (data) => {
         localStorage.setItem('user', JSON.stringify(data));

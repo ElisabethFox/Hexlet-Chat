@@ -29,7 +29,6 @@ const LoginForm = () => {
                 });
         } catch {
             setValid(true);
-            console.log('Неверные имя пользователя или пароль')
         }
     },
     });

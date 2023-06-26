@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { addChannel, deleteChannel } from "../slices/channelsSlice";
 import './App.css';
-import Chat from './pages/Chat';
-import Login from './pages/Login';
-import NotFound from './pages/not-found/NotFound';
-import NavBar from "./components/navbar/NavBar";
-import UserDataContextProvider from "./context/Provider";
+import Chat from '../pages/Chat';
+import Login from '../pages/Login';
+import NotFound from '../pages/not-found/NotFound';
+import NavBar from "./navbar/NavBar";
+import UserDataContextProvider from "../context/Provider";
 
 function App() {
   const ChatPage = () => {

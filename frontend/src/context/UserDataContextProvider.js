@@ -1,6 +1,6 @@
-import UserDataContext from "./UserDataContext";
-import {useState} from "react";
+import {createContext, useState} from "react";
 
+export const UserDataContext = createContext({});
 const UserDataContextProvider = ({ children }) => {
     const currentUser = JSON.parse(localStorage.getItem('user'));
 

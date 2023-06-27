@@ -4,7 +4,7 @@ import logInSchema from "../../../validation/logInShema";
 import {useNavigate} from "react-router-dom";
 import {useFormik} from "formik";
 import axios from "axios";
-import UserDataContext from "../../../context/UserDataContext";
+import {UserDataContext} from "../../../context/UserDataContextProvider";
 import Title from "../../title/Title";
 import LoginButton from '../../buttons/login-button/LoginButton'
 import './style.css';

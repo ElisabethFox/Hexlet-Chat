@@ -4,7 +4,7 @@ import Chat from '../pages/Chat';
 import Login from '../pages/Login';
 import NotFound from '../pages/not-found/NotFound';
 import NavBar from "./navbar/NavBar";
-import UserDataContextProvider from "../context/Provider";
+import UserDataContextProvider from "../context/UserDataContextProvider";
 
 function App() {
   const ChatPage = () => {

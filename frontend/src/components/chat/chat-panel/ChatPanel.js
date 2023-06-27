@@ -1,5 +1,6 @@
 import MessageForm from "../message-form/MessageForm";
 import './style.css'
+import MessageBox from "../messages-box/MessageBox";
 
 const ChatPanel = () => {
     return (
@@ -11,7 +12,7 @@ const ChatPanel = () => {
                     </p>
                     <span className="message-count">0 сообщений</span>
                 </div>
-                <div id="messages-box" className="chat-messages overflow-auto px-5 "></div>
+                <MessageBox />
                 <MessageForm />
             </div>
         </div>

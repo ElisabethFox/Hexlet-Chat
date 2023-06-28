@@ -1,18 +1,20 @@
 import {createContext, useState} from "react";
+import _ from 'lodash';
 
 export const SocketContext = createContext({});
 
 const SocketContextProvider = ({ socket, children }) => {
+    const [messages, setMessages] = useState([]);
     const addNewMessage = (message, username) => {
         socket.on('newMessage', (payload) => {
-            console.log(payload); // => { body: "new message", channelId: 7, id: 8, username: "admin" }
+            setMessages([...messages, payload]);
         });
 
-        socket.emit('newMessage', { message: message, channelId: 1, username });
+        socket.emit('newMessage', { message, username });
     };
 
     return (
-        <SocketContext.Provider value={{ addNewMessage }}>
+        <SocketContext.Provider value={{ messages, addNewMessage }}>
             {children}
         </SocketContext.Provider>
     )

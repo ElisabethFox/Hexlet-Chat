@@ -5,7 +5,7 @@ import {SocketContext} from "../../../context/SocketContext";
 
 const MessageBox = () => {
     const { messages } = useContext(SocketContext);
-    console.log(messages)
+
     const mapped = messages.map((message) => {
         return (
             <Message userName={message.username} message={message.message} key={1}/>

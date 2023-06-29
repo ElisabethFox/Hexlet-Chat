@@ -12,11 +12,11 @@ const MessageForm = () => {
 
     const formik = useFormik({
         initialValues: { message: "", username: userData.username },
-        onSubmit: (values) => {
+        onSubmit: (values,  { resetForm }) => {
             const { message, username } = values;
-            console.log(values)
             try {
                 addNewMessage(message, username);
+                resetForm();
             } catch {
                 console.log('error');
             }
@@ -35,6 +35,7 @@ const MessageForm = () => {
                         className="border-0 p-1 ps-2 form-control"
                         placeholder="Введите сообщение..."
                         onChange={formik.handleChange}
+                        value={formik.values.message}
                     />
                 <button type="button" className="p-0 btn btn-group-vertical add-message-button">
                     <BiMessageSquareDetail className="add-message"/>

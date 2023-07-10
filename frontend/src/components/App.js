@@ -4,7 +4,6 @@ import Chat from '../pages/Chat';
 import Login from '../pages/Login';
 import NotFound from '../pages/not-found/NotFound';
 import NavBar from "./navbar/NavBar";
-import UserDataContextProvider from "../context/UserDataContextProvider";
 
 function App() {
   const ChatPage = () => {
@@ -26,14 +25,12 @@ function App() {
 
   return (
         <BrowserRouter>
-            <NavBar />
-              <UserDataContextProvider>
+          <NavBar />
                 <Routes>
                   <Route path="*" element={<NotFound />} />
                   <Route path="/" element={<ChatPage />}/>
                   <Route path="/login" element={<LoginPage />}/>
                 </Routes>
-              </UserDataContextProvider>
         </BrowserRouter>
   );
 }

@@ -6,6 +6,7 @@ import {Provider} from "react-redux";
 import store from "./slices";
 import React from "react";
 import SocketContextProvider from "./context/SocketContext";
+import UserDataContextProvider from "./context/UserDataContextProvider";
 import io from 'socket.io-client';
 
 const defaultLanguage = 'ru';
@@ -23,13 +24,15 @@ const init = async () => {
     const socket = io ("/");
 
     return (
-        <SocketContextProvider socket={socket}>
-            <I18nextProvider i18n={i18n}>
                 <Provider store={store}>
-                    <App />
+                    <SocketContextProvider socket={socket}>
+                        <UserDataContextProvider>
+                            <I18nextProvider i18n={i18n}>
+                                <App />
+                            </I18nextProvider>
+                        </UserDataContextProvider>
+                    </SocketContextProvider>
                 </Provider>
-            </I18nextProvider>
-        </SocketContextProvider>
     );
 };
 

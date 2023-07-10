@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createEntityAdapter, createSlice} from '@reduxjs/toolkit';
 import axios from "axios";
 
 const currentUser = JSON.parse(localStorage.getItem('user'))
@@ -14,24 +14,27 @@ const getChannels = async () => {
     }
 }
 
-const usersChannels = await getChannels();
+const channelsAdapter = createEntityAdapter();
+const initialState = channelsAdapter.getInitialState();
 
-const initialState = {
-    channels: [...usersChannels]
-};
+// const usersChannels = await getChannels();
+
+// const initialState = {
+//     channels: [...usersChannels]
+// };
 
 const channelSlice = createSlice({
     name: 'channels',
     initialState,
     reducers: {
-        addChannel: (state, action) => {
-            state.channels = [...state, action.payload]
-        },
-        deleteChannel: (state, action) => {
-            state.channels.pop()
-        }
+        addChannel: channelsAdapter.addOne,
+        addChannels: channelsAdapter.addMany,
+        // deleteChannel: (state, action) => {
+        //     state.channels.pop()
+        // }
     }
 });
 
-export const { addChannel, deleteChannel } = channelSlice.actions;
+export const { addChannel, addChannels } = channelSlice.actions;
+export { channelsAdapter };
 export default channelSlice.reducer;

@@ -2,11 +2,11 @@ import {useSelector} from "react-redux";
 
 import { BiMessageSquareAdd } from "react-icons/bi";
 import './style.css'
+import {channelsSelector} from '../../../selectors/selectors'
 
 const ChannelsPanel = () => {
-
-    const channels = useSelector((state) => state.channels.channels);
-    // const dispatch = useDispatch();
+    const channels = useSelector(channelsSelector.selectAll);
+    console.log(channels)
 
     const mapped = channels.map((channel) => {
         return (

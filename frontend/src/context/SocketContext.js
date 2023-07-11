@@ -1,6 +1,7 @@
 import {createContext, useState} from "react";
 import {useDispatch} from "react-redux";
 import {addMessage} from '../slices/messagesSlice'
+import {addChannel} from "../slices/channelsSlice";
 
 export const SocketContext = createContext({});
 
@@ -12,6 +13,14 @@ const SocketContextProvider = ({ socket, children }) => {
         });
 
         await socket.emit('newMessage', { ...message });
+    };
+
+    const addNewChannel = async (channel) => {
+        socket.on('newChannel', (channel) => {
+            dispatch(addChannel(channel));
+        });
+
+        await socket.emit('newChannel', { ...channel });
     };
 
     const connectSocket = () => {
@@ -29,7 +38,7 @@ const SocketContextProvider = ({ socket, children }) => {
     };
 
         return (
-        <SocketContext.Provider value={{ addNewMessage }}>
+        <SocketContext.Provider value={{ addNewMessage, addNewChannel }}>
             {children}
         </SocketContext.Provider>
     )

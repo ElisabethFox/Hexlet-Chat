@@ -1,12 +1,31 @@
 import {useSelector} from "react-redux";
-
+import {UserDataContext} from '../../../context/UserDataContextProvider'
 import { BiMessageSquareAdd } from "react-icons/bi";
 import './style.css'
 import {channelsSelector} from '../../../selectors/selectors'
+import axios from "axios";
+import {useContext, useEffect} from "react";
+import {SocketContext} from "../../../context/SocketContext";
 
 const ChannelsPanel = () => {
+    const { userData } = useContext(UserDataContext);
+    const { addNewChannel } = useContext(SocketContext);
+
+    const getChannels = async () => {
+        try {
+            const response = await axios.get('/api/v1/data', {headers: {Authorization: `Bearer ${userData.token}`}})
+            response.data.channels.forEach((channel) => addNewChannel(channel));
+        } catch (error) {
+            console.error(error);
+            return null;
+        }
+    }
+
+    useEffect(() => {
+        getChannels()
+    }, []);
+
     const channels = useSelector(channelsSelector.selectAll);
-    console.log(channels)
 
     const mapped = channels.map((channel) => {
         return (
@@ -18,7 +37,6 @@ const ChannelsPanel = () => {
             </li>
         )
     })
-
 
     return (
     <div className="col-4 col-md-2 border-end px-0 bg-light flex-column h-100 d-flex">

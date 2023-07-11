@@ -3,9 +3,7 @@ import {useSelector} from "react-redux";
 import {messagesSelector} from "../../../selectors/selectors";
 
 const MessageBox = () => {
-
     const messages = useSelector(messagesSelector.selectAll);
-    console.log(messages)
 
     const mapped = messages.map((message) => {
         return (

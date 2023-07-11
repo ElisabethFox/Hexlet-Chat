@@ -8,7 +8,7 @@ const UserDataContextProvider = ({ children }) => {
 
     const logIn = (data) => {
         localStorage.setItem('user', JSON.stringify(data));
-        setUserData(data)
+        setUserData(data);
     }
 
     const logOut = () => {

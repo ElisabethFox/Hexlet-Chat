@@ -1,14 +1,12 @@
 import Form from "react-bootstrap/Form";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import './style.css'
-import {SocketContext} from "../../../context/ChatContext";
-import {useContext} from "react";
 import {useFormik} from "formik";
-import {UserDataContext} from "../../../context/UserDataContext";
+import { useAuthorization, useChatApi } from "../../../hooks/hooks";
 
 const MessageForm = () => {
-    const { addNewMessage } = useContext(SocketContext);
-    const { userData } = useContext(UserDataContext);
+    const { addNewMessage } = useChatApi();
+    const { userData } = useAuthorization();
 
     const formik = useFormik({
         initialValues: { text: "", username: userData.username },

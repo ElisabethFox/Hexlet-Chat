@@ -4,13 +4,13 @@ import logInSchema from "../../../validation/logInShema";
 import {useNavigate} from "react-router-dom";
 import {useFormik} from "formik";
 import axios from "axios";
-import {UserDataContext} from "../../../context/UserDataContextProvider";
 import Title from "../../title/Title";
 import LoginButton from '../../buttons/login-button/LoginButton'
 import './style.css';
+import { useAuthorization } from '../../../hooks/hooks';
 
 const LoginForm = () => {
-    const { logIn } = useContext(UserDataContext);
+    const { logIn } = useAuthorization();
     const navigate = useNavigate();
     const [isInvalid, setValid] = useState(false);
 

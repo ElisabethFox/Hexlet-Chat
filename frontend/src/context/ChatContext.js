@@ -1,60 +1,64 @@
-import {createContext, useMemo, useState} from "react";
+import {createContext} from "react";
 import {useDispatch} from "react-redux";
 import {addMessage} from '../slices/messagesSlice'
 import {addChannel, addChannels} from "../slices/channelsSlice";
+import axios from "axios";
+import { useAuthorization } from "../hooks/hooks";
 
-export const SocketContext = createContext({});
+export const ChatContext = createContext({});
 
-const SocketContextProvider = ({ socket, children }) => {
+const ChatContextProvider = ({ socket, children }) => {
+    const { userData } = useAuthorization();
+    console.log(useAuthorization())
     const dispatch = useDispatch();
+    const timeout = 4000;
 
-    const context = useMemo (() => {
-        const addNewMessage = async (message) => {
-            socket.on('newMessage', (message) => {
-                dispatch(addMessage(message));
-            });
+    const connectSocket = () => {
+        socket.connect();
+
+        socket.on('newMessage', (message) => {
+            dispatch(addMessage(message));
+        });
+        socket.on('newChannel', (channel) => {
+            dispatch(addChannel(channel));
+        });
+    };
+
+    const disconnectSocket = () => {
+        socket.off();
+        socket.disconnect();
+    };
+
+    const addNewMessage = async (message) => {
+        await socket
+                .timeout(timeout)
+                .emit('newMessage', { message });
+    };
     
-            await socket.emit('newMessage', { ...message });
-        };
-    
-        const addNewChannel = async (channel) => {
-            socket.on('newChannel', (channel) => {
-                dispatch(addChannel(channel));
-            });
-    
-            await socket.emit('newChannel', { ...channel });
-        }; 
+    const addNewChannel = async (channel) => {
+        await socket
+                            .timeout(timeout)
+                            .emit('newChannel', { ...channel });
         
-        return (addNewMessage, addNewChannel)
-    }, [dispatch, socket]);
+        // dispatch(addChannel(responce.data))
+    }; 
 
-    // const addCurrentChannels = async (channels) => {
-    //     socket.on('currenttChannels', (channels) => {
-    //         dispatch(addChannels(channels));
-    //     });
+    const getChannelsData = async () => {
+        try {
+            const response = await axios.get('/api/v1/data', {headers: {Authorization: `Bearer ${userData.token}`}})
+            const data = response.data.channels;
+            dispatch(addChannels(data))
+        } catch (error) {
+            console.error(error);
+            return null;
+        }
+    };
 
-    //     await socket.emit('newChannel', { ...channels });
-    // }
-
-    // const connectSocket = () => {
-    //     socket.connect();
-
-    //     socket.on('newMessage', (message) => {
-    //         dispatch(addMessage(message));
-    //     });
-
-    // }
-
-    // const disconnectSocket = () => {
-    //     socket.off();
-    //     socket.disconnect();
-    // };
-
-        return (
-        <SocketContext.Provider value={{ context }}>
+    return (
+        <ChatContext.Provider value={{ connectSocket, disconnectSocket, addNewMessage, addNewChannel, getChannelsData }}>
             {children}
-        </SocketContext.Provider>
+        </ChatContext.Provider>
     )
 };
 
-export default SocketContextProvider;
+export default ChatContextProvider;

@@ -5,8 +5,8 @@ import resources from './locales/index.js';
 import {Provider} from "react-redux";
 import store from "./slices";
 import React from "react";
-import SocketContextProvider from "./context/SocketContext";
-import UserDataContextProvider from "./context/UserDataContextProvider";
+import ChatContextProvider from "./context/ChatContext";
+import UserDataContextProvider from "./context/UserDataContext";
 import io from 'socket.io-client';
 
 const defaultLanguage = 'ru';
@@ -25,13 +25,13 @@ const init = async () => {
 
     return (
                 <Provider store={store}>
-                    <SocketContextProvider socket={socket}>
+                    <ChatContextProvider socket={socket}>
                         <UserDataContextProvider>
                             <I18nextProvider i18n={i18n}>
                                 <App />
                             </I18nextProvider>
                         </UserDataContextProvider>
-                    </SocketContextProvider>
+                    </ChatContextProvider>
                 </Provider>
     );
 };

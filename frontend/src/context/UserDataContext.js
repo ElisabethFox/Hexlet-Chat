@@ -17,10 +17,13 @@ const UserDataContextProvider = ({ children }) => {
         setUserData(null)
     }
 
+    const getUserName = () => userData.username;
+    const getUserToken = () => userData.token;
+
     // const singIn - добавить
 
     return (
-        <UserDataContext.Provider value={{ userData, logIn, logOut }}>
+        <UserDataContext.Provider value={{ userData, logIn, logOut, getUserName, getUserToken }}>
             {children}
         </UserDataContext.Provider>
     )

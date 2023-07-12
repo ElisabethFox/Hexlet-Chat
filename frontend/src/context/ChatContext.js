@@ -1,15 +1,16 @@
 import {createContext} from "react";
 import {useDispatch} from "react-redux";
 import {addMessage} from '../slices/messagesSlice'
-import {addChannel, addChannels} from "../slices/channelsSlice";
+import {addChannel} from "../slices/channelsSlice";
 import axios from "axios";
 import { useAuthorization } from "../hooks/hooks";
 
 export const ChatContext = createContext({});
 
 const ChatContextProvider = ({ socket, children }) => {
-    const { userData } = useAuthorization();
+    const { getUserToken } = useAuthorization();
     console.log(useAuthorization())
+
     const dispatch = useDispatch();
     const timeout = 4000;
 
@@ -45,9 +46,8 @@ const ChatContextProvider = ({ socket, children }) => {
 
     const getChannelsData = async () => {
         try {
-            const response = await axios.get('/api/v1/data', {headers: {Authorization: `Bearer ${userData.token}`}})
-            const data = response.data.channels;
-            dispatch(addChannels(data))
+            const response = await axios.get('/api/v1/data', {headers: {Authorization: `Bearer ${getUserToken()}`}})
+            return response;
         } catch (error) {
             console.error(error);
             return null;

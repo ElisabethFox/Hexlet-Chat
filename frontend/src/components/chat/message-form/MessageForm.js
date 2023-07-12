@@ -6,10 +6,10 @@ import { useAuthorization, useChatApi } from "../../../hooks/hooks";
 
 const MessageForm = () => {
     const { addNewMessage } = useChatApi();
-    const { userData } = useAuthorization();
+    const { getUserName } = useAuthorization();
 
     const formik = useFormik({
-        initialValues: { text: "", username: userData.username },
+        initialValues: { text: "", username: getUserName() },
         onSubmit: (values,  { resetForm }) => {
             try {
                 addNewMessage(values);

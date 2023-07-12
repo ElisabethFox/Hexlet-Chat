@@ -1,44 +1,57 @@
-import {createContext, useState} from "react";
+import {createContext, useMemo, useState} from "react";
 import {useDispatch} from "react-redux";
 import {addMessage} from '../slices/messagesSlice'
-import {addChannel} from "../slices/channelsSlice";
+import {addChannel, addChannels} from "../slices/channelsSlice";
 
 export const SocketContext = createContext({});
 
 const SocketContextProvider = ({ socket, children }) => {
     const dispatch = useDispatch();
-    const addNewMessage = async (message) => {
-        socket.on('newMessage', (message) => {
-            dispatch(addMessage(message));
-        });
 
-        await socket.emit('newMessage', { ...message });
-    };
+    const context = useMemo (() => {
+        const addNewMessage = async (message) => {
+            socket.on('newMessage', (message) => {
+                dispatch(addMessage(message));
+            });
+    
+            await socket.emit('newMessage', { ...message });
+        };
+    
+        const addNewChannel = async (channel) => {
+            socket.on('newChannel', (channel) => {
+                dispatch(addChannel(channel));
+            });
+    
+            await socket.emit('newChannel', { ...channel });
+        }; 
+        
+        return (addNewMessage, addNewChannel)
+    }, [dispatch, socket]);
 
-    const addNewChannel = async (channel) => {
-        socket.on('newChannel', (channel) => {
-            dispatch(addChannel(channel));
-        });
+    // const addCurrentChannels = async (channels) => {
+    //     socket.on('currenttChannels', (channels) => {
+    //         dispatch(addChannels(channels));
+    //     });
 
-        await socket.emit('newChannel', { ...channel });
-    };
+    //     await socket.emit('newChannel', { ...channels });
+    // }
 
-    const connectSocket = () => {
-        socket.connect();
+    // const connectSocket = () => {
+    //     socket.connect();
 
-        socket.on('newMessage', (message) => {
-            dispatch(addMessage(message));
-        });
+    //     socket.on('newMessage', (message) => {
+    //         dispatch(addMessage(message));
+    //     });
 
-    }
+    // }
 
-    const disconnectSocket = () => {
-        socket.off();
-        socket.disconnect();
-    };
+    // const disconnectSocket = () => {
+    //     socket.off();
+    //     socket.disconnect();
+    // };
 
         return (
-        <SocketContext.Provider value={{ addNewMessage, addNewChannel }}>
+        <SocketContext.Provider value={{ context }}>
             {children}
         </SocketContext.Provider>
     )

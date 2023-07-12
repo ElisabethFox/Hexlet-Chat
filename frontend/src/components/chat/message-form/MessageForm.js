@@ -4,7 +4,7 @@ import './style.css'
 import {SocketContext} from "../../../context/SocketContext";
 import {useContext} from "react";
 import {useFormik} from "formik";
-import {UserDataContext} from "../../../context/UserDataContextProvider";
+import {UserDataContext} from "../../../context/UserDataContext";
 
 const MessageForm = () => {
     const { addNewMessage } = useContext(SocketContext);

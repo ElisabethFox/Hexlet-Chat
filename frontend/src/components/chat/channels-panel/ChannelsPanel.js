@@ -5,7 +5,7 @@ import './style.css'
 import {channelsSelector} from '../../../selectors/selectors'
 import axios from "axios";
 import {useContext, useEffect} from "react";
-import {SocketContext} from "../../../context/SocketContext";
+import {SocketContext} from "../../../context/ChatContext";
 
 const ChannelsPanel = () => {
     const { userData } = useContext(UserDataContext);

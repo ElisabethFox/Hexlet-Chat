@@ -1,7 +1,7 @@
 import Form from "react-bootstrap/Form";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import './style.css'
-import {SocketContext} from "../../../context/SocketContext";
+import {SocketContext} from "../../../context/ChatContext";
 import {useContext} from "react";
 import {useFormik} from "formik";
 import {UserDataContext} from "../../../context/UserDataContext";

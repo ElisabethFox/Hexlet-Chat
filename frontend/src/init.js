@@ -21,17 +21,17 @@ const init = async () => {
             fallbackLng: defaultLanguage,
         });
 
-    const socket = io ("/");
+    const socket = io('/', { autoConnect: false })
 
     return (
                 <Provider store={store}>
-                    <ChatContextProvider socket={socket}>
                         <UserDataContextProvider>
+                            <ChatContextProvider socket={socket}>
                             <I18nextProvider i18n={i18n}>
                                 <App />
                             </I18nextProvider>
+                            </ChatContextProvider>
                         </UserDataContextProvider>
-                    </ChatContextProvider>
                 </Provider>
     );
 };

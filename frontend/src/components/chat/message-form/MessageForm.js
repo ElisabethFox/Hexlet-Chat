@@ -9,8 +9,7 @@ import {currentChannelSelector} from "../../../selectors/selectors"
 const MessageForm = () => {
     const { addNewMessage } = useChatApi();
     const { getUserName } = useAuthorization();
-    const currentChannelId = useSelector(currentChannelSelector);
-    console.log(currentChannelId)
+    const currentChannel = useSelector(currentChannelSelector);
 
     const formik = useFormik({
         initialValues: { text: "", username: getUserName() },
@@ -18,7 +17,7 @@ const MessageForm = () => {
             try {
                 const message = {
                     ...values,
-                    сhannelId: currentChannelId.id
+                    сhannelId: currentChannel.id ?? null,
                 }
                 addNewMessage(message);
                 resetForm();

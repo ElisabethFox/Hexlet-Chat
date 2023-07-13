@@ -5,7 +5,6 @@ import cn from 'classnames';
 
 const Channel = ({ channel, onClick }) => {
     const currentChannelId = useSelector(currentChannelSelector).id;
-    // const isActive = channel.id === currentChannelId ? true : false;
     const isActive = () => channel.id === currentChannelId;
 
     const channelClasses = cn("w-100 rounded-0 text-start channel-button", {

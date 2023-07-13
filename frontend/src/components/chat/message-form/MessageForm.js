@@ -3,16 +3,24 @@ import { BiMessageSquareDetail } from "react-icons/bi";
 import './style.css'
 import {useFormik} from "formik";
 import { useAuthorization, useChatApi } from "../../../hooks/hooks";
+import { useSelector } from "react-redux";
+import {currentChannelSelector} from "../../../selectors/selectors"
 
 const MessageForm = () => {
     const { addNewMessage } = useChatApi();
     const { getUserName } = useAuthorization();
+    const currentChannelId = useSelector(currentChannelSelector);
+    console.log(currentChannelId)
 
     const formik = useFormik({
         initialValues: { text: "", username: getUserName() },
         onSubmit: (values,  { resetForm }) => {
             try {
-                addNewMessage(values);
+                const message = {
+                    ...values,
+                    сhannelId: currentChannelId.id
+                }
+                addNewMessage(message);
                 resetForm();
             } catch {
                 console.log('error');

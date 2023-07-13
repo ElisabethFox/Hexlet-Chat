@@ -1,8 +1,10 @@
 import { useEffect } from "react";
-import ChatCard from "../components/chat/chat-card/ChatCard";
 import { useChatApi } from "../hooks/hooks";
 import fetchInitialData from "../context/InitialDataThunk";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import ChannelsPanel from "../components/chat/channels-panel/ChannelsPanel";
+import ChatPanel from "../components/chat/chat-panel/ChatPanel";
+import { currentChannelSelector, channelsSelector } from "../selectors/selectors";
 
 const Chat = () => {
     const { connectSocket, disconnectSocket, getChannelsData } = useChatApi();
@@ -20,7 +22,10 @@ const Chat = () => {
 
     return (
         <div className="container h-100 my-4 overflow-hidden rounded shadow">
-            <ChatCard />
+            <div className="row h-100 bg-white flex-md-row">
+                <ChannelsPanel />
+                <ChatPanel />
+            </div>
         </div>
     );
 }

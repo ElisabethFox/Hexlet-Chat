@@ -14,7 +14,6 @@ const channelSlice = createSlice({
         addChannels: channelsAdapter.addMany,
         setCurrentChannel: (state, { payload }) => {
             state.currentChannelId = payload;
-            return state.currentChannelId; 
         },
     },
     extraReducers: (builder) => {

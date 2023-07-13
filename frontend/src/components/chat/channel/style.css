@@ -19,7 +19,7 @@
     background-color: var(--lilac-middle);
 }
 
-.channel-button:active {
+.current, .channel-button:active {
     background-color: var(--lilac-dark);
     color: var(--white-grey-light);
 }

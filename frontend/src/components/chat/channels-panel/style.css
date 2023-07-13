@@ -1,12 +1,3 @@
-.channels-title {
-    color: var(--grey-dark);
-}
-
-.add-channel-button:active {
-    border: none;
-    box-shadow: 2px 2px 5px 0 var(--lilac-middle);
-}
-
 .add-icon {
     padding: 0;
     margin: 0;
@@ -17,19 +8,3 @@
     color: var(--lilac-dark);
 }
 
-.channel-button {
-    padding: 0.4rem 0.8rem;
-
-    background-color: var(--lilac-light);
-    color: var(--grey-middle);
-    border: none;
-}
-
-.channel-button:hover {
-    background-color: var(--lilac-middle);
-}
-
-.channel-button:active {
-    background-color: var(--lilac-dark);
-    color: var(--white-grey-light);
-}

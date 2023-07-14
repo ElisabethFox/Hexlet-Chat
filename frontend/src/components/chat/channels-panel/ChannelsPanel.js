@@ -10,9 +10,6 @@ import { openModalWindow } from "../../../slices/modalWindowSlice";
 
 const ChannelsPanel = () => {
     const channels = useSelector(channelsSelector.selectAll);
-    const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
-    console.log(isModalWindowOpen)
-
     const dispatch = useDispatch();
 
     const hundleSetCurrentChannel = (id) => {
@@ -21,7 +18,6 @@ const ChannelsPanel = () => {
 
     const hundleCreateNewChannel = () => {
         dispatch(openModalWindow());
-        console.log('ОТКРЫТО')
     };
     
     return (

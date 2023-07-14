@@ -4,8 +4,8 @@ import './style.css'
 import cn from 'classnames';
 
 const Channel = ({ channel, onClick }) => {
-    const currentChannelId = useSelector(currentChannelSelector).id;
-    const isActive = () => channel.id === currentChannelId;
+    const currentChannel = useSelector(currentChannelSelector);
+    const isActive = () => channel.id === currentChannel.id;
 
     const channelClasses = cn("w-100 rounded-0 text-start channel-button", {
         'current': isActive(),

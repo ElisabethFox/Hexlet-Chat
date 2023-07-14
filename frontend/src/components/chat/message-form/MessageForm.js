@@ -40,7 +40,7 @@ const MessageForm = () => {
                         onChange={formik.handleChange}
                         value={formik.values.text}
                     />
-                <button type="button" className="p-0 btn btn-group-vertical add-message-button">
+                <button type="button" className="p-0 btn btn-link btn-group-vertical add-message-button">
                     <BiMessageSquareDetail className="add-message"/>
                     <span className="visually-hidden">Отправить</span>
                 </button>

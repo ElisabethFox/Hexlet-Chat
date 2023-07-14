@@ -1,25 +1,34 @@
 import {useSelector} from "react-redux";
 import { BiMessageSquareAdd } from "react-icons/bi";
 import './style.css'
-import {channelsSelector} from '../../../selectors/selectors'
+import {channelsSelector, modalWindowSelector} from '../../../selectors/selectors'
 import Channel from "../channel/Channel";
 import { useDispatch } from "react-redux";
 import { setCurrentChannel } from "../../../slices/channelsSlice";
+import { openModalWindow } from "../../../slices/modalWindowSlice";
 
 
 const ChannelsPanel = () => {
     const channels = useSelector(channelsSelector.selectAll);
+    const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
+    console.log(isModalWindowOpen)
+
     const dispatch = useDispatch();
 
     const hundleSetCurrentChannel = (id) => {
         dispatch(setCurrentChannel(id));
-    }
+    };
+
+    const hundleCreateNewChannel = () => {
+        dispatch(openModalWindow());
+        console.log('ОТКРЫТО')
+    };
     
     return (
     <div className="col-4 col-md-2 border-end px-0 bg-light flex-column h-100 d-flex">
         <div className="d-flex mt-1 justify-content-between mb-2 ps-4 pe-2 p-4">
             <b className="channels-title">Каналы</b>
-            <button type="button" className="p-0 text-primary btn btn-group-vertical add-channel-button">
+            <button type="button" className="p-0 btn-link btn btn-group-vertical add-channel-button" data-toggle="modal" onClick={hundleCreateNewChannel}>
                 <BiMessageSquareAdd className="add-icon"/>
                 <span className="visually-hidden">+</span>
             </button>

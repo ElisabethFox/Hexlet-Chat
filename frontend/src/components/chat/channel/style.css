@@ -1,3 +1,7 @@
+.channel {
+    display: flex;
+}
+
 .channels-title {
     color: var(--grey-dark);
 }
@@ -17,6 +21,12 @@
 
 .channel-button:hover {
     background-color: var(--lilac-middle);
+}
+
+.channel-menu-btn {
+    border: none;
+    background-color: var(--lilac-light);
+    color: var(--grey-light)
 }
 
 .current, .channel-button:active {

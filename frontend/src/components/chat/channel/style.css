@@ -33,3 +33,13 @@
     background-color: var(--lilac-dark);
     color: var(--white-grey-light);
 }
+
+.dropdown-menu {
+    display: block;
+    position: absolute;
+    transform: translate3d(0px, 40px, 0px);
+}
+
+.dropdown-item {
+    display: flex;
+}

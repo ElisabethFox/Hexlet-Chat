@@ -12,12 +12,11 @@ const modalWindowSlice = createSlice({
     reducers: {
         openModalWindow: (state, { payload }) => {
             state.isOpen = true;
-            state.type= 'openWindow'
+            state.type= payload.type;
         },
 
         closeModalWindow: (state, { payload }) => {
             state.isOpen = false;
-            state.type= 'closeWindow'
         },
     }
 });

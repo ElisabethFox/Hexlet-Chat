@@ -1,11 +1,11 @@
 export default {
     translation: {
-        logIn: {
-            logInTittle: 'Войти',
+        login: {
+            loginTittle: 'Войти',
             userName: 'Ваш ник',
             password: 'Ваш пароль',
-            logInButton: 'Войти',
-            logInError: 'Неверные имя пользователя или пароль',
+            loginButton: 'Войти',
+            loginError: 'Неверные имя пользователя или пароль',
             noAccount: 'Нет аккаунта?',
         },
         registration: {
@@ -24,6 +24,9 @@ export default {
             channelCreation: 'Канал создан',
             channelRenaming: 'Канал переименован',
             channelRemoval: 'Канал удалён',
+            removeChannel: 'Удалить',
+            renameChannel: 'Переименовать',
+            controlChannel: 'Управление каналом'
         },
     },
 };

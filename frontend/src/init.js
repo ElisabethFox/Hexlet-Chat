@@ -17,8 +17,12 @@ const init = async () => {
     await i18n
         .use(initReactI18next)
         .init({
+            debug: true,
             resources,
             fallbackLng: defaultLanguage,
+            interpolation: {
+                escapeValue: false, // экранирование уже есть в React, поэтому отключаем
+              },
         });
 
     const socket = io('/', { autoConnect: false })

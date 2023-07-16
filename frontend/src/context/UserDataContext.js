@@ -4,7 +4,6 @@ export const UserDataContext = createContext({});
 
 const UserDataContextProvider = ({ children }) => {
     const currentUser = JSON.parse(localStorage.getItem('user'));
-
     const [userData, setUserData] = useState(currentUser);
 
     const logIn = (data) => {
@@ -13,14 +12,14 @@ const UserDataContextProvider = ({ children }) => {
     }
 
     const logOut = () => {
-        localStorage.removeItem('user')
-        setUserData(null)
+        localStorage.removeItem('user');
+        setUserData(null);
     }
 
     const getUserName = () => userData.username;
     const getUserToken = () => userData.token;
 
-    
+
 
     return (
         <UserDataContext.Provider value={{ userData, logIn, logOut, getUserName, getUserToken }}>

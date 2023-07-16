@@ -15,6 +15,7 @@ const channelSlice = createSlice({
         setCurrentChannel: (state, { payload }) => {
             state.currentChannelId = payload;
         },
+        deleteChannel: channelsAdapter.removeOne,
     },
     extraReducers: (builder) => {
         builder.addCase(fetchInitialData.fulfilled, (state, { payload }) => {
@@ -23,6 +24,6 @@ const channelSlice = createSlice({
       },
 });
 
-export const { addChannel, addChannels, setCurrentChannel } = channelSlice.actions;
+export const { addChannel, addChannels, setCurrentChannel, deleteChannel } = channelSlice.actions;
 export { channelsAdapter };
 export default channelSlice.reducer;

@@ -4,6 +4,7 @@ import Chat from '../pages/Chat';
 import Login from '../pages/Login';
 import NotFound from '../pages/not-found/NotFound';
 import NavBar from "./navbar/NavBar";
+import Signup from '../pages/Signup';
 
 function App() {
   const ChatPage = () => {
@@ -30,6 +31,7 @@ function App() {
                   <Route path="*" element={<NotFound />} />
                   <Route path="/" element={<ChatPage />}/>
                   <Route path="/login" element={<LoginPage />}/>
+                  <Route path="/signup" element={<Signup />}/>
                 </Routes>
         </BrowserRouter>
   );

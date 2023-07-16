@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeModalWindow } from "../../slices/modalWindowSlice";
 
 
-const ModalWindow = () => {
+const AddChannelModalWindow = () => {
     const { addNewChannel } = useChatApi();
     const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
     const dispatch = useDispatch();
@@ -59,4 +59,4 @@ const ModalWindow = () => {
     );
 }
  
-export default ModalWindow;
+export default AddChannelModalWindow;

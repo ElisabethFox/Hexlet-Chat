@@ -19,6 +19,7 @@ export default {
             registrationButton: 'Зарегистрироваться',
         },
         channel: {
+            channels: 'Каналы',
             sending: 'Отправить',
             networkError: 'Ошибка соединения',
             channelCreation: 'Канал создан',
@@ -26,7 +27,13 @@ export default {
             channelRemoval: 'Канал удалён',
             removeChannel: 'Удалить',
             renameChannel: 'Переименовать',
-            controlChannel: 'Управление каналом'
+            controlChannel: 'Управление каналом',
+        },
+        message: {
+            messagesCount: 'сообщений',
+            newMessage: 'Новое сообщение',
+            messageInput: 'Введите сообщение...',
+            sendMessage: 'Отправить',
         },
     },
 };

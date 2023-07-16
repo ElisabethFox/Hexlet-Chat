@@ -3,8 +3,11 @@ import './style.css'
 import MessageBox from "../messages-box/MessageBox";
 import { useSelector } from "react-redux";
 import {currentChannelSelector} from "../../../selectors/selectors";
+import { useTranslation } from "react-i18next";
 
 const ChatPanel = () => {
+    const { t } = useTranslation();
+
     return (
         <div className="col p-0 h-100">
             <div className="d-flex flex-column h-100">
@@ -12,7 +15,7 @@ const ChatPanel = () => {
                     <p className="m-0">
                         <b className="channel-name"># general</b>
                     </p>
-                    <span className="message-count">0 сообщений</span>
+                    <span className="message-count">0 {t('message.messagesCount')}</span>
                 </div>
                 <MessageBox />
                 <MessageForm />

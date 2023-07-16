@@ -1,7 +1,7 @@
 export default {
     translation: {
         login: {
-            loginTittle: 'Войти',
+            loginTitle: 'Войти',
             userName: 'Ваш ник',
             password: 'Ваш пароль',
             loginButton: 'Войти',

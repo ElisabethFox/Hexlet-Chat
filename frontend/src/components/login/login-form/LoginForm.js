@@ -8,14 +8,16 @@ import Title from "../../title/Title";
 import LoginButton from '../../buttons/login-button/LoginButton'
 import './style.css';
 import { useAuthorization } from '../../../hooks/hooks';
+import { useTranslation } from 'react-i18next';
 
 const LoginForm = () => {
     const { logIn } = useAuthorization();
     const navigate = useNavigate();
     const [isInvalid, setValid] = useState(false);
+    const { t } = useTranslation();
 
     const formik = useFormik({
-    initialValues: { name: "", password: "" },
+    initialValues: { username: "", password: "" },
     validationSchema: logInSchema,
     onSubmit: async (values) => {
         const { name, password } = values;
@@ -42,14 +44,14 @@ const LoginForm = () => {
                         type="text"
                         name="name"
                         className="form-control"
-                        placeholder="Ваш ник"
+                        placeholder={t('login.userName')}
                         autoComplete="username"
                         onChange={formik.handleChange}
                         isInvalid={isInvalid}
                         required
                     />
                     <Form.Label htmlFor="name" className="form-label">
-                        Ваш ник
+                        {t('login.userName')}
                     </Form.Label>
                 </div>
                 <div className="form-floating mb-4">
@@ -58,21 +60,21 @@ const LoginForm = () => {
                         type="password"
                         name="password"
                         className="form-control"
-                        placeholder="Ваш пароль"
+                        placeholder={t('login.password')}
                         autoComplete="current-password"
                         onChange={formik.handleChange}
                         isInvalid={isInvalid}
                         required
                     />
                     <Form.Label htmlFor="password" className="form-label">
-                        Пароль
+                        {t('login.password')}
                     </Form.Label>
                     <Form.Control.Feedback type="invalid" className="invalid-tooltip invalid-feedback"
                                            tooltip={isInvalid}>
-                        Неверные имя пользователя или пароль
+                        {t('login.loginError')}
                     </Form.Control.Feedback>
                 </div>
-                <LoginButton title="Войти" />
+                <LoginButton title={t('login.loginTitle')} />
             </Form>
     );
 }

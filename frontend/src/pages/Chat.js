@@ -26,8 +26,8 @@ const Chat = () => {
     return (
         <div className="container h-100 my-4 overflow-hidden rounded shadow">
             <div className="row h-100 bg-white flex-md-row">
-                {/* <AddChannelModalWindow /> */}
-                <DeleteChannelModalWindow />
+                <AddChannelModalWindow />
+                {/* <DeleteChannelModalWindow /> */}
                 <ChannelsPanel />
                 <ChatPanel />
             </div>

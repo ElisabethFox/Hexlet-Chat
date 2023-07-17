@@ -53,8 +53,10 @@ const AddChannelModalWindow = () => {
                         value={formik.values.channelName}
                         />
                         </div>
+                        <div class="d-flex justify-content-end">
                         <ModalButtton title={t('modal.cancelBtn')} priority={false} onClick={hundleCloseModalWindow}/>
                         <ModalButtton title={t('modal.sendBtn')} priority={true} onClick={formik.handleSubmit}/>
+                        </div>
                     </Form>
                 </div>
         </Modal>

@@ -1,7 +1,3 @@
-.channel {
-    display: flex;
-}
-
 .channels-title {
     color: var(--grey-dark);
 }
@@ -34,12 +30,8 @@
     color: var(--white-grey-light);
 }
 
-.dropdown-menu {
+.show {
     display: block;
     position: absolute;
     transform: translate3d(0px, 40px, 0px);
-}
-
-.dropdown-item {
-    display: flex;
 }

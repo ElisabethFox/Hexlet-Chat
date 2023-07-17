@@ -1,7 +1,5 @@
 import { Modal } from "react-bootstrap";
 import ModalButtton from "../buttons/modal-button/ModalButtton";
-import Form from "react-bootstrap/Form";
-import {useFormik} from "formik";
 import { useChatApi } from "../../hooks/hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModalWindow, openModalWindow } from "../../slices/modalWindowSlice";

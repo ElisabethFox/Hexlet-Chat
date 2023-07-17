@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeModalWindow, openModalWindow } from "../../slices/modalWindowSlice";
 import { useTranslation } from "react-i18next";
 
-const DeleteChannelModalWindow = () => {
+const RemoveChannelModalWindow = () => {
     const dispatch = useDispatch();
     const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
     const { t } = useTranslation();
@@ -36,4 +36,4 @@ const DeleteChannelModalWindow = () => {
     );
 }
  
-export default DeleteChannelModalWindow;
+export default RemoveChannelModalWindow;

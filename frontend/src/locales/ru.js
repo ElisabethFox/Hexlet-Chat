@@ -1,5 +1,9 @@
-export default {
+const ru = {
     translation: {
+        navigation: {
+            chatName: 'Hexlet Chat',
+            exitBtn: 'Выйти',
+        },
         login: {
             loginTitle: 'Войти',
             userName: 'Ваш ник',
@@ -35,5 +39,17 @@ export default {
             messageInput: 'Введите сообщение...',
             sendMessage: 'Отправить',
         },
+        modal: {
+            createChannel: 'Добавить канал',
+            newChannelName: 'Название нового канала',
+            channelNameInput: 'Введите название...',
+            cancelBtn: 'Отменить',
+            sendBtn: 'Отправить',
+            removeChannel: 'Удалить канал',
+            sure: 'Уверены?',
+            removeBtn: 'Удалить',
+        },
     },
 };
+
+export default ru;

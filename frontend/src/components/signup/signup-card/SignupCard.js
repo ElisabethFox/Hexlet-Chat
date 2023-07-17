@@ -1,5 +1,5 @@
 import signupImg from '../../../img/registration.png'
-import SignupForm from './SignupForm';
+import SignupForm from '../signup-form/SignupForm';
 
 const SignupCard = () => {
     return (

@@ -9,7 +9,7 @@ import { openModalWindow, setCurrentModalType } from "../../../slices/modalWindo
 import { useTranslation } from "react-i18next";
 
 
-const ChannelsPanel = ({onBtnClick}) => {
+const ChannelsPanel = ({}) => {
     const channels = useSelector(channelsSelector.selectAll);
     const dispatch = useDispatch();
     const { t } = useTranslation();

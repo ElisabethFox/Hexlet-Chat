@@ -30,6 +30,7 @@ const Channel = ({ channel, onClick }) => {
 
     const hundleSetBtnActive = () => {
         setBtnActive(!isBtnActive);
+        
     }
 
     const hundleRenameChannel = () => {
@@ -54,7 +55,6 @@ const Channel = ({ channel, onClick }) => {
                     <span class="visually-hidden">{t('channel.controlChannel')}</span>
                 </button>
             
-
                 <div x-placement="bottom-end" aria-labelledby="react-aria4736936024-3" className={menuClasses} data-popper-reference-hidden="false" data-popper-escaped="false" data-popper-placement="bottom-end">
                     <Link class="dropdown-item" role="button" href="#" onClick={hundleRemoveChannel}>{t('channel.removeChannel')}</Link>
                     <Link class="dropdown-item" role="button" href="#" onClick={hundleRenameChannel}>{t('channel.renameChannel')}</Link>

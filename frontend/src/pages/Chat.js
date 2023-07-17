@@ -10,7 +10,6 @@ import ModalWindow from "../components/modal/ModalWindow";
 const Chat = () => {
     const { connectSocket, disconnectSocket, getChannelsData } = useChatApi();
     const dispatch = useDispatch();
-    // const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
 
     useEffect(() => {
         dispatch(fetchInitialData(getChannelsData));

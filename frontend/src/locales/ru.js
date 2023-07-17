@@ -48,6 +48,7 @@ const ru = {
             removeChannel: 'Удалить канал',
             sure: 'Уверены?',
             removeBtn: 'Удалить',
+            renameChannel: 'Переименовать канал',
         },
     },
 };

@@ -22,7 +22,7 @@ const ChatContextProvider = ({ socket, children }) => {
         socket.on('newChannel', (channel) => {
             dispatch(addChannel(channel));
         });
-        socket.on('deleteChannel', (channel) => {
+        socket.on('removeChannel', (channel) => {
             dispatch(deleteChannel(channel));
         });
     };
@@ -45,7 +45,11 @@ const ChatContextProvider = ({ socket, children }) => {
         
     }; 
 
-    const deleteChannel = async (channel) => {
+    const removeChannel = async (channel) => {
+
+    };
+
+    const renameChannel = async (channel) => {
 
     };
 
@@ -55,7 +59,7 @@ const ChatContextProvider = ({ socket, children }) => {
     };
 
     return (
-        <ChatContext.Provider value={{ connectSocket, disconnectSocket, addNewMessage, addNewChannel, deleteChannel, getChannelsData }}>
+        <ChatContext.Provider value={{ connectSocket, disconnectSocket, addNewMessage, addNewChannel, removeChannel, renameChannel, getChannelsData }}>
             {children}
         </ChatContext.Provider>
     )

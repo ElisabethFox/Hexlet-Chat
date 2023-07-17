@@ -4,6 +4,7 @@ import AddChannelModalWindow from "./AddChannelModalWindow";
 import { setCurrentModalType } from "../../slices/modalWindowSlice";
 import { useDispatch } from "react-redux";
 import { openModalWindow } from "../../slices/modalWindowSlice";
+import RenameChannelModalWindow from "./RenameChannelModalWindow";
 
 const ModalWindow = () => {
     const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
@@ -11,9 +12,7 @@ const ModalWindow = () => {
     
     return (
         <Modal show={isModalWindowOpen} centered >
-            <AddChannelModalWindow>
-
-            </AddChannelModalWindow>
+            <RenameChannelModalWindow />
         </Modal>
     );
 }

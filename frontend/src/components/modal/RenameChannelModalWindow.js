@@ -7,9 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeModalWindow } from "../../slices/modalWindowSlice";
 import { useTranslation } from "react-i18next";
 
-
-const AddChannelModalWindow = () => {
-    const { addNewChannel } = useChatApi();
+const RenameChannelModalWindow = () => {
+    const { renameChannel } = useChatApi();
     const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
     const dispatch = useDispatch();
     const { t } = useTranslation();
@@ -20,13 +19,13 @@ const AddChannelModalWindow = () => {
     };
 
     const formik = useFormik({
-        initialValues: { name: "" },
+        initialValues: { newName: "" },
         onSubmit: (values) => {
             try {
                 const channel = {
                     ...values,
                 }
-                addNewChannel(channel);
+                renameChannel(channel);
                 hundleCloseModalWindow();
             } catch {
                 console.log('error');
@@ -37,7 +36,7 @@ const AddChannelModalWindow = () => {
     return (
         <Modal show={isModalWindowOpen} centered >
                 <div className="modal-header">
-                    <div className="modal-title h4">{t('modal.createChannel')}</div>
+                    <div className="modal-title h4">{t('modal.renameChannel')}</div>
                     <button type="button" className="btn-close" aria-label="Close" onClick={hundleCloseModalWindow}></button>
                 </div>
 
@@ -64,4 +63,4 @@ const AddChannelModalWindow = () => {
     );
 }
  
-export default AddChannelModalWindow;
+export default RenameChannelModalWindow;

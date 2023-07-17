@@ -14,13 +14,15 @@ const modalWindowSlice = createSlice({
             state.isOpen = true;
             // state.type= payload.type;
         },
-
         closeModalWindow: (state, { payload }) => {
             state.isOpen = false;
+        },
+        setCurrentModalType: (state, { payload }) => {
+            state.type = payload;
         },
     }
 });
 
-export const { openModalWindow, closeModalWindow } = modalWindowSlice.actions;
+export const { openModalWindow, closeModalWindow, setCurrentModalType } = modalWindowSlice.actions;
 export { modalWindowAdapter };
 export default modalWindowSlice.reducer;

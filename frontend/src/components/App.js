@@ -5,6 +5,7 @@ import Login from '../pages/Login';
 import NotFound from '../pages/not-found/NotFound';
 import NavBar from "./navbar/NavBar";
 import Signup from '../pages/Signup';
+import ModalWindow from './modal/ModalWindow';
 
 function App() {
   const ChatPage = () => {

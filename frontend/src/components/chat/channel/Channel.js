@@ -6,6 +6,7 @@ import "./style.css"
 import { openModalWindow } from "../../../slices/modalWindowSlice";
 import { useTranslation } from 'react-i18next';
 import { useState } from "react";
+import { setCurrentModalType } from "../../../slices/modalWindowSlice";
 
 const Channel = ({ channel, onClick }) => {
     const currentChannel = useSelector(currentChannelSelector);
@@ -18,10 +19,6 @@ const Channel = ({ channel, onClick }) => {
         'show': isBtnActive,
     });
 
-    const hundleSetBtnActive = () => {
-        setBtnActive(!isBtnActive);
-    }
-
     const channelClasses = cn("w-100 rounded-0 text-start channel-button", {
         'current': isActive(),
     })
@@ -30,11 +27,18 @@ const Channel = ({ channel, onClick }) => {
         'current': isActive(),
     })
 
+
+    const hundleSetBtnActive = () => {
+        setBtnActive(!isBtnActive);
+    }
+
     const hundleRenameChannel = () => {
+        dispatch(setCurrentModalType('rename'));
         dispatch(openModalWindow());
     };
 
-    const hundleDeleteChannel = () => {
+    const hundleRemoveChannel = () => {
+        dispatch(setCurrentModalType('remove'));
         dispatch(openModalWindow());
     };
 
@@ -52,7 +56,7 @@ const Channel = ({ channel, onClick }) => {
             
 
                 <div x-placement="bottom-end" aria-labelledby="react-aria4736936024-3" className={menuClasses} data-popper-reference-hidden="false" data-popper-escaped="false" data-popper-placement="bottom-end">
-                    <Link class="dropdown-item" role="button" href="#" onClick={hundleDeleteChannel}>{t('channel.removeChannel')}</Link>
+                    <Link class="dropdown-item" role="button" href="#" onClick={hundleRemoveChannel}>{t('channel.removeChannel')}</Link>
                     <Link class="dropdown-item" role="button" href="#" onClick={hundleRenameChannel}>{t('channel.renameChannel')}</Link>
                 </div>
             </div>    

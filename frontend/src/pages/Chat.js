@@ -4,8 +4,7 @@ import fetchInitialData from "../context/InitialDataThunk";
 import { useDispatch, useSelector } from "react-redux";
 import ChannelsPanel from "../components/chat/channels-panel/ChannelsPanel";
 import ChatPanel from "../components/chat/chat-panel/ChatPanel";
-import AddChannelModalWindow from "../components/modal/AddChannelModalWindow";
-import DeleteChannelModalWindow from "../components/modal/DeleteChannelModalWindow";
+import ModalWindow from "../components/modal/ModalWindow";
 
 
 const Chat = () => {
@@ -26,8 +25,7 @@ const Chat = () => {
     return (
         <div className="container h-100 my-4 overflow-hidden rounded shadow">
             <div className="row h-100 bg-white flex-md-row">
-                <AddChannelModalWindow />
-                {/* <DeleteChannelModalWindow /> */}
+                <ModalWindow />
                 <ChannelsPanel />
                 <ChatPanel />
             </div>

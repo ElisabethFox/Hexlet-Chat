@@ -5,11 +5,11 @@ import {channelsSelector, modalWindowSelector} from '../../../selectors/selector
 import Channel from "../channel/Channel";
 import { useDispatch } from "react-redux";
 import { setCurrentChannel } from "../../../slices/channelsSlice";
-import { openModalWindow } from "../../../slices/modalWindowSlice";
+import { openModalWindow, setCurrentModalType } from "../../../slices/modalWindowSlice";
 import { useTranslation } from "react-i18next";
 
 
-const ChannelsPanel = () => {
+const ChannelsPanel = ({onBtnClick}) => {
     const channels = useSelector(channelsSelector.selectAll);
     const dispatch = useDispatch();
     const { t } = useTranslation();
@@ -19,6 +19,7 @@ const ChannelsPanel = () => {
     };
 
     const hundleCreateNewChannel = () => {
+        dispatch(setCurrentModalType('add'));
         dispatch(openModalWindow());
     };
     

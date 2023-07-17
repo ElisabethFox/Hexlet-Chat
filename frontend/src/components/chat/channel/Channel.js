@@ -6,7 +6,7 @@ import "./style.css"
 import { openModalWindow } from "../../../slices/modalWindowSlice";
 import { useTranslation } from 'react-i18next';
 import { useState } from "react";
-import { setCurrentModalType } from "../../../slices/modalWindowSlice";
+import { setCurrentModalType, setRelevantChannel } from "../../../slices/modalWindowSlice";
 
 const Channel = ({ channel, onClick }) => {
     const currentChannel = useSelector(currentChannelSelector);
@@ -28,9 +28,9 @@ const Channel = ({ channel, onClick }) => {
     })
 
 
-    const hundleSetBtnActive = () => {
+    const hundleSetBtnActive = (id) => {
         setBtnActive(!isBtnActive);
-        
+        dispatch(setRelevantChannel(id))
     }
 
     const hundleRenameChannel = () => {
@@ -51,7 +51,7 @@ const Channel = ({ channel, onClick }) => {
                     {channel.name}
                 </button>
 
-                <button type="button" id="react-aria4736936024-3" aria-expanded="false" className={channelMenuBtnClasses} onClick={hundleSetBtnActive}>
+                <button type="button" id="react-aria4736936024-3" aria-expanded="false" className={channelMenuBtnClasses} onClick={() => hundleSetBtnActive(channel.id)}>
                     <span class="visually-hidden">{t('channel.controlChannel')}</span>
                 </button>
             

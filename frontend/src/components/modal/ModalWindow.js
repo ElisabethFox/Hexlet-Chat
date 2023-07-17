@@ -12,7 +12,7 @@ const ModalWindow = () => {
         )
     } else if (currentModalWindowType === 'remove') {
         return (
-        <RemoveChannelModalWindow />
+            <RemoveChannelModalWindow />
         )
     } else if (currentModalWindowType === 'rename') {
         return (

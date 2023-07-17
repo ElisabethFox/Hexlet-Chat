@@ -2,22 +2,25 @@ import { Modal } from "react-bootstrap";
 import ModalButtton from "../buttons/modal-button/ModalButtton";
 import { useChatApi } from "../../hooks/hooks";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModalWindow, openModalWindow } from "../../slices/modalWindowSlice";
+import { closeModalWindow, setCurrentModalType, setRelevantChannel } from "../../slices/modalWindowSlice";
 import { useTranslation } from "react-i18next";
 
 const RemoveChannelModalWindow = () => {
     const { removeSelectedChannel } = useChatApi();
     const dispatch = useDispatch();
     const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
+    const relevantChannelId = useSelector((state) => state.modalWindow.relevantChannel);
     const { t } = useTranslation();
 
-    const hundleRemoveChannel = (ChannelId) => {
-        removeSelectedChannel(ChannelId);
+    const hundleRemoveChannel = (id) => {
+        removeSelectedChannel(id);
         dispatch(closeModalWindow());
     };
 
     const hundleCloseModalWindow = () => {
         dispatch(closeModalWindow());
+        dispatch(setCurrentModalType(null));
+        dispatch(setRelevantChannel(null));
     };
 
     return (
@@ -31,7 +34,7 @@ const RemoveChannelModalWindow = () => {
         <p class="lead">{t('modal.sure')}</p>
         <div class="d-flex justify-content-end">
                 <ModalButtton title={t('modal.cancelBtn')} priority={false} onClick={hundleCloseModalWindow}/>
-                <ModalButtton title={t('modal.removeBtn')} priority={true} onClick={hundleRemoveChannel}/>
+                <ModalButtton title={t('modal.removeBtn')} priority={true} onClick={() => hundleRemoveChannel(relevantChannelId)}/>
         </div>        
         </div>
     </Modal>

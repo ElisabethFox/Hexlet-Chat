@@ -14,7 +14,13 @@ const channelSlice = createSlice({
         setCurrentChannel: (state, { payload }) => {
             state.currentChannelId = payload;
         },
-        removeChannel: channelsAdapter.removeOne,
+        removeChannel: (state, { payload }) => {
+            if (state.currentChannelId === payload) {
+                state.currentChannelId = defaultCurrentChannelId;
+            }
+
+            channelsAdapter.removeOne(state, payload)
+        },
         renameChannel: channelsAdapter.updateOne,
     },
     extraReducers: (builder) => {

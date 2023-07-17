@@ -4,28 +4,31 @@ import Form from "react-bootstrap/Form";
 import {useFormik} from "formik";
 import { useChatApi } from "../../hooks/hooks";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModalWindow } from "../../slices/modalWindowSlice";
 import { useTranslation } from "react-i18next";
+import { closeModalWindow, setCurrentModalType, setRelevantChannel } from "../../slices/modalWindowSlice";
+import { channelsSelector } from "../../selectors/selectors";
+import { log } from "async";
+
 
 const RenameChannelModalWindow = () => {
     const { renameChannel } = useChatApi();
     const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
+    const relevantChannelId = useSelector((state) => state.modalWindow.relevantChannel);
     const dispatch = useDispatch();
     const { t } = useTranslation();
 
     
     const hundleCloseModalWindow = () => {
         dispatch(closeModalWindow());
+        dispatch(setCurrentModalType(null));
+        dispatch(setRelevantChannel(null));
     };
 
     const formik = useFormik({
-        initialValues: { newName: "" },
+        initialValues: { name: "" },
         onSubmit: (values) => {
             try {
-                const channel = {
-                    ...values,
-                }
-                renameChannel(channel);
+                renameChannel({ id: relevantChannelId, name: values.name });
                 hundleCloseModalWindow();
             } catch {
                 console.log('error');

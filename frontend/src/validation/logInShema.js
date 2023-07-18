@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 const logInSchema = Yup.object().shape({
-    name: Yup
+    username: Yup
         .string()
         .trim()
         .required('Обязательное поле'),

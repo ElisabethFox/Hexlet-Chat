@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeModalWindow } from "../../slices/modalWindowSlice";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
+import channelNameShema from "../../validation/channelNameShema";
+import { useState } from "react";
 
 
 const AddChannelModalWindow = () => {
@@ -14,6 +16,7 @@ const AddChannelModalWindow = () => {
     const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
     const dispatch = useDispatch();
     const { t } = useTranslation();
+    const [isInvalid, setInvalid] = useState(false);
 
     
     const hundleCloseModalWindow = () => {
@@ -22,15 +25,20 @@ const AddChannelModalWindow = () => {
 
     const formik = useFormik({
         initialValues: { name: "" },
-        onSubmit: (values) => {
+        validationSchema: channelNameShema,
+        onSubmit: async (values) => {
             try {
+                setInvalid(false);
+
                 const channel = {
                     ...values,
                 }
-                addNewChannel(channel);
+
+                await addNewChannel(channel);
                 hundleCloseModalWindow();
                 toast.success(t('toast.channelCreation'));
             } catch {
+                setInvalid(true);
                 console.log('error');
                 toast.error(t('toast.networkError'));
             }
@@ -45,7 +53,7 @@ const AddChannelModalWindow = () => {
                 </div>
 
                 <div className="modal-body">
-                    <Form noValidate onSubmit={formik.handleSubmit} className="py-1 rounded-2">
+                    <Form onSubmit={formik.handleSubmit} className="py-1 rounded-2">
                         <div className="form-group">
                         <Form.Control
                         id="name"
@@ -55,8 +63,13 @@ const AddChannelModalWindow = () => {
                         placeholder={t('modal.channelNameInput')}
                         onChange={formik.handleChange}
                         value={formik.values.channelName}
+                        isInvalid={isInvalid}
                         />
                         </div>
+                        <Form.Control.Feedback type="invalid" className="invalid-tooltip invalid-feedback"
+                                           for="name" tooltip={isInvalid}>
+                        {t('login.loginError')}
+                        </Form.Control.Feedback>
                         <div class="d-flex justify-content-end">
                         <ModalButtton title={t('modal.cancelBtn')} priority={false} onClick={hundleCloseModalWindow}/>
                         <ModalButtton title={t('modal.sendBtn')} priority={true} onClick={formik.handleSubmit}/>

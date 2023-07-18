@@ -32,7 +32,7 @@ const ChannelsPanel = () => {
     <div className="col-4 col-md-2 border-end px-0 bg-light flex-column h-100 d-flex">
         <div className="d-flex mt-1 justify-content-between mb-2 ps-4 pe-2 p-4">
             <b className="channels-title">{t('channel.channels')}</b>
-            <button type="button" className="p-0 btn-link btn btn-group-vertical add-channel-button" data-toggle="modal" onClick={hundleCreateNewChannel}>
+            <button type="button" className="p-0 border-0 btn btn-group-vertical add-button" data-toggle="modal" onClick={hundleCreateNewChannel}>
                 <BiMessageSquareAdd className="add-icon"/>
                 <span className="visually-hidden">+</span>
             </button>

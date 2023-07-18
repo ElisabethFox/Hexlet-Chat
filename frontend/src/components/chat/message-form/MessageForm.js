@@ -34,19 +34,19 @@ const MessageForm = () => {
 
     return (
         <div className="mt-auto px-5 py-3">
-            <Form noValidate onSubmit={formik.handleSubmit} className="py-1 border rounded-2">
+            <Form noValidate onSubmit={formik.handleSubmit} className="py-1 rounded-2">
                 <div className="input-group has-validation">
                     <Form.Control
                         id="text"
                         name="text"
                         aria-label={t('message.newMessage')}
-                        className="border-0 p-1 ps-2 form-control"
+                        className="p-2 ps-2 form-control"
                         placeholder={t('message.messageInput')}
                         onChange={formik.handleChange}
                         value={formik.values.text}
                     />
-                <button type="button" className="p-0 btn btn-link btn-group-vertical add-message-button">
-                    <BiMessageSquareDetail className="add-message"/>
+                <button type="button" className="p-0 m-2 btn border-0 position-absolute end-0 me-2 add-button">
+                    <BiMessageSquareDetail className="add-icon"/>
                     <span className="visually-hidden">{t('message.sendMessage')}</span>
                 </button>
                 </div>

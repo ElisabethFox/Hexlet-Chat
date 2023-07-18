@@ -26,6 +26,7 @@ const SignupForm = () => {
                 await axios
                         .post('/api/v1/signup', { username, password } )
                         .then((response) => {
+                            console.log(response)
                             logIn(response.data)
                             navigate('/');
                         });
@@ -40,7 +41,7 @@ const SignupForm = () => {
         });
     
         return (
-                <Form onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
+                <Form validate onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
                     <Title title="Регистрация"/>
                     <div className="form-floating mb-3">
                         <Form.Control

@@ -6,8 +6,7 @@ import Login from '../pages/Login';
 import NotFound from '../pages/not-found/NotFound';
 import NavBar from "./navbar/NavBar";
 import Signup from '../pages/Signup';
-import ModalWindow from './modal/ModalWindow';
-import { ToastContainer, Slide } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const ChatPage = () => {

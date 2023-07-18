@@ -1,5 +1,5 @@
 import Form from 'react-bootstrap/Form';
-import React, {useContext, useState} from "react";
+import React, { useState } from "react";
 import logInSchema from "../../../validation/logInShema";
 import {useNavigate} from "react-router-dom";
 import {useFormik} from "formik";
@@ -14,28 +14,27 @@ import { toast } from "react-toastify";
 const LoginForm = () => {
     const { logIn } = useAuthorization();
     const navigate = useNavigate();
-    const [isInvalid, setInvalid] = useState(false);
+    const [isInvalidUserData, setInvalidUserData] = useState(false);
     const { t } = useTranslation();
 
     const formik = useFormik({
     initialValues: { username: "", password: "" },
     validationSchema: logInSchema,
     onSubmit: async (values) => {
-        const { name, password } = values;
         try {
-            setInvalid(false);
+            setInvalidUserData(false);
             await axios
-                .post('/api/v1/login', { username: name, password: password })
+                .post('/api/v1/login', values)
                 .then((response) => {
                     logIn(response.data);
                     navigate('/');
                 });
         } catch(error) {
-            if (error.response.status === 401) {
-                setInvalid(true);
-            }
-
-            toast.error(t('toast.networkError'));
+            if (error.isAxiosError && error.response.status === 401) {
+                setInvalidUserData(true);
+            } else {
+                toast.error(t('toast.networkError'));
+            };
         }
     },
     });
@@ -45,14 +44,14 @@ const LoginForm = () => {
                 <Title title="Войти"/>
                 <div className="form-floating mb-3">
                     <Form.Control
-                        id="name"
+                        id="username"
                         type="text"
-                        name="name"
+                        name="username"
                         className="form-control"
                         placeholder={t('login.userName')}
                         autoComplete="username"
                         onChange={formik.handleChange}
-                        isInvalid={isInvalid}
+                        isInvalid={isInvalidUserData}
                         required
                     />
                     <Form.Label htmlFor="name" className="form-label">
@@ -68,14 +67,14 @@ const LoginForm = () => {
                         placeholder={t('login.password')}
                         autoComplete="current-password"
                         onChange={formik.handleChange}
-                        isInvalid={isInvalid}
+                        isInvalid={isInvalidUserData}
                         required
                     />
                     <Form.Label htmlFor="password" className="form-label">
                         {t('login.password')}
                     </Form.Label>
                     <Form.Control.Feedback type="invalid" className="invalid-tooltip invalid-feedback"
-                                           tooltip={isInvalid}>
+                                           tooltip={isInvalidUserData}>
                         {t('login.loginError')}
                     </Form.Control.Feedback>
                 </div>

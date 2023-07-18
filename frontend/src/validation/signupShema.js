@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 const signupSchema = Yup.object().shape({
-    name: Yup
+    username: Yup
         .string()
         .trim()
         .min(3, 'мин 3 симв')

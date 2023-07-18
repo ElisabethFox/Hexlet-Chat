@@ -20,19 +20,19 @@ const SignupForm = () => {
         initialValues: { username: "", password: "", passwordConfirmation: "" },
         validationSchema: signupSchema,
         onSubmit: async (values) => {
+            const { username, password } = values 
             try {
-                const { username, password } = values;
                 setInvalidAuth(false);
                 await axios
-                        .post('/api/v1/signup', { username, password } )
+                        .post('/api/v1/signup', { username, password })
                         .then((response) => {
-                            console.log(response)
                             logIn(response.data)
                             navigate('/');
                         });
             } catch(error) {
-                if (error.response.status === 409) {
+                if (error.isAxiosError && error.response.status === 409) {
                     setInvalidAuth(true);
+                    return;
                 }
     
                 toast.error(t('toast.networkError'));
@@ -41,13 +41,13 @@ const SignupForm = () => {
         });
     
         return (
-                <Form validate onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
+                <Form onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
                     <Title title="Регистрация"/>
                     <div className="form-floating mb-3">
                         <Form.Control
-                            id="name"
+                            id="username"
                             type="text"
-                            name="name"
+                            name="username"
                             className="form-control"
                             placeholder="Ваш ник"
                             // value={formik.values.username}
@@ -60,7 +60,7 @@ const SignupForm = () => {
                             // isValid={formik.touched.name && !formik.errors.name && !isInvalidAuth}
                             required
                         />
-                        <Form.Label htmlFor="name" className="form-label">
+                        <Form.Label htmlFor="username" className="form-label">
                             Имя пользователя
                         </Form.Label>
                         <Form.Control.Feedback type="invalid" className="invalid-tooltip invalid-feedback"
@@ -75,7 +75,6 @@ const SignupForm = () => {
                             name="password"
                             className="form-control"
                             placeholder="Пароль"
-                            autoComplete="password"
                             onChange={formik.handleChange}
                             isInvalid={isInvalidAuth}
                             required
@@ -100,7 +99,7 @@ const SignupForm = () => {
                             isInvalid={isInvalidAuth}
                             required
                         />
-                        <Form.Label htmlFor="password" className="form-label">
+                        <Form.Label htmlFor="passwordConfirmation" className="form-label">
                             Подтвердите пароль
                         </Form.Label>
                         <Form.Control.Feedback type="invalid" className="invalid-tooltip invalid-feedback"

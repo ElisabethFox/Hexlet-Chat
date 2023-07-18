@@ -16,7 +16,7 @@ const AddChannelModalWindow = () => {
     const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
     const dispatch = useDispatch();
     const { t } = useTranslation();
-    const [isInvalid, setInvalid] = useState(false);
+    const [isInvalidChannelName, setInvalidChannelName] = useState(false);
 
     
     const hundleCloseModalWindow = () => {
@@ -28,17 +28,13 @@ const AddChannelModalWindow = () => {
         validationSchema: channelNameShema,
         onSubmit: async (values) => {
             try {
-                setInvalid(false);
-
-                const channel = {
-                    ...values,
-                }
-
-                await addNewChannel(channel);
+                setInvalidChannelName(false);
+                await addNewChannel(values);
                 hundleCloseModalWindow();
                 toast.success(t('toast.channelCreation'));
-            } catch {
-                setInvalid(true);
+            } catch(error) {
+                console.log(error)
+                setInvalidChannelName(true);
                 console.log('error');
                 toast.error(t('toast.networkError'));
             }
@@ -57,19 +53,23 @@ const AddChannelModalWindow = () => {
                         <div className="form-group">
                         <Form.Control
                         id="name"
+                        type="text"
                         name="name"
                         aria-label={t('modal.newChannelName')}
                         className="p-1 ps-2 form-control"
                         placeholder={t('modal.channelNameInput')}
                         onChange={formik.handleChange}
-                        value={formik.values.channelName}
-                        isInvalid={isInvalid}
+                        isInvalid={isInvalidChannelName}
                         />
-                        </div>
+                        <Form.Label htmlFor="name" className="form-label visually-hidden">
+                        {t('login.password')}
+                        </Form.Label>
                         <Form.Control.Feedback type="invalid" className="invalid-tooltip invalid-feedback"
-                                           for="name" tooltip={isInvalid}>
+                                        tooltip={isInvalidChannelName}>
                         {t('login.loginError')}
                         </Form.Control.Feedback>
+                        </div>
+
                         <div class="d-flex justify-content-end">
                         <ModalButtton title={t('modal.cancelBtn')} priority={false} onClick={hundleCloseModalWindow}/>
                         <ModalButtton title={t('modal.sendBtn')} priority={true} onClick={formik.handleSubmit}/>

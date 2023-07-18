@@ -54,7 +54,7 @@ const LoginForm = () => {
                         isInvalid={isInvalidUserData}
                         required
                     />
-                    <Form.Label htmlFor="name" className="form-label">
+                    <Form.Label htmlFor="username" className="form-label">
                         {t('login.userName')}
                     </Form.Label>
                 </div>

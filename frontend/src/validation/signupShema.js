@@ -16,7 +16,7 @@ const signupSchema = Yup.object().shape({
         // .typeError('Это обязательное поле'),
     passwordConfirmation: Yup
         .string()
-        // .oneOf([Yup.ref('password')], 'Пароли не совпадают')
+        .oneOf([Yup.ref('password')], 'Пароли не совпадают')
         // .typeError('Это обязательное поле'),
 });
 

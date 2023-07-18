@@ -20,12 +20,14 @@ const SignupForm = () => {
         initialValues: { username: "", password: "", passwordConfirmation: "" },
         validationSchema: signupSchema,
         onSubmit: async (values) => {
-            const { username, password } = values 
+            console.log(values)
+            const { username, password } = values; 
             try {
                 setInvalidAuth(false);
                 await axios
                         .post('/api/v1/signup', { username, password })
                         .then((response) => {
+                            console.log(response)
                             logIn(response.data)
                             navigate('/');
                         });
@@ -51,13 +53,12 @@ const SignupForm = () => {
                             className="form-control"
                             placeholder="Ваш ник"
                             // value={formik.values.username}
-                            onChange={formik.handleChange}
-                            // onChange={(e) => {
-                            //     setInvalidAuth(false);
-                            //     formik.handleChange(e)
-                            // }}
-                            isInvalid={isInvalidAuth}
-                            // isValid={formik.touched.name && !formik.errors.name && !isInvalidAuth}
+                            // onChange={formik.handleChange}
+                            onChange={(e) => {
+                                setInvalidAuth(false);
+                                formik.handleChange(e)
+                            }}
+                            isInvalid={isInvalidAuth || (formik.touched.username && formik.errors.username)}
                             required
                         />
                         <Form.Label htmlFor="username" className="form-label">
@@ -65,7 +66,7 @@ const SignupForm = () => {
                         </Form.Label>
                         <Form.Control.Feedback type="invalid" className="invalid-tooltip invalid-feedback"
                                                tooltip={isInvalidAuth}>
-                            Неверные имя пользователя или пароль
+                            От 3 до 20 символов
                         </Form.Control.Feedback>
                     </div>
                     <div className="form-floating mb-3">
@@ -76,7 +77,7 @@ const SignupForm = () => {
                             className="form-control"
                             placeholder="Пароль"
                             onChange={formik.handleChange}
-                            isInvalid={isInvalidAuth}
+                            isInvalid={isInvalidAuth || (formik.touched.password && formik.errors.password)}
                             required
                         />
                         <Form.Label htmlFor="password" className="form-label">
@@ -84,7 +85,7 @@ const SignupForm = () => {
                         </Form.Label>
                         <Form.Control.Feedback type="invalid" className="invalid-tooltip invalid-feedback"
                                                tooltip={isInvalidAuth}>
-                            От 3 до 20 символов
+                            Не менее 6 символов
                         </Form.Control.Feedback>
                     </div>
                     <div className="form-floating mb-4">
@@ -96,7 +97,7 @@ const SignupForm = () => {
                             placeholder="Не менее 6 символов"
                             autoComplete="passwordConfirmation"
                             onChange={formik.handleChange}
-                            isInvalid={isInvalidAuth}
+                            isInvalid={isInvalidAuth || (formik.touched.passwordConfirmation && formik.errors.passwordConfirmation)}
                             required
                         />
                         <Form.Label htmlFor="passwordConfirmation" className="form-label">
@@ -104,7 +105,7 @@ const SignupForm = () => {
                         </Form.Label>
                         <Form.Control.Feedback type="invalid" className="invalid-tooltip invalid-feedback"
                                                tooltip={isInvalidAuth}>
-                            Пароли должны сов
+                            Пароли должны совпадать
                         </Form.Control.Feedback>
                     </div>
                     <LoginButton title="Зарегистрироваться" />

@@ -7,9 +7,10 @@ import { useDispatch } from "react-redux";
 import { setCurrentChannel } from "../../../slices/channelsSlice";
 import { openModalWindow, setCurrentModalType } from "../../../slices/modalWindowSlice";
 import { useTranslation } from "react-i18next";
+import { toast } from 'react-toastify';
 
 
-const ChannelsPanel = ({}) => {
+const ChannelsPanel = () => {
     const channels = useSelector(channelsSelector.selectAll);
     const dispatch = useDispatch();
     const { t } = useTranslation();
@@ -19,8 +20,12 @@ const ChannelsPanel = ({}) => {
     };
 
     const hundleCreateNewChannel = () => {
-        dispatch(setCurrentModalType('add'));
-        dispatch(openModalWindow());
+        try {
+            dispatch(setCurrentModalType('add'));
+            dispatch(openModalWindow());
+        } catch {
+            console.log('error')
+        }
     };
     
     return (

@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { closeModalWindow, setCurrentModalType, setRelevantChannel } from "../../slices/modalWindowSlice";
 import { channelsSelector } from "../../selectors/selectors";
-import { log } from "async";
+import { toast } from "react-toastify";
+
 
 
 const RenameChannelModalWindow = () => {
@@ -30,8 +31,10 @@ const RenameChannelModalWindow = () => {
             try {
                 renameChannel({ id: relevantChannelId, name: values.name });
                 hundleCloseModalWindow();
+                toast.success(t('toast.channelRenaming'));
             } catch {
                 console.log('error');
+                toast.error(t('toast.networkError'));
             }
         },
     });

@@ -25,10 +25,6 @@ const ru = {
         channel: {
             channels: 'Каналы',
             sending: 'Отправить',
-            networkError: 'Ошибка соединения',
-            channelCreation: 'Канал создан',
-            channelRenaming: 'Канал переименован',
-            channelRemoval: 'Канал удалён',
             removeChannel: 'Удалить',
             renameChannel: 'Переименовать',
             controlChannel: 'Управление каналом',
@@ -49,6 +45,12 @@ const ru = {
             sure: 'Уверены?',
             removeBtn: 'Удалить',
             renameChannel: 'Переименовать канал',
+        },
+        toast: {
+            channelCreation: 'Канал создан',
+            channelRenaming: 'Канал переименован',
+            channelRemoval: 'Канал удалён',
+            networkError: 'Ошибка соединения',
         },
     },
 };

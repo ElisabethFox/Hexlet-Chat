@@ -9,11 +9,12 @@ import LoginButton from '../../buttons/login-button/LoginButton'
 import './style.css';
 import { useAuthorization } from '../../../hooks/hooks';
 import { useTranslation } from 'react-i18next';
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
     const { logIn } = useAuthorization();
     const navigate = useNavigate();
-    const [isInvalid, setValid] = useState(false);
+    const [isInvalid, setInvalid] = useState(false);
     const { t } = useTranslation();
 
     const formik = useFormik({
@@ -22,15 +23,19 @@ const LoginForm = () => {
     onSubmit: async (values) => {
         const { name, password } = values;
         try {
-            setValid(false);
+            setInvalid(false);
             await axios
                 .post('/api/v1/login', { username: name, password: password })
                 .then((response) => {
                     logIn(response.data);
                     navigate('/');
                 });
-        } catch {
-            setValid(true);
+        } catch(error) {
+            if (error.response.status === 401) {
+                setInvalid(true);
+            }
+
+            toast.error(t('toast.networkError'));
         }
     },
     });

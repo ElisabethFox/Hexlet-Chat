@@ -6,6 +6,7 @@ import { useChatApi } from "../../hooks/hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModalWindow } from "../../slices/modalWindowSlice";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 
 const AddChannelModalWindow = () => {
@@ -28,8 +29,10 @@ const AddChannelModalWindow = () => {
                 }
                 addNewChannel(channel);
                 hundleCloseModalWindow();
+                toast.success(t('toast.channelCreation'));
             } catch {
                 console.log('error');
+                toast.error(t('toast.networkError'));
             }
         },
     });

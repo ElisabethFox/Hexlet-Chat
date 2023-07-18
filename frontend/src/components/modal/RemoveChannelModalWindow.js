@@ -4,6 +4,7 @@ import { useChatApi } from "../../hooks/hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModalWindow, setCurrentModalType, setRelevantChannel } from "../../slices/modalWindowSlice";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 const RemoveChannelModalWindow = () => {
     const { removeSelectedChannel } = useChatApi();
@@ -13,8 +14,13 @@ const RemoveChannelModalWindow = () => {
     const { t } = useTranslation();
 
     const hundleRemoveChannel = (id) => {
-        removeSelectedChannel(id);
-        dispatch(closeModalWindow());
+        try {
+            removeSelectedChannel(id);
+            dispatch(closeModalWindow());
+            toast.success(t('toast.channelRemoval'));
+        } catch {
+            toast.error(t('toast.networkError'));
+        }
     };
 
     const hundleCloseModalWindow = () => {

@@ -7,11 +7,14 @@ import axios from "axios";
 import Title from "../../title/Title";
 import LoginButton from '../../buttons/login-button/LoginButton';
 import { useAuthorization } from '../../../hooks/hooks';
+import { useTranslation } from 'react-i18next';
+import { toast } from "react-toastify";
 
 const SignupForm = () => {
         const navigate = useNavigate();
         const { logIn } = useAuthorization();
         const [isInvalidAuth, setInvalidAuth] = useState(false);
+        const { t } = useTranslation();
     
         const formik = useFormik({
         initialValues: { username: "", password: "", passwordConfirmation: "" },
@@ -26,9 +29,12 @@ const SignupForm = () => {
                             logIn(response.data)
                             navigate('/');
                         });
-            } catch {
-                console.log('error')
-                setInvalidAuth(true);
+            } catch(error) {
+                if (error.response.status === 409) {
+                    setInvalidAuth(true);
+                }
+    
+                toast.error(t('toast.networkError'));
             }
         },
         });

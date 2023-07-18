@@ -16,13 +16,12 @@ const MessageForm = () => {
 
     const formik = useFormik({
         initialValues: { text: "", username: getUserName() },
-        onSubmit: (values,  { resetForm }) => {
-            const cleanedText = leoProfanity.clean(values.text);
+        onSubmit: ({ text, username },  { resetForm }) => {
             try {
                 const message = {
-                    username: values.username,
-                    text: cleanedText,
-                    сhannelId: currentChannel.id ?? null,
+                    username,
+                    text: leoProfanity.clean(text),
+                    сhannelId: currentChannel.id,
                 }
                 addNewMessage(message);
                 resetForm();

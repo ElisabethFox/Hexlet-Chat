@@ -59,14 +59,13 @@ const AddChannelModalWindow = () => {
                         className="p-1 ps-2 form-control"
                         placeholder={t('modal.channelNameInput')}
                         onChange={formik.handleChange}
-                        isInvalid={isInvalidChannelName}
+                        isInvalid={(formik.errors.name && formik.touched.name) || isInvalidChannelName}
                         />
                         <Form.Label htmlFor="name" className="form-label visually-hidden">
                         {t('login.password')}
                         </Form.Label>
-                        <Form.Control.Feedback type="invalid" className="invalid-tooltip invalid-feedback"
-                                        tooltip={isInvalidChannelName}>
-                        {t('login.loginError')}
+                        <Form.Control.Feedback type="invalid" className="invalid-feedback">
+                        От 3 до 20 символов
                         </Form.Control.Feedback>
                         </div>
 

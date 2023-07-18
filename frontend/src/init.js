@@ -8,6 +8,7 @@ import React from "react";
 import ChatContextProvider from "./context/ChatContext";
 import UserDataContextProvider from "./context/UserDataContext";
 import io from 'socket.io-client';
+import LeoProfanity from 'leo-profanity';
 
 const defaultLanguage = 'ru';
 
@@ -25,7 +26,10 @@ const init = async () => {
               },
         });
 
-    const socket = io('/', { autoConnect: false })
+    const socket = io('/', { autoConnect: false });
+
+    const profanityFilter = LeoProfanity;
+    profanityFilter.add(profanityFilter.getDictionary(defaultLanguage));
 
     return (
                 <Provider store={store}>

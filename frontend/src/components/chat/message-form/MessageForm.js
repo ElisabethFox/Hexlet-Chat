@@ -6,6 +6,7 @@ import { useAuthorization, useChatApi } from "../../../hooks/hooks";
 import { useSelector } from "react-redux";
 import {currentChannelSelector} from "../../../selectors/selectors"
 import { useTranslation } from "react-i18next";
+import leoProfanity from 'leo-profanity';
 
 const MessageForm = () => {
     const { addNewMessage } = useChatApi();
@@ -16,9 +17,11 @@ const MessageForm = () => {
     const formik = useFormik({
         initialValues: { text: "", username: getUserName() },
         onSubmit: (values,  { resetForm }) => {
+            const cleanedText = leoProfanity.clean(values.text);
             try {
                 const message = {
-                    ...values,
+                    username: values.username,
+                    text: cleanedText,
                     сhannelId: currentChannel.id ?? null,
                 }
                 addNewMessage(message);

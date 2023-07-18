@@ -12,23 +12,22 @@ const SignupForm = () => {
         const navigate = useNavigate();
         const { logIn } = useAuthorization();
         const [isInvalidAuth, setInvalidAuth] = useState(false);
-        console.log(isInvalidAuth)
     
         const formik = useFormik({
-        initialValues: { name: "", password: "", passwordConfirmation: "" },
+        initialValues: { username: "", password: "", passwordConfirmation: "" },
         validationSchema: signupSchema,
         onSubmit: async (values) => {
-            const { name, password } = values;
             try {
+                const { username, password } = values;
                 setInvalidAuth(false);
                 await axios
-                        .post('/api/v1/signup', { username: name, password: password })
+                        .post('/api/v1/signup', { username, password } )
                         .then((response) => {
                             logIn(response.data)
                             navigate('/');
                         });
-            } catch(e) {
-                console.log(e)
+            } catch {
+                console.log('error')
                 setInvalidAuth(true);
             }
         },
@@ -44,14 +43,14 @@ const SignupForm = () => {
                             name="name"
                             className="form-control"
                             placeholder="Ваш ник"
-                            autoComplete="username"
+                            // value={formik.values.username}
                             onChange={formik.handleChange}
                             // onChange={(e) => {
                             //     setInvalidAuth(false);
                             //     formik.handleChange(e)
                             // }}
                             isInvalid={isInvalidAuth}
-                            isValid={!isInvalidAuth}
+                            // isValid={formik.touched.name && !formik.errors.name && !isInvalidAuth}
                             required
                         />
                         <Form.Label htmlFor="name" className="form-label">

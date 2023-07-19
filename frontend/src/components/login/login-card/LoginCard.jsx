@@ -1,10 +1,8 @@
+import { useTranslation } from "react-i18next";
 import LoginForm from "../login-form/LoginForm";
-
-import './style.css';
-
-import loginImg from '../../../img/login.png';
 import LoginFooter from "../login-card-footer/LoginFooter";
-import { useTranslation } from 'react-i18next';
+
+import loginImg from "../../../img/login.png";
 
 const LoginCard = () => {
     const { t } = useTranslation();
@@ -21,7 +19,7 @@ const LoginCard = () => {
                 <LoginFooter />
             </div>
         </div>
-    )
+    );
 };
 
 export default LoginCard;

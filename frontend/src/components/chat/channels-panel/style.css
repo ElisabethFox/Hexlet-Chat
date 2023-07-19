@@ -8,6 +8,6 @@
     color: var(--lilac-dark);
   }
   
-  .add-icon:hover {
+.add-icon:hover {
     color: var(--lilac-middle);
-  }
+}

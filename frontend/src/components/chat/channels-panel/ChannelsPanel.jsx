@@ -7,6 +7,7 @@ import { setCurrentChannel } from "../../../slices/channelsSlice";
 import { openModalWindow, setCurrentModalType } from "../../../slices/modalWindowSlice";
 
 import { BiMessageSquareAdd } from "react-icons/bi";
+import "./style.css"
 
 const ChannelsPanel = () => {
     const { t } = useTranslation();

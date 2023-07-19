@@ -1,0 +1,13 @@
+.add-icon {
+    padding: 0;
+    margin: 0;
+  
+    width: 20px;
+    height: 20px;
+  
+    color: var(--lilac-dark);
+  }
+  
+  .add-icon:hover {
+    color: var(--lilac-middle);
+  }

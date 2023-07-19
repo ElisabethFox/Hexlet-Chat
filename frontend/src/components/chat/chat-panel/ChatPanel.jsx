@@ -1,9 +1,8 @@
-import MessageForm from "../message-form/MessageForm";
-import './style.css'
-import MessageBox from "../messages-box/MessageBox";
-import { useSelector } from "react-redux";
-import {currentChannelSelector} from "../../../selectors/selectors";
 import { useTranslation } from "react-i18next";
+import MessageForm from "../message-form/MessageForm";
+import MessageBox from "../messages-box/MessageBox";
+
+import "./style.css";
 
 const ChatPanel = () => {
     const { t } = useTranslation();
@@ -21,7 +20,7 @@ const ChatPanel = () => {
                 <MessageForm />
             </div>
         </div>
-    )
+    );
 };
 
 export default ChatPanel;

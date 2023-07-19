@@ -1,22 +1,23 @@
 import Form from "react-bootstrap/Form";
-import { BiMessageSquareDetail } from "react-icons/bi";
-import './style.css'
-import {useFormik} from "formik";
-import { useAuthorization, useChatApi } from "../../../hooks/hooks";
+import { useFormik } from "formik";
 import { useSelector } from "react-redux";
-import {currentChannelSelector} from "../../../selectors/selectors"
 import { useTranslation } from "react-i18next";
-import leoProfanity from 'leo-profanity';
+import { useAuthorization, useChatApi } from "../../../hooks/hooks";
+import { currentChannelSelector } from "../../../selectors/selectors";
+
+import leoProfanity from "leo-profanity";
+import { BiMessageSquareDetail } from "react-icons/bi";
 
 const MessageForm = () => {
+    const { t } = useTranslation(); 
+
     const { addNewMessage } = useChatApi();
     const { getUserName } = useAuthorization();
     const currentChannel = useSelector(currentChannelSelector);
-    const { t } = useTranslation(); 
 
     const formik = useFormik({
         initialValues: { text: "", username: getUserName() },
-        onSubmit: ({ text, username },  { resetForm }) => {
+        onSubmit: ({ text, username }, { resetForm }) => {
             try {
                 const message = {
                     username,
@@ -51,7 +52,7 @@ const MessageForm = () => {
                 </div>
             </Form>
         </div>
-    )
+    );
 };
 
 export default MessageForm;

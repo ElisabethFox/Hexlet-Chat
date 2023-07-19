@@ -6,10 +6,7 @@ import { useChatApi } from "../../hooks/hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { closeModalWindow, setCurrentModalType, setRelevantChannel } from "../../slices/modalWindowSlice";
-import { channelsSelector } from "../../selectors/selectors";
 import { toast } from "react-toastify";
-
-
 
 const RenameChannelModalWindow = () => {
     const { renameChannel } = useChatApi();
@@ -27,13 +24,12 @@ const RenameChannelModalWindow = () => {
 
     const formik = useFormik({
         initialValues: { name: "" },
-        onSubmit: (values) => {
+        onSubmit: async (values) => {
             try {
-                renameChannel({ id: relevantChannelId, name: values.name });
+                await renameChannel(relevantChannelId, values.name);
                 hundleCloseModalWindow();
                 toast.success(t('toast.channelRenaming'));
             } catch {
-                console.log('error');
                 toast.error(t('toast.networkError'));
             }
         },

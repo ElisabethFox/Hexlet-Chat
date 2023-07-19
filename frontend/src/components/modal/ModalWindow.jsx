@@ -7,17 +7,15 @@ const ModalWindow = () => {
     const currentModalWindowType = useSelector((state) => state.modalWindow.type);
 
     if (currentModalWindowType === 'add') {
-        return (
-            <AddChannelModalWindow />
-        )
-    } else if (currentModalWindowType === 'remove') {
-        return (
-            <RemoveChannelModalWindow />
-        )
-    } else if (currentModalWindowType === 'rename') {
-        return (
-            <RenameChannelModalWindow />
-        )
+        return <AddChannelModalWindow />;
+    }
+    
+    if (currentModalWindowType === 'remove') {
+        return <RemoveChannelModalWindow />;
+    } 
+    
+    if (currentModalWindowType === 'rename') {
+        return <RenameChannelModalWindow />;
     }
 };
  

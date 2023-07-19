@@ -1,5 +1,6 @@
-import signupImg from '../../../img/registration.png'
-import SignupForm from '../signup-form/SignupForm';
+import SignupForm from "./SignupForm";
+
+import signupImg from "../../img/registration.png";
 
 const SignupCard = () => {
     return (
@@ -10,6 +11,6 @@ const SignupCard = () => {
             </div>
         </div>
     );
-}
+};
  
 export default SignupCard;

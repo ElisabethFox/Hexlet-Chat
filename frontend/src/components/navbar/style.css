@@ -12,3 +12,17 @@
     width: 1320px;
     height: 40px;
 }
+
+.navbar-brand {
+    color: var(--lilac-dark);
+    font-weight: bold;
+}
+
+.navbar-brand:visited {
+    color: var(--lilac-dark);
+}
+
+.navbar-brand:hover {
+    color: var(--lilac-middle);
+}
+

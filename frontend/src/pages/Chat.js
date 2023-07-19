@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useChatApi } from "../hooks/hooks";
 import fetchInitialData from "../context/InitialDataThunk";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import ChannelsPanel from "../components/chat/channels-panel/ChannelsPanel";
 import ChatPanel from "../components/chat/chat-panel/ChatPanel";
 import ModalWindow from "../components/modal/ModalWindow";

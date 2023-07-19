@@ -1,4 +1,4 @@
-export default {
+const en = {
     translation: {
         logIn: {
             logInTittle: 'Войти',
@@ -27,4 +27,6 @@ export default {
         },
     },
 };
+
+export default en;
 

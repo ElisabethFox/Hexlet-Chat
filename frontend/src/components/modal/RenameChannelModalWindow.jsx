@@ -5,39 +5,35 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useChatApi } from "../../hooks/hooks";
-import { closeModalWindow } from "../../slices/modalWindowSlice";
-import { channelsNamesSelector } from "../../selectors/selectors";
+import { closeModalWindow,setCurrentModalType, setRelevantChannel } from "../../slices/modalWindowSlice";
 import ModalButtton from "../buttons/ModalButtton";
 
 import { toast } from "react-toastify";
 import channelNameShema from "../../validation/channelNameShema";
 
-
-const AddChannelModalWindow = () => {
+const RenameChannelModalWindow = () => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const channelsNames = useSelector(channelsNamesSelector);
-    const { addNewChannel } = useChatApi();
-    
+    const { renameChannel } = useChatApi();
+
     const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
-  
-    const [isInvalidChannelName, setInvalidChannelName] = useState(false);
+    const relevantChannelId = useSelector((state) => state.modalWindow.relevantChannel);
 
     const handleCloseModalWindow = () => {
         dispatch(closeModalWindow());
+        dispatch(setCurrentModalType(null));
+        dispatch(setRelevantChannel(null));
     };
 
     const formik = useFormik({
         initialValues: { name: "" },
-        validationSchema: channelNameShema(channelsNames),
+        validationSchema: channelNameShema,
         onSubmit: async (values) => {
             try {
-                setInvalidChannelName(false);
-                await addNewChannel(values);
+                await renameChannel(relevantChannelId, values.name);
                 handleCloseModalWindow();
-                toast.success(t('toast.channelCreation'));
-            } catch(error) {
-                setInvalidChannelName(true);
+                toast.success(t('toast.channelRenaming'));
+            } catch {
                 toast.error(t('toast.networkError'));
             }
         },
@@ -46,31 +42,23 @@ const AddChannelModalWindow = () => {
     return (
         <Modal show={isModalWindowOpen} >
             <div className="modal-header">
-                <div className="modal-title h4">{t('modal.createChannel')}</div>
+                <div className="modal-title h4">{t('modal.renameChannel')}</div>
                 <button type="button" className="btn-close" aria-label="Close" onClick={handleCloseModalWindow}></button>
             </div>
 
             <div className="modal-body">
-                <Form onSubmit={formik.handleSubmit} className="py-1 rounded-2">
+                <Form noValidate onSubmit={formik.handleSubmit} className="py-1 rounded-2">
                     <div className="form-group">
                     <Form.Control
-                        id="name"
-                        type="text"
-                        name="name"
-                        aria-label={t('modal.newChannelName')}
-                        className="p-1 ps-2 form-control"
-                        placeholder={t('modal.channelNameInput')}
-                        onChange={formik.handleChange}
-                        isInvalid={(formik.errors.name && formik.touched.name) || isInvalidChannelName}
+                    id="name"
+                    name="name"
+                    aria-label={t('modal.newChannelName')}
+                    className="p-1 ps-2 form-control"
+                    placeholder={t('modal.channelNameInput')}
+                    onChange={formik.handleChange}
+                    value={formik.values.channelName}
                     />
-                    <Form.Label htmlFor="name" className="form-label visually-hidden">
-                        Канал
-                    </Form.Label>
-                    <Form.Control.Feedback type="invalid" className="invalid-feedback">
-                        От 3 до 20 символов
-                    </Form.Control.Feedback>
                     </div>
-
                     <div class="d-flex justify-content-end">
                     <ModalButtton title={t('modal.cancelBtn')} priority={false} onClick={handleCloseModalWindow}/>
                     <ModalButtton title={t('modal.sendBtn')} priority={true} onClick={formik.handleSubmit}/>
@@ -81,4 +69,4 @@ const AddChannelModalWindow = () => {
     );
 };
  
-export default AddChannelModalWindow;
+export default RenameChannelModalWindow;

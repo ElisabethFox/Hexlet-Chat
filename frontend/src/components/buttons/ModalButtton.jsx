@@ -1,8 +1,10 @@
-import './style.css'
-import cn from 'classnames';
+import cn from "classnames";
+
+import "./style.css";
+
 
 const ModalButtton = ({ title, priority, onClick } ) => {
-    const ModalButttonClasses = cn("btn btn-outline-light modal-button", {
+    const ModalButttonClasses = cn("w-40 modal-button", {
         'high': priority,
     })
 

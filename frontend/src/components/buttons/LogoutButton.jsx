@@ -1,6 +1,7 @@
-import { useAuthorization } from '../../../hooks/hooks';
-import './style.css'
 import { useNavigate } from "react-router-dom";
+import { useAuthorization } from "../../hooks/hooks";
+
+import "./style.css";
 
 const LogoutButton = ({ title }) => {
     const { logOut } = useAuthorization();
@@ -14,8 +15,8 @@ const LogoutButton = ({ title }) => {
     if (localStorage.getItem('user') !== null) {
     return (
         <button type="button" className="logout-button" onClick={handleLogout}>{title}</button>
-    ) } else {
-        return null;
-    }
+    )};
+
+    return null;
 };
 export default LogoutButton;

@@ -1,0 +1,60 @@
+.login-button {
+    padding: 5px 0;
+
+    color: var(--grey-dark);
+    background-color: var(--lilac-light);
+    border: 1px solid var(--lilac-dark);
+    border-radius: 5px;
+}
+
+.login-button:hover {
+    color: var(--white-grey-light);
+    background-color: var(--lilac-middle);
+}
+
+.login-button:active {
+    color: var(--white-grey-light);
+    background-color: var(--lilac-dark);
+
+    position: relative;
+    top: 2px;
+}
+
+.logout-button {
+    padding: 5px 10px;
+
+    color: var(--white-grey-light);
+    background-color: var(--lilac-dark);
+    border: 1px solid var(--lilac-middle);
+    border-radius: 5px;
+}
+
+.logout-button:active {
+    position: relative;
+    top: 2px;
+}
+
+.modal-button {
+    padding: 5px 8px;
+    margin: 15px 5px 0;
+    background-color: var(--lilac-light);
+    color: var( --grey-middle);
+    border: none;
+    border-radius: 5px;
+}
+
+.high {
+    background-color: var(--lilac-middle);
+    box-sizing: content-box;
+    border: solid 0.8px var(--lilac-dark);
+}
+
+.modal-button:hover {
+    color: var(--white-grey-light);
+    background-color: var(--lilac-dark);
+};
+
+.modal-button:active {
+    background-color: var(--lilac-dark);
+    color: var(--white);
+}

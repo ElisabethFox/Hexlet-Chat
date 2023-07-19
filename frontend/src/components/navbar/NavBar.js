@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom";
 import './style.css';
-import LogoutButton from "../buttons/logout-button/LogoutButton";
+import LogoutButton from "../buttons/LogoutButton";
 import { useTranslation } from "react-i18next";
 
 const NavBar = () => {

@@ -13,9 +13,10 @@ const LogoutButton = ({ title }) => {
     }
 
     if (localStorage.getItem('user') !== null) {
-    return (
-        <button type="button" className="logout-button" onClick={handleLogout}>{title}</button>
-    )};
+        return (
+            <button type="button" className="logout-button" onClick={handleLogout}>{title}</button>
+        )
+    };
 
     return null;
 };

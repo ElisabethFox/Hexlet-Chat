@@ -1,5 +1,5 @@
 import { Modal } from "react-bootstrap";
-import ModalButtton from "../buttons/modal-button/ModalButtton";
+import ModalButtton from "../buttons/ModalButtton";
 import { useChatApi } from "../../hooks/hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModalWindow, setCurrentModalType, setRelevantChannel } from "../../slices/modalWindowSlice";

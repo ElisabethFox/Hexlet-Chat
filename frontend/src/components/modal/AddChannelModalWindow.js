@@ -1,5 +1,5 @@
 import { Modal } from "react-bootstrap";
-import ModalButtton from "../buttons/modal-button/ModalButtton";
+import ModalButtton from "../buttons/ModalButtton";
 import Form from "react-bootstrap/Form";
 import {useFormik} from "formik";
 import { useChatApi } from "../../hooks/hooks";

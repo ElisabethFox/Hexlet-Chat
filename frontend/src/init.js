@@ -9,6 +9,7 @@ import ChatContextProvider from "./context/ChatContext";
 import UserDataContextProvider from "./context/UserDataContext";
 import io from 'socket.io-client';
 import LeoProfanity from 'leo-profanity';
+import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
 
 const defaultLanguage = 'ru';
 
@@ -31,15 +32,28 @@ const init = async () => {
     const profanityFilter = LeoProfanity;
     profanityFilter.add(profanityFilter.getDictionary(defaultLanguage));
 
+    const rollbarConfig = {
+        accessToken: process.env.REACT_APP_ROLLBAR_TOKEN,
+        payload: {
+          environment: 'production',
+        },
+        captureUncaught: true,
+        captureUnhandledRejections: true,
+    };
+
     return (
                 <Provider store={store}>
+                    <RollbarProvider config={rollbarConfig}>
+                    <ErrorBoundary>
                         <UserDataContextProvider>
                             <ChatContextProvider socket={socket}>
                             <I18nextProvider i18n={i18n}>
-                                <App />
+                            <App />
                             </I18nextProvider>
                             </ChatContextProvider>
                         </UserDataContextProvider>
+                    </ErrorBoundary>   
+                    </RollbarProvider> 
                 </Provider>
     );
 };

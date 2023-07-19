@@ -1,14 +1,13 @@
-import {useSelector} from "react-redux";
-import { BiMessageSquareAdd } from "react-icons/bi";
-import './style.css'
-import {channelsSelector, modalWindowSelector} from '../../../selectors/selectors'
-import Channel from "../channel/Channel";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
+import Channel from "../channel/Channel";
+import { channelsSelector } from "../../../selectors/selectors";
 import { setCurrentChannel } from "../../../slices/channelsSlice";
 import { openModalWindow, setCurrentModalType } from "../../../slices/modalWindowSlice";
-import { useTranslation } from "react-i18next";
-import { toast } from 'react-toastify';
 
+import { BiMessageSquareAdd } from "react-icons/bi";
+import "./style.css";
 
 const ChannelsPanel = () => {
     const channels = useSelector(channelsSelector.selectAll);

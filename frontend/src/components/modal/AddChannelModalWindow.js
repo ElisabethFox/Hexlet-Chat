@@ -9,11 +9,13 @@ import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import channelNameShema from "../../validation/channelNameShema";
 import { useState } from "react";
+import { channelsNamesSelector } from "../../selectors/selectors";
 
 
 const AddChannelModalWindow = () => {
     const { addNewChannel } = useChatApi();
     const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
+    const channelsNames = useSelector(channelsNamesSelector)
     const dispatch = useDispatch();
     const { t } = useTranslation();
     const [isInvalidChannelName, setInvalidChannelName] = useState(false);
@@ -25,7 +27,7 @@ const AddChannelModalWindow = () => {
 
     const formik = useFormik({
         initialValues: { name: "" },
-        validationSchema: channelNameShema,
+        validationSchema: channelNameShema(channelsNames),
         onSubmit: async (values) => {
             try {
                 setInvalidChannelName(false);

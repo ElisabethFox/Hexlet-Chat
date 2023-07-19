@@ -7,7 +7,7 @@ const ModalButtton = ({ title, priority, onClick } ) => {
     })
 
     return (
-        <button type="button" className={ModalButttonClasses} onClick={onClick}>{title}</button>
+        <button type={priority ? 'submit' : 'button'} className={ModalButttonClasses} onClick={onClick}>{title}</button>
     );
 }
  

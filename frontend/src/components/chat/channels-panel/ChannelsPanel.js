@@ -38,7 +38,7 @@ const ChannelsPanel = () => {
             </button>
         </div>
         <ul id="channels-box" className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
-            {channels.map((channel) => <Channel channel={channel} onClick={() => hundleSetCurrentChannel(channel.id)} />)}
+            {channels.map((channel) => <Channel channel={channel} onClick={() => hundleSetCurrentChannel(channel.id)} isRemovable={channel.removable}/>)}
         </ul>
     </div>
     )

@@ -1,7 +1,7 @@
 import {createContext} from "react";
 import {useDispatch} from "react-redux";
 import {addMessage} from '../slices/messagesSlice'
-import {addChannel, removeChannel, renameChannel} from "../slices/channelsSlice";
+import {addChannel, setCurrentChannel, removeChannel, renameChannel} from "../slices/channelsSlice";
 import axios from "axios";
 import { useAuthorization } from "../hooks/hooks";
 
@@ -42,10 +42,13 @@ const ChatContextProvider = ({ socket, children }) => {
     };
     
     const addNewChannel = async (channel) => {
-        await socket
-                .timeout(timeout)
-                .emit('newChannel', { ...channel });
-        
+        const { data } = await socket
+                                .timeout(timeout)
+                                .emitWithAck('newChannel', { ...channel }); 
+    
+console.log(data)
+        dispatch(addChannel(data));
+        dispatch(setCurrentChannel(data.id));
     }; 
 
     const removeSelectedChannel = async (id) => {

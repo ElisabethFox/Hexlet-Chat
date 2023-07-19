@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { useState } from "react";
 import { setCurrentModalType, setRelevantChannel } from "../../../slices/modalWindowSlice";
 
-const Channel = ({ channel, onClick }) => {
+const Channel = ({ channel, onClick, isRemovable}) => {
     const currentChannel = useSelector(currentChannelSelector);
     const isActive = () => channel.id === currentChannel.id;
     const dispatch = useDispatch();
@@ -43,6 +43,7 @@ const Channel = ({ channel, onClick }) => {
         dispatch(openModalWindow());
     };
 
+    if (isRemovable) {
     return (
         <li className="nav-item w-100 channel" key={channel.id}>
             <div role="group" className="d-flex dropdown btn-group">
@@ -61,7 +62,19 @@ const Channel = ({ channel, onClick }) => {
                 </div>
             </div>    
         </li>
-    );
+    )
+    } else if(!isRemovable) {
+        return (
+            <li className="nav-item w-100 channel" key={channel.id}>
+                <div role="group" className="d-flex dropdown btn-group">
+                    <button type="button" className={channelClasses} onClick={onClick}>
+                        <span className="me-1">#</span>
+                        {channel.name}
+                    </button>
+                </div>    
+            </li>
+        )
+    }
 }
  
 export default Channel;

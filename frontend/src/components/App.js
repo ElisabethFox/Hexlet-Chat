@@ -1,9 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import Chat from '../pages/Chat';
 import Login from '../pages/Login';
-import NotFound from '../pages/not-found/NotFound';
+import NotFound from '../pages/NotFound';
 import NavBar from "./navbar/NavBar";
 import Signup from '../pages/Signup';
 import { ToastContainer } from 'react-toastify';

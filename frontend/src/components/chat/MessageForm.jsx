@@ -2,8 +2,8 @@ import Form from "react-bootstrap/Form";
 import { useFormik } from "formik";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { useAuthorization, useChatApi } from "../../../hooks/hooks";
-import { currentChannelSelector } from "../../../selectors/selectors";
+import { useAuthorization, useChatApi } from "../../hooks/hooks";
+import { currentChannelSelector } from "../../selectors/selectors";
 
 import leoProfanity from "leo-profanity";
 import { BiMessageSquareDetail } from "react-icons/bi";

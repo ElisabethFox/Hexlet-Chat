@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import MessageForm from "../message-form/MessageForm";
-import MessageBox from "../messages-box/MessageBox";
+import MessageForm from "../MessageForm";
+import MessageBox from "../MessageBox";
 
 import "./style.css";
 

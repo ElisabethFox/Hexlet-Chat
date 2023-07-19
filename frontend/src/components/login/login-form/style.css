@@ -1,8 +1,0 @@
-.form-floating {
-    color: var(--grey-dark);
-}
-
-.form-control:focus {
-    border-color: var(--lilac-light);
-    box-shadow: 2px 2px 5px 0 var(--lilac-middle);
-}

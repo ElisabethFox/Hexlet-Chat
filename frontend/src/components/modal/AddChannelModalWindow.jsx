@@ -20,9 +20,7 @@ const AddChannelModalWindow = () => {
     const dispatch = useDispatch();
     const channelsNames = useSelector(channelsNamesSelector);
     const { addNewChannel } = useChatApi();
-    
     const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
-  
     const [isInvalidChannelName, setInvalidChannelName] = useState(false);
 
     const handleCloseModalWindow = () => {

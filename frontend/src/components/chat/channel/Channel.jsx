@@ -9,7 +9,6 @@ import cn from "classnames";
 import "./style.css";
 import DropdownToggle from "react-bootstrap/esm/DropdownToggle";
 
-
 const Channel = ({ channel, onClick }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();

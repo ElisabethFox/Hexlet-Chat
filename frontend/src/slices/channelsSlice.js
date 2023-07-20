@@ -1,9 +1,8 @@
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import fetchInitialData from '../context/InitialDataThunk';
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import fetchInitialData from "../context/InitialDataThunk";
 
 const channelsAdapter = createEntityAdapter();
 const defaultCurrentChannelId = 1;
-
 const initialState = channelsAdapter.getInitialState({currentChannelId: defaultCurrentChannelId});
 
 const channelSlice = createSlice({

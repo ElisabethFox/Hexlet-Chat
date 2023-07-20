@@ -10,8 +10,7 @@ import leoProfanity from "leo-profanity";
 import { BiMessageSquareDetail } from "react-icons/bi";
 
 const MessageForm = () => {
-    const { t } = useTranslation(); 
-
+    const { t } = useTranslation();
     const { addNewMessage } = useChatApi();
     const { getUserName } = useAuthorization();
     const currentChannel = useSelector(currentChannelSelector);

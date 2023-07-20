@@ -28,6 +28,7 @@ const ru = {
             removeChannel: 'Удалить',
             renameChannel: 'Переименовать',
             controlChannel: 'Управление каналом',
+            prefix: '#',
         },
         message: {
             messagesCount: 'сообщений',

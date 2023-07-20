@@ -38,7 +38,7 @@ const Channel = ({ channel, onClick }) => {
 
     if (!removable) {
         return (
-            <li className="nav-item w-100 channel" key={id}>
+            <li className="nav-item channel" key={id}>
                     <button type="button" className={channelClasses} onClick={onClick}>
                         <span className="me-1">#</span>
                         {name}
@@ -48,7 +48,7 @@ const Channel = ({ channel, onClick }) => {
     }
 
     return (
-        <li className="nav-item w-100 channel" key={id}>
+        <li className="nav-item channel" key={id}>
             <Dropdown className="d-flex dropdown btn-group" as={ButtonGroup}>
                 <button type="button" className={channelClasses} onClick={onClick}>
                     <span className="me-1">#</span>

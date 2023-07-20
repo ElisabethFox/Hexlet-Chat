@@ -32,10 +32,11 @@ const RenameChannelModalWindow = () => {
 
     const formik = useFormik({
         initialValues: { name: relevantChannelName },
-        validationSchema: channelNameShema(channelsNames),
+        validationSchema: channelNameShema(channelsNames, t('modal.channelNameLength'), t('modal.requaredField')),
         onSubmit: async (values) => {
+            const { name } = values;
             try {
-                await renameSelectedChannel({ id: relevantChannelId, name: values.name });
+                await renameSelectedChannel({ id: relevantChannelId, name });
                 handleCloseModalWindow();
                 toast.success(t('toast.channelRenaming'));
             } catch(error) {
@@ -64,9 +65,17 @@ const RenameChannelModalWindow = () => {
                             className="p-2 ps-2 form-control"
                             placeholder={t('modal.channelNameInput')}
                             onChange={formik.handleChange}
+                            isInvalid={(formik.errors.name && formik.touched.name)}
                             value={formik.values.name}
                         />
+                    <Form.Label htmlFor="name" className="form-label visually-hidden">
+                        {t('modal.newChannelName')}
+                    </Form.Label>
+                    <Form.Control.Feedback type="invalid" className="invalid-feedback">
+                        {formik.errors.name}
+                    </Form.Control.Feedback>
                     </div>
+
                     <div className="d-flex justify-content-end">
                         <ModalButtton title={t('modal.cancelBtn')} priority={false} onClick={handleCloseModalWindow}/>
                         <ModalButtton title={t('modal.sendBtn')} priority={true} onClick={formik.handleSubmit}/>

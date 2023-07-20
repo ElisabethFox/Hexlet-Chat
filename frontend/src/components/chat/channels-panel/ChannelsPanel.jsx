@@ -29,7 +29,7 @@ const ChannelsPanel = () => {
                 <b className="channels-title">{t('channel.channels')}</b>
                 <button type="button" className="p-0 border-0 btn btn-group-vertical add-button" data-toggle="modal" onClick={handleCreateNewChannel}>
                     <BiMessageSquareAdd className="add-icon"/>
-                    <span className="visually-hidden">+</span>
+                    <span className="visually-hidden">{t('channel.addBtn')}</span>
                 </button>
             </div>
             <ul id="channels-box" className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">

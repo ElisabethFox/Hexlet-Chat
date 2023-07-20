@@ -29,9 +29,12 @@ const ru = {
             renameChannel: 'Переименовать',
             controlChannel: 'Управление каналом',
             prefix: '#',
+            addBtn: '+',
         },
         message: {
-            messagesCount: 'сообщений',
+            messagesCount_one: '{{count}} сообщение',
+            messagesCount_few: '{{count}} сообщения',
+            messagesCount_many: '{{count}} сообщений',
             newMessage: 'Новое сообщение',
             messageInput: 'Введите сообщение...',
             sendMessage: 'Отправить',
@@ -46,6 +49,9 @@ const ru = {
             sure: 'Уверены?',
             removeBtn: 'Удалить',
             renameChannel: 'Переименовать канал',
+            channelNameLength: 'От 3 до 20 символов',
+            requaredField: 'Обязательное поле',
+            uniqueNameError: 'Канал с таким именем уже существует'
         },
         toast: {
             channelCreation: 'Канал создан',

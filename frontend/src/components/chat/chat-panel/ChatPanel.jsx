@@ -10,7 +10,7 @@ const ChatPanel = ({currentChannelName, currentChannelMessagesCount}) => {
             <p className="m-0">
                 <b className="channel-name">{t('channel.prefix')} {currentChannelName}</b>
             </p>
-            <span className="message-count">{currentChannelMessagesCount} {t('message.messagesCount')}</span>
+            <span className="message-count">{t('message.messagesCount', { count: currentChannelMessagesCount })}</span>
         </div>
     );
 };

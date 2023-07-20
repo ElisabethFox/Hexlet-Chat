@@ -1,4 +1,4 @@
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
 const logInSchema = Yup.object().shape({
     username: Yup

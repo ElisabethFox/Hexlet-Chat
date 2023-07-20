@@ -15,20 +15,23 @@
     border: none;
 }
 
-.channel-menu-btn {
+#dropdown-menu {
     border: none;
     border-radius: 0%;
     background-color: var(--lilac-light);
     color: var(--grey-light)
 }
 
-.channel-button:hover, .channel-menu-btn:hover {
-    background-color: var(--lilac-middle);
-}
-
-.current, .channel-button:active, .channel-menu-btn:active  {
+.current,
+#dropdown-menu.current, 
+.channel-button:active {
     background-color: var(--lilac-dark);
     color: var(--white-grey-light);
 }
 
+.channel-button:hover, 
+#dropdown-menu:hover {
+    background-color: var(--lilac-middle);
+    color: var(--white-grey-light)
+}
 

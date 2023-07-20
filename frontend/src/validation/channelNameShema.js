@@ -1,4 +1,4 @@
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
 const channelNameShema = (channelsNames) => Yup.object().shape({
     name: Yup

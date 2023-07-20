@@ -1,11 +1,11 @@
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from "react-dom/client";
 import init from "./init";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    await init()
-);
+import "./index.css";
 
-reportWebVitals();
+const app = async () => {
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(await init());
+};
+
+app();

@@ -36,13 +36,13 @@ const RemoveChannelModalWindow = () => {
                 <div className="modal-title h4">{t('modal.removeChannel')}</div>
                 <button type="button" className="btn-close" aria-label="Close" onClick={handleCloseModalWindow}></button>
             </div>
-
+            
             <div className="modal-body">
-            <p class="lead">{t('modal.sure')}</p>
-            <div class="d-flex justify-content-end">
-                    <ModalButtton title={t('modal.cancelBtn')} priority={false} onClick={handleCloseModalWindow}/>
-                    <ModalButtton title={t('modal.removeBtn')} priority={true} onClick={() => handleRemoveChannel(relevantChannelId)}/>
-            </div>        
+                <p class="lead">{t('modal.sure')}</p>
+                <div class="d-flex justify-content-end">
+                    <ModalButtton title={t('modal.cancelBtn')} priority={false} onClick={handleCloseModalWindow} />
+                    <ModalButtton title={t('modal.removeBtn')} priority={true} onClick={() => handleRemoveChannel(relevantChannelId)} />
+                </div>  
             </div>
         </Modal>
     );

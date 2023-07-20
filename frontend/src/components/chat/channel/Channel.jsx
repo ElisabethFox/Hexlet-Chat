@@ -7,6 +7,7 @@ import { setCurrentModalType, setRelevantChannel } from "../../../slices/modalWi
 
 import cn from "classnames";
 import "./style.css";
+import DropdownToggle from "react-bootstrap/esm/DropdownToggle";
 
 
 const Channel = ({ channel, onClick }) => {
@@ -21,7 +22,7 @@ const Channel = ({ channel, onClick }) => {
         'current': isActive(),
     });
 
-    const channelMenuBtnClasses = cn("flex-grow-0 dropdown-toggle dropdown-toggle-split channel-menu-btn", {
+    const channelMenuBtnClasses = cn("flex-grow-0 dropdown-toggle-split channel-menu-btn", {
         'current': isActive(),
     });
 
@@ -56,9 +57,9 @@ const Channel = ({ channel, onClick }) => {
                     {name}
                 </button>
 
-                <Dropdown.Toggle type="button" id="react-aria4736936024-3" className={channelMenuBtnClasses}>
+                <DropdownToggle variant="channel-menu-btn" type="button" id="dropdown-menu" className={channelMenuBtnClasses}>
                     <span className="visually-hidden">{t('channel.controlChannel')}</span>
-                </Dropdown.Toggle>
+                </DropdownToggle>
 
                 <Dropdown.Menu>
                     <Dropdown.Item onClick={() => handleRemoveChannel(channel.id)}>{t('channel.removeChannel')}</Dropdown.Item>

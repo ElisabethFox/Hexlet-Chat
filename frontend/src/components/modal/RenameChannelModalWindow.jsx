@@ -1,10 +1,10 @@
 import Form from "react-bootstrap/Form";
 import { useFormik } from "formik";
 import { Modal } from "react-bootstrap";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useChatApi } from "../../hooks/hooks";
+import { channelsNamesSelector } from "../../selectors/selectors";
 import { closeModalWindow,setCurrentModalType, setRelevantChannel } from "../../slices/modalWindowSlice";
 import ModalButtton from "../buttons/ModalButtton";
 
@@ -15,7 +15,7 @@ const RenameChannelModalWindow = () => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const { renameChannel } = useChatApi();
-
+    const channelsNames = useSelector(channelsNamesSelector);
     const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
     const relevantChannelId = useSelector((state) => state.modalWindow.relevantChannel);
 
@@ -27,7 +27,7 @@ const RenameChannelModalWindow = () => {
 
     const formik = useFormik({
         initialValues: { name: "" },
-        validationSchema: channelNameShema,
+        validationSchema: channelNameShema(channelsNames),
         onSubmit: async (values) => {
             try {
                 await renameChannel(relevantChannelId, values.name);

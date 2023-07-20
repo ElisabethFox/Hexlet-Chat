@@ -57,7 +57,7 @@ const Channel = ({ channel, onClick }) => {
                 </button>
 
                 <Dropdown.Toggle type="button" id="react-aria4736936024-3" className={channelMenuBtnClasses}>
-                    <span className="visually-hidden">{t('channelControl')}</span>
+                    <span className="visually-hidden">{t('channel.controlChannel')}</span>
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>

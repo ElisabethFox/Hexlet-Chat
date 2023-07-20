@@ -11,9 +11,8 @@ const RemoveChannelModalWindow = () => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const { removeSelectedChannel } = useChatApi();
-
-    const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
     const relevantChannelId = useSelector((state) => state.modalWindow.relevantChannel);
+    const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
 
     const handleRemoveChannel = (id) => {
         try {

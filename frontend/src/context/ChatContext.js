@@ -27,7 +27,7 @@ const ChatContextProvider = ({ socket, children }) => {
         });
         socket.on('renameChannel', ({ id, name }) => {
             dispatch(renameChannel({ id, changes: { name } }));
-        });
+        }, [dispatch, socket]);
     };
 
     const disconnectSocket = () => {
@@ -56,10 +56,10 @@ const ChatContextProvider = ({ socket, children }) => {
                 .emit('removeChannel', { id });
     };
 
-    const renameSelectedChannel = async (id, newName) => {
+    const renameSelectedChannel = async (updateChannel) => {
         await socket
                 .timeout(timeout)
-                .emit('renameChannel', { id, name: newName });
+                .emit('renameChannel', updateChannel);
     };
 
     const getChannelsData = async () => {

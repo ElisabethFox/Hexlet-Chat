@@ -17,6 +17,7 @@
 
 .channel-menu-btn {
     border: none;
+    border-radius: 0%;
     background-color: var(--lilac-light);
     color: var(--grey-light)
 }

@@ -1,6 +1,7 @@
 import Form from "react-bootstrap/Form";
 import { useFormik } from "formik";
 import React, { useState } from "react";
+import { useRollbar } from "@rollbar/react";
 import {useNavigate} from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAuthorization } from "../../hooks/hooks";
@@ -13,9 +14,9 @@ import logInSchema from "../../validation/logInShema";
 
 const LoginForm = () => {
     const { t } = useTranslation();
+    const rollbar = useRollbar();
     const navigate = useNavigate();
     const { logIn } = useAuthorization();
-
     const [isInvalidUserData, setInvalidUserData] = useState(false);
 
     const formik = useFormik({
@@ -35,6 +36,7 @@ const LoginForm = () => {
                 setInvalidUserData(true);
             } else {
                 toast.error(t('toast.networkError'));
+                rollbar.error('Login', error);
             };
         }
     },

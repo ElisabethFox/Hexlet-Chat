@@ -1,7 +1,8 @@
 import Form from "react-bootstrap/Form";
 import { useFormik } from "formik";
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import React, { useState } from "react";
+import { useRollbar } from "@rollbar/react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAuthorization } from "../../hooks/hooks";
 import Title from "../title/Title";
@@ -12,10 +13,10 @@ import { toast } from "react-toastify";
 import signupSchema from "../../validation/signupShema";
 
 const SignupForm = () => {
-    const navigate = useNavigate();
     const { t } = useTranslation();
+    const rollbar = useRollbar();
+    const navigate = useNavigate();
     const { logIn } = useAuthorization();
-    
     const [isInvalidAuth, setInvalidAuth] = useState(false);
 
     const formik = useFormik({
@@ -38,6 +39,7 @@ const SignupForm = () => {
             }
 
             toast.error(t('toast.networkError'));
+            rollbar.error('Signup', error);
         }
     },
     });
@@ -52,8 +54,6 @@ const SignupForm = () => {
                     name="username"
                     className="form-control"
                     placeholder="Ваш ник"
-                    // value={formik.values.username}
-                    // onChange={formik.handleChange}
                     onChange={(e) => {
                         setInvalidAuth(false);
                         formik.handleChange(e)
@@ -95,7 +95,6 @@ const SignupForm = () => {
                     name="passwordConfirmation"
                     className="form-control"
                     placeholder="Не менее 6 символов"
-                    autoComplete="passwordConfirmation"
                     onChange={formik.handleChange}
                     isInvalid={isInvalidAuth || (formik.touched.passwordConfirmation && formik.errors.passwordConfirmation)}
                     required

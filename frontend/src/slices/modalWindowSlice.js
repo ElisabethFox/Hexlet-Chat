@@ -1,4 +1,4 @@
-import {createEntityAdapter, createSlice} from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
 const modalWindowAdapter = createEntityAdapter();
 const initialState = modalWindowAdapter.getInitialState({

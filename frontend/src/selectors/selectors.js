@@ -1,5 +1,5 @@
-import {messagesAdapter} from "../slices/messagesSlice";
-import {channelsAdapter} from "../slices/channelsSlice";
+import { messagesAdapter } from "../slices/messagesSlice";
+import { channelsAdapter } from "../slices/channelsSlice";
 import { modalWindowAdapter } from "../slices/modalWindowSlice";
 
 export const channelsSelector = channelsAdapter.getSelectors((state) => state.channels);

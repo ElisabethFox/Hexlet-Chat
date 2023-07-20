@@ -22,12 +22,12 @@ const ChatContextProvider = ({ socket, children }) => {
         socket.on('newChannel', (channel) => {
             dispatch(addChannel(channel));
         });
-        socket.on('removeChannel', ({ id }) => {
-            dispatch(removeChannel(id));
+        socket.on('removeChannel', (channel) => {
+            dispatch(removeChannel(channel.id));
         });
-        socket.on('renameChannel', ({ id, name }) => {
-            dispatch(renameChannel({ id, changes: { name } }));
-        }, [dispatch, socket]);
+        socket.on('renameChannel', (channel) => {
+            dispatch(renameChannel({ id: channel.id, changes: { name: channel.name } }))
+        });
     };
 
     const disconnectSocket = () => {

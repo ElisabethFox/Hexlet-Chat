@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { currentChannelSelector } from "../../../selectors/selectors";
 import { openModalWindow } from "../../../slices/modalWindowSlice";
-import { setCurrentModalType } from "../../../slices/modalWindowSlice";
+import { setCurrentModalType, setRelevantChannel } from "../../../slices/modalWindowSlice";
 
 import cn from "classnames";
 import "./style.css";
@@ -25,25 +25,25 @@ const Channel = ({ channel, onClick }) => {
         'current': isActive(),
     });
 
-    const handleRenameChannel = () => {
+    const handleRenameChannel = (id) => {
         dispatch(setCurrentModalType('rename'));
+        dispatch(setRelevantChannel(id));
         dispatch(openModalWindow());
     };
 
-    const handleRemoveChannel = () => {
+    const handleRemoveChannel = (id) => {
         dispatch(setCurrentModalType('remove'));
+        dispatch(setRelevantChannel(id));
         dispatch(openModalWindow());
     };
 
     if (!removable) {
         return (
             <li className="nav-item w-100 channel" key={id}>
-                <div role="group" className="d-flex dropdown btn-group">
                     <button type="button" className={channelClasses} onClick={onClick}>
                         <span className="me-1">#</span>
                         {name}
-                    </button>
-                </div>    
+                    </button> 
             </li>
         )
     }
@@ -61,8 +61,8 @@ const Channel = ({ channel, onClick }) => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                    <Dropdown.Item onClick={handleRemoveChannel}>{t('channel.removeChannel')}</Dropdown.Item>
-                    <Dropdown.Item onClick={handleRenameChannel}>{t('channel.renameChannel')}</Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleRemoveChannel(channel.id)}>{t('channel.removeChannel')}</Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleRenameChannel(channel.id)}>{t('channel.renameChannel')}</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
         </li>

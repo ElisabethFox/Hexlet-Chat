@@ -1,7 +1,7 @@
-import {createContext} from "react";
-import {useDispatch} from "react-redux";
-import {addMessage} from '../slices/messagesSlice'
-import {addChannel, setCurrentChannel, removeChannel, renameChannel} from "../slices/channelsSlice";
+import { createContext } from "react";
+import { useDispatch } from "react-redux";
+import { addMessage } from '../slices/messagesSlice'
+import { addChannel, setCurrentChannel, removeChannel, renameChannel } from "../slices/channelsSlice";
 import axios from "axios";
 import { useAuthorization } from "../hooks/hooks";
 

@@ -1,6 +1,5 @@
-import en from './en.js';
 import ru from './ru.js';
 
-const locales = { en, ru };
+const locales = { ru };
 
 export default locales;

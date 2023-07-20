@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 import { useChatApi } from "../hooks/hooks";
 import fetchInitialData from "../context/InitialDataThunk";
 import { messagesSelector } from "../selectors/selectors";

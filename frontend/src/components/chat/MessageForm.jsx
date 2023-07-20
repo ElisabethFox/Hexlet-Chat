@@ -23,7 +23,7 @@ const MessageForm = () => {
                 const message = {
                     username,
                     text: leoProfanity.clean(text),
-                    сhannelId: currentChannel.id,
+                    сhannelId: currentChannel?.id,
                 }
                 addNewMessage(message);
                 resetForm();

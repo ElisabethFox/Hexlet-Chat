@@ -15,23 +15,19 @@
     border: none;
 }
 
-.channel-button:hover {
-    background-color: var(--lilac-middle);
-}
-
 .channel-menu-btn {
     border: none;
     background-color: var(--lilac-light);
     color: var(--grey-light)
 }
 
-.current, .channel-button:active {
+.channel-button:hover, .channel-menu-btn:hover {
+    background-color: var(--lilac-middle);
+}
+
+.current, .channel-button:active, .channel-menu-btn:active  {
     background-color: var(--lilac-dark);
     color: var(--white-grey-light);
 }
 
-.show {
-    display: block;
-    position: absolute;
-    transform: translate3d(0px, 40px, 0px);
-}
+

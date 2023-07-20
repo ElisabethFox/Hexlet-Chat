@@ -1,9 +1,11 @@
 import Form from "react-bootstrap/Form";
 import { useFormik } from "formik";
 import { Modal } from "react-bootstrap";
+import { useRollbar } from "@rollbar/react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useChatApi } from "../../hooks/hooks";
+import { channelsSelector } from "../../selectors/selectors";
 import { channelsNamesSelector } from "../../selectors/selectors";
 import { closeModalWindow,setCurrentModalType, setRelevantChannel } from "../../slices/modalWindowSlice";
 import ModalButtton from "../buttons/ModalButtton";
@@ -13,11 +15,14 @@ import channelNameShema from "../../validation/channelNameShema";
 
 const RenameChannelModalWindow = () => {
     const { t } = useTranslation();
+    const rollbar = useRollbar();
     const dispatch = useDispatch();
     const { renameSelectedChannel } = useChatApi();
     const channelsNames = useSelector(channelsNamesSelector);
     const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
     const relevantChannelId = useSelector((state) => state.modalWindow.relevantChannel);
+    const channels = useSelector(channelsSelector.selectAll);
+    const relevantChannelName = channels.find(({ id }) => id === relevantChannelId).name;
 
     const handleCloseModalWindow = () => {
         dispatch(closeModalWindow());
@@ -26,15 +31,16 @@ const RenameChannelModalWindow = () => {
     };
 
     const formik = useFormik({
-        initialValues: { name: "" },
+        initialValues: { name: relevantChannelName },
         validationSchema: channelNameShema(channelsNames),
         onSubmit: async (values) => {
             try {
                 await renameSelectedChannel({ id: relevantChannelId, name: values.name });
                 handleCloseModalWindow();
                 toast.success(t('toast.channelRenaming'));
-            } catch {
+            } catch(error) {
                 toast.error(t('toast.networkError'));
+                rollbar.error('RemoveChannel', error);
             }
         },
     });
@@ -47,16 +53,18 @@ const RenameChannelModalWindow = () => {
             </div>
 
             <div className="modal-body">
-                <Form noValidate onSubmit={formik.handleSubmit} className="py-1 rounded-2">
+                <Form onSubmit={formik.handleSubmit} className="py-1 rounded-2">
                     <div className="form-group">
                         <Form.Control
+                            autoFocus
                             id="name"
+                            type="text"
                             name="name"
                             aria-label={t('modal.newChannelName')}
-                            className="p-1 ps-2 form-control"
+                            className="p-2 ps-2 form-control"
                             placeholder={t('modal.channelNameInput')}
                             onChange={formik.handleChange}
-                            value={formik.values.channelName}
+                            value={formik.values.name}
                         />
                     </div>
                     <div className="d-flex justify-content-end">

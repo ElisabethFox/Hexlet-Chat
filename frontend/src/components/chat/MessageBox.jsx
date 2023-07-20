@@ -1,6 +1,6 @@
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import Message from "./Message";
-import {messagesSelector} from "../../selectors/selectors";
+import { messagesSelector } from "../../selectors/selectors";
 import { currentChannelSelector } from "../../selectors/selectors";
 
 const MessageBox = () => {

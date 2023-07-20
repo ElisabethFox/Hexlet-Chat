@@ -12,7 +12,6 @@ import "./style.css"
 const ChannelsPanel = () => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-
     const channels = useSelector(channelsSelector.selectAll);
 
     const handleSetCurrentChannel = (id) => {
@@ -20,12 +19,8 @@ const ChannelsPanel = () => {
     };
 
     const handleCreateNewChannel = () => {
-        try {
-            dispatch(setCurrentModalType('add'));
-            dispatch(openModalWindow());
-        } catch {
-            console.log('error')
-        }
+        dispatch(setCurrentModalType('add'));
+        dispatch(openModalWindow());
     };
     
     return (

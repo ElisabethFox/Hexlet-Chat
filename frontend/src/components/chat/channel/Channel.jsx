@@ -14,7 +14,6 @@ const Channel = ({ channel, onClick }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const { id, name, removable } = channel;
-
     const currentChannel = useSelector(currentChannelSelector);
     const isActive = () => channel.id === currentChannel.id;
 
@@ -62,8 +61,8 @@ const Channel = ({ channel, onClick }) => {
                 </DropdownToggle>
 
                 <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => handleRemoveChannel(channel.id)}>{t('channel.removeChannel')}</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleRenameChannel(channel.id)}>{t('channel.renameChannel')}</Dropdown.Item>
+                    <Dropdown.Item id="dropdown-item" onClick={() => handleRemoveChannel(channel.id)}>{t('channel.removeChannel')}</Dropdown.Item>
+                    <Dropdown.Item id="dropdown-item" onClick={() => handleRenameChannel(channel.id)}>{t('channel.renameChannel')}</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
         </li>

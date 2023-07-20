@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { Modal } from "react-bootstrap";
 import ModalButtton from "../buttons/ModalButtton";
+import { useRollbar } from "@rollbar/react";
 import { useChatApi } from "../../hooks/hooks";
 import { closeModalWindow, setCurrentModalType, setRelevantChannel } from "../../slices/modalWindowSlice";
 
@@ -9,6 +10,7 @@ import { toast } from "react-toastify";
 
 const RemoveChannelModalWindow = () => {
     const { t } = useTranslation();
+    const rollbar = useRollbar();
     const dispatch = useDispatch();
     const { removeSelectedChannel } = useChatApi();
     const relevantChannelId = useSelector((state) => state.modalWindow.relevantChannel);
@@ -19,8 +21,9 @@ const RemoveChannelModalWindow = () => {
             removeSelectedChannel(id);
             dispatch(closeModalWindow());
             toast.success(t('toast.channelRemoval'));
-        } catch {
+        } catch(error) {
             toast.error(t('toast.networkError'));
+            rollbar.error('RemoveChannel', error);
         }
     };
 

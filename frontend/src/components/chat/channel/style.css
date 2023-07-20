@@ -35,3 +35,12 @@
     color: var(--white-grey-light)
 }
 
+#dropdown-item:hover {
+    background-color: var(--white-grey-middle);
+}
+
+#dropdown-item:active {
+    background-color: var(--white-grey-dark);
+    color: var(--grey-dark);
+}
+

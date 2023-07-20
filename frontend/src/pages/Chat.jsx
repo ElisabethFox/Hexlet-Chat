@@ -1,15 +1,14 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useChatApi } from "../hooks/hooks";
 import fetchInitialData from "../context/InitialDataThunk";
-import { useDispatch } from "react-redux";
 import ChannelsPanel from "../components/chat/channels-panel/ChannelsPanel";
 import ChatPanel from "../components/chat/chat-panel/ChatPanel";
 import ModalWindow from "../components/modal/ModalWindow";
 
-
 const Chat = () => {
-    const { connectSocket, disconnectSocket, getChannelsData } = useChatApi();
     const dispatch = useDispatch();
+    const { connectSocket, disconnectSocket, getChannelsData } = useChatApi();
 
     useEffect(() => {
         dispatch(fetchInitialData(getChannelsData));

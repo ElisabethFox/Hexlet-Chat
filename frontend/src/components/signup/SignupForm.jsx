@@ -21,7 +21,7 @@ const SignupForm = () => {
 
     const formik = useFormik({
     initialValues: { username: "", password: "", passwordConfirmation: "" },
-    validationSchema: signupSchema,
+    validationSchema: signupSchema(t('registration.userNameLength'), t('registration.passwordLength'), t('registration.requaredField'), t('registration.passwordMatching')),
     onSubmit: async (values) => {
         const { username, password } = values; 
         try {
@@ -46,14 +46,14 @@ const SignupForm = () => {
 
     return (
         <Form onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
-            <Title title="Регистрация"/>
+            <Title title={t('registration.registrationTitle')}/>
             <div className="form-floating mb-3">
                 <Form.Control
                     id="username"
                     type="text"
                     name="username"
                     className="form-control"
-                    placeholder="Ваш ник"
+                    placeholder={t('registration.userName')}
                     onChange={(e) => {
                         setInvalidAuth(false);
                         formik.handleChange(e)
@@ -62,11 +62,11 @@ const SignupForm = () => {
                     required
                 />
                 <Form.Label htmlFor="username" className="form-label">
-                    Имя пользователя
+                    {t('registration.userName')}
                 </Form.Label>
                 <Form.Control.Feedback type="invalid" className="invalid-tooltip invalid-feedback"
                                         tooltip={isInvalidAuth}>
-                    От 3 до 20 символов
+                    {t('registration.userNameLength')}
                 </Form.Control.Feedback>
             </div>
             <div className="form-floating mb-3">
@@ -75,17 +75,17 @@ const SignupForm = () => {
                     type="password"
                     name="password"
                     className="form-control"
-                    placeholder="Пароль"
+                    placeholder={t('registration.password')}
                     onChange={formik.handleChange}
                     isInvalid={isInvalidAuth || (formik.touched.password && formik.errors.password)}
                     required
                 />
                 <Form.Label htmlFor="password" className="form-label">
-                    Пароль
+                    {t('registration.password')}
                 </Form.Label>
                 <Form.Control.Feedback type="invalid" className="invalid-tooltip invalid-feedback"
                                         tooltip={isInvalidAuth}>
-                    Не менее 6 символов
+                    {t('registration.passwordLength')}
                 </Form.Control.Feedback>
             </div>
             <div className="form-floating mb-4">
@@ -94,20 +94,20 @@ const SignupForm = () => {
                     type="password"
                     name="passwordConfirmation"
                     className="form-control"
-                    placeholder="Не менее 6 символов"
+                    placeholder={t('registration.passwordConfirmation')}
                     onChange={formik.handleChange}
                     isInvalid={isInvalidAuth || (formik.touched.passwordConfirmation && formik.errors.passwordConfirmation)}
                     required
                 />
                 <Form.Label htmlFor="passwordConfirmation" className="form-label">
-                    Подтвердите пароль
+                    {t('registration.passwordConfirmation')}
                 </Form.Label>
                 <Form.Control.Feedback type="invalid" className="invalid-tooltip invalid-feedback"
                                         tooltip={isInvalidAuth}>
-                    Пароли должны совпадать
+                    {t('registration.passwordMatching')}
                 </Form.Control.Feedback>
             </div>
-            <LoginButton title="Зарегистрироваться" />
+            <LoginButton title={t('registration.registrationBtn')} />
         </Form>
     );
 };

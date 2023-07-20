@@ -20,7 +20,8 @@ const ru = {
             userNameLength: 'От 3 до 20 символов',
             passwordLength: 'Не менее 6 символов',
             passwordMatching: 'Пароли должны совпадать',
-            registrationButton: 'Зарегистрироваться',
+            requaredField: 'Обязательное поле',
+            registrationBtn: 'Зарегистрироваться',
         },
         channel: {
             channels: 'Каналы',

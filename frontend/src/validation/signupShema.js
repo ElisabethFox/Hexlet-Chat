@@ -1,20 +1,20 @@
 import * as Yup from "yup";
 
-const signupSchema = Yup.object().shape({
+const signupSchema = (userNameLength, passwordLength, requaredField, passwordMatching) => Yup.object().shape({
     username: Yup
         .string()
         .trim()
-        .min(3, 'мин 3 симв')
-        .max(20, 'макс 20 симв')
-        .required('Обязательное поле'),
+        .min(3, userNameLength)
+        .max(20, userNameLength)
+        .required(requaredField),
     password: Yup
         .string()
         .trim()
-        .min(6)
-        .required('Обязательное поле'),
+        .min(6, passwordLength)
+        .required(requaredField),
     passwordConfirmation: Yup
         .string()
-        .oneOf([Yup.ref('password')], 'Пароли не совпадают')
+        .oneOf([Yup.ref('password')], passwordMatching)
 });
 
 export default signupSchema;

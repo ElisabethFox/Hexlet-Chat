@@ -1,8 +1,8 @@
-import { useTranslation } from "react-i18next";
-import LoginForm from "./LoginForm";
-import LoginFooter from "./LoginFooter";
+import { useTranslation } from 'react-i18next';
+import LoginForm from './LoginForm';
+import LoginFooter from './LoginFooter';
 
-import loginImg from "../../img/login.png";
+import loginImg from '../../img/login.png';
 
 const LoginCard = () => {
     const { t } = useTranslation();

@@ -1,18 +1,18 @@
-import Form from "react-bootstrap/Form";
-import { useFormik } from "formik";
-import React, { useState } from "react";
-import { useRollbar } from "@rollbar/react";
-import {useNavigate} from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { useAuthorization } from "../../hooks/hooks";
-import Title from "../title/Title";
-import LoginButton from "../buttons/LoginButton";
-import { chatContextRoutes } from "../../routes/routes";
-import { appRoutes } from "../../routes/routes";
+import Form from 'react-bootstrap/Form';
+import { useFormik } from 'formik';
+import React, { useState } from 'react';
+import { useRollbar } from '@rollbar/react';
+import {useNavigate} from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useAuthorization } from '../../hooks/hooks';
+import Title from '../title/Title';
+import LoginButton from '../buttons/LoginButton';
+import { chatContextRoutes } from '../../routes/routes';
+import { appRoutes } from '../../routes/routes';
 
-import axios from "axios";
-import { toast } from "react-toastify";
-import loginSchema from "../../validation/loginSchema";
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import loginSchema from '../../validation/loginSchema';
 
 const LoginForm = () => {
     const { t } = useTranslation();

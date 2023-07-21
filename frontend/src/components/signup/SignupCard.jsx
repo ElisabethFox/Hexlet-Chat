@@ -1,7 +1,7 @@
-import SignupForm from "./SignupForm";
-import { useTranslation } from "react-i18next";
+import SignupForm from './SignupForm';
+import { useTranslation } from 'react-i18next';
 
-import signupImg from "../../img/registration.png";
+import signupImg from '../../img/registration.png';
 
 const SignupCard = () => {
     const { t } = useTranslation();

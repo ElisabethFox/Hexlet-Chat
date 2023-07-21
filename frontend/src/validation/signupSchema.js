@@ -1,4 +1,4 @@
-import * as Yup from "yup";
+import * as Yup from 'yup';
 
 const signupSchema = (userNameLength, passwordLength, requaredField, passwordMatching) => Yup.object().shape({
     username: Yup

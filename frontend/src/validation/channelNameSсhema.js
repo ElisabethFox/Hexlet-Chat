@@ -1,4 +1,4 @@
-import * as Yup from "yup";
+import * as Yup from 'yup';
 
 const channelNameSсhema = (channelsNames, channelNameLength, requaredField) => Yup.object().shape({
     name: Yup

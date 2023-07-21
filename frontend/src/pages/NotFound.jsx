@@ -1,9 +1,9 @@
-import { NavLink } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import Title from "../components/title/Title";
-import { appRoutes } from "../routes/routes";
+import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import Title from '../components/title/Title';
+import { appRoutes } from '../routes/routes';
 
-import notFoundImg from "../img/404.png";
+import notFoundImg from '../img/404.png';
 
 const NotFound = () => {
     const { t } = useTranslation();

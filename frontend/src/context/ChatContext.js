@@ -1,10 +1,14 @@
-import { createContext } from "react";
-import { useDispatch } from "react-redux";
+import { createContext } from 'react';
+import { useDispatch } from 'react-redux';
 import { addMessage } from '../slices/messagesSlice'
-import { addChannel, setCurrentChannel, removeChannel, renameChannel } from "../slices/channelsSlice";
-import axios from "axios";
-import { useAuthorization } from "../hooks/hooks";
-import { chatContextRoutes } from "../routes/routes";
+import { addChannel,
+    setCurrentChannel,
+    removeChannel,
+    renameChannel
+} from '../slices/channelsSlice';
+import axios from 'axios';
+import { useAuthorization } from '../hooks/hooks';
+import { chatContextRoutes } from '../routes/routes';
 
 export const ChatContext = createContext({});
 

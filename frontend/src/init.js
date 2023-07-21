@@ -1,16 +1,16 @@
-import React from "react";
-import { I18nextProvider, initReactI18next } from "react-i18next";
-import { Provider } from "react-redux";
-import { Provider as RollbarProvider, ErrorBoundary } from "@rollbar/react";
-import ChatContextProvider from "./context/ChatContext";
-import UserDataContextProvider from "./context/UserDataContext";
-import store from "./slices";
-import App from "./components/App";
+import React from 'react';
+import { I18nextProvider, initReactI18next } from 'react-i18next';
+import { Provider } from 'react-redux';
+import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
+import ChatContextProvider from './context/ChatContext';
+import UserDataContextProvider from './context/UserDataContext';
+import store from './slices';
+import App from './components/App';
 
-import i18next from "i18next";
-import resources from "./locales/index.js";
-import io from "socket.io-client";
-import LeoProfanity from "leo-profanity";
+import i18next from 'i18next';
+import resources from './locales/index.js';
+import io from 'socket.io-client';
+import LeoProfanity from 'leo-profanity';
 
 const defaultLanguage = 'ru';
 

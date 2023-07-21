@@ -4,33 +4,37 @@ import fetchInitialData from '../context/InitialDataThunk';
 const channelsAdapter = createEntityAdapter();
 const defaultCurrentChannelId = 1;
 const initialState = channelsAdapter.getInitialState({
-    currentChannelId: defaultCurrentChannelId,
+  currentChannelId: defaultCurrentChannelId,
 });
 
 const channelSlice = createSlice({
-    name: 'channels',
-    initialState,
-    reducers: {
-        addChannel: channelsAdapter.addOne,
-        setCurrentChannel: (state, { payload }) => {
+  name: 'channels',
+  initialState,
+  reducers: {
+    addChannel: channelsAdapter.addOne,
+    setCurrentChannel: (state, { payload }) => {
             state.currentChannelId = payload;
-        },
-        removeChannel: (state, { payload }) => {
+    },
+    removeChannel: (state, { payload }) => {
             if (state.currentChannelId === payload) {
                 state.currentChannelId = defaultCurrentChannelId;
             }
             
-            channelsAdapter.removeOne(state, payload)
-        },
-        renameChannel: channelsAdapter.updateOne,
+            channelsAdapter.removeOne(state, payload);
     },
-    extraReducers: (builder) => {
-        builder.addCase(fetchInitialData.fulfilled, (state, { payload }) => {
-            channelsAdapter.setAll(state, payload.channels);
-          })
-      },
+    renameChannel: channelsAdapter.updateOne,
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchInitialData.fulfilled, (state, { payload }) => {
+      channelsAdapter.setAll(state, payload.channels);
+    });
+  },
 });
 
-export const { addChannel, addChannels, setCurrentChannel, removeChannel,renameChannel } = channelSlice.actions;
+export const { addChannel,
+    addChannels,
+    setCurrentChannel,
+    removeChannel,
+    renameChannel } = channelSlice.actions;
 export { channelsAdapter };
 export default channelSlice.reducer;

@@ -1,16 +1,16 @@
 const apiPath = '/api/v1';
 
 const chatContextRoutes = {
-    login: () => [apiPath, 'login'].join('/'),
-    signup: () => [apiPath, 'signup'].join('/'),
-    data: () => [apiPath, 'data'].join('/'),
-  };
-  
+  login: () => [apiPath, 'login'].join('/'),
+  signup: () => [apiPath, 'signup'].join('/'),
+  data: () => [apiPath, 'data'].join('/'),
+};
+
 const appRoutes = {
-    chatPagePath: () => '/',
-    loginPagePath: () => '/login',
-    notFoundPagePath: () => '*',
-    signupPagePath: () => '/signup',
+  chatPagePath: () => '/',
+  loginPagePath: () => '/login',
+  notFoundPagePath: () => '*',
+  signupPagePath: () => '/signup',
 };
 
 export { chatContextRoutes, appRoutes };

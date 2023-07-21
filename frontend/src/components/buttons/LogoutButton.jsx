@@ -1,24 +1,24 @@
-import { useNavigate } from "react-router-dom";
-import { useAuthorization } from "../../hooks/hooks";
-import { appRoutes } from "../../routes/routes";
+import { useNavigate } from 'react-router-dom';
+import { useAuthorization } from '../../hooks/hooks';
+import { appRoutes } from '../../routes/routes';
 
-import "./style.css";
+import './style.css';
 
 const LogoutButton = ({ title }) => {
-    const { logOut } = useAuthorization();
-    const navigate = useNavigate();
+  const { logOut } = useAuthorization();
+  const navigate = useNavigate();
 
-    const handleLogout = () => {
-        navigate(appRoutes.loginPagePath());
-        logOut();
-    }
+  const handleLogout = () => {
+    navigate(appRoutes.loginPagePath());
+    logOut();
+  }
 
-    if (localStorage.getItem('user') !== null) {
-        return (
-            <button type="button" className="logout-button" onClick={handleLogout}>{title}</button>
-        )
-    };
+  if (localStorage.getItem('user') !== null) {
+    return (
+        <button type="button" className="logout-button" onClick={handleLogout}>{title}</button>
+    );
+  }
 
-    return null;
+  return null;
 };
 export default LogoutButton;

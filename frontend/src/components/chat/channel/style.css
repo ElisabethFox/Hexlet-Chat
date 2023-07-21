@@ -26,8 +26,8 @@
     color: var(--grey-light)
 }
 
-.current,
-#dropdown-menu.current, 
+.current-channel,
+#dropdown-menu.current-channel, 
 .channel-button:active {
     background-color: var(--lilac-dark);
     color: var(--white-grey-light);

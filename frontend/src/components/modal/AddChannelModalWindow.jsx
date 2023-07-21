@@ -71,8 +71,8 @@ return (
                 </div>
 
                 <div className="d-flex justify-content-end">
-                <ModalButtton title={t('modal.cancelBtn')} priority={false} onClick={handleCloseModalWindow}/>
-                <ModalButtton title={t('modal.sendBtn')} priority={true} onClick={formik.handleSubmit}/>
+                <ModalButtton title={t('modal.cancelBtn')} priority={false} onClick={handleCloseModalWindow} />
+                <ModalButtton title={t('modal.sendBtn')} priority={true} onClick={formik.handleSubmit} />
                 </div>
             </Form>
         </div>

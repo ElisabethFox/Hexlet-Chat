@@ -12,14 +12,14 @@ const LoginCard = () => {
       <div className="card shadow-sm">
         <div className="card-body row p-5">
           <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
-            <img src={loginImg} alt={t('login.loginTitle')} className="card-img"/>
+            <img src={loginImg} alt={t('login.loginTitle')} className="card-img" />
           </div>
           <LoginForm />
         </div>
-          <LoginFooter />
+        <LoginFooter />
       </div>
     </div>
-    );
+  );
 };
 
 export default LoginCard;

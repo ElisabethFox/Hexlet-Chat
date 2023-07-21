@@ -5,13 +5,14 @@ import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 import NavBar from "./navbar/NavBar";
 import Signup from "../pages/Signup";
+import { appRoutes } from "../routes/routes";
 
 import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const ChatPage = () => {
     if (localStorage.getItem('user') === null) {
-      return <Navigate to="/login" />
+      return <Navigate to={appRoutes.loginPagePath()} />
     } else {
       return <Chat />
     }
@@ -19,7 +20,7 @@ const App = () => {
 
   const LoginPage = () => {
     if (localStorage.getItem('user') !== null) {
-      return <Navigate to="/" />
+      return <Navigate to={appRoutes.chatPagePath()} />
     } else {
       return <Login />
     }
@@ -29,10 +30,10 @@ const App = () => {
       <BrowserRouter>
         <NavBar />
             <Routes>
-              <Route path="*" element={<NotFound />} />
-              <Route path="/" element={<ChatPage />}/>
-              <Route path="/login" element={<LoginPage />}/>
-              <Route path="/signup" element={<Signup />}/>
+              <Route path={appRoutes.notFoundPagePath()} element={<NotFound />} />
+              <Route path={appRoutes.chatPagePath()} element={<ChatPage />}/>
+              <Route path={appRoutes.loginPagePath()} element={<LoginPage />}/>
+              <Route path={appRoutes.signupPagePath()} element={<Signup />}/>
             </Routes>
             <ToastContainer
                   position="top-right"

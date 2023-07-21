@@ -4,6 +4,7 @@ import { addMessage } from '../slices/messagesSlice'
 import { addChannel, setCurrentChannel, removeChannel, renameChannel } from "../slices/channelsSlice";
 import axios from "axios";
 import { useAuthorization } from "../hooks/hooks";
+import { chatContextRoutes } from "../routes/routes";
 
 export const ChatContext = createContext({});
 
@@ -63,7 +64,7 @@ const ChatContextProvider = ({ socket, children }) => {
     };
 
     const getChannelsData = async () => {
-        const response = await axios.get('/api/v1/data', {headers: {Authorization: `Bearer ${getUserToken()}`}})
+        const response = await axios.get(chatContextRoutes.data(), {headers: {Authorization: `Bearer ${getUserToken()}`}})
         return response;
     };
 

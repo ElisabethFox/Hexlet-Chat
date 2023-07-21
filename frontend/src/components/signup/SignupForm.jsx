@@ -7,6 +7,8 @@ import { useTranslation } from "react-i18next";
 import { useAuthorization } from "../../hooks/hooks";
 import Title from "../title/Title";
 import LoginButton from "../buttons/LoginButton";
+import { chatContextRoutes } from "../../routes/routes";
+import { appRoutes } from "../../routes/routes";
 
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -27,10 +29,10 @@ const SignupForm = () => {
         try {
             setInvalidAuth(false);
             await axios
-                    .post('/api/v1/signup', { username, password })
+                    .post(chatContextRoutes.signup(), { username, password })
                     .then((response) => {
                         logIn(response.data);
-                        navigate('/');
+                        navigate(appRoutes.chatPagePath());
                     });
         } catch(error) {
             if (error.isAxiosError && error.response.status === 409) {

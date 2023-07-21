@@ -7,10 +7,12 @@ import { useTranslation } from "react-i18next";
 import { useAuthorization } from "../../hooks/hooks";
 import Title from "../title/Title";
 import LoginButton from "../buttons/LoginButton";
+import { chatContextRoutes } from "../../routes/routes";
+import { appRoutes } from "../../routes/routes";
 
 import axios from "axios";
 import { toast } from "react-toastify";
-import loginSchema from "../../validation/logInShema";
+import loginSchema from "../../validation/loginShema";
 
 const LoginForm = () => {
     const { t } = useTranslation();
@@ -26,10 +28,10 @@ const LoginForm = () => {
         try {
             setInvalidUserData(false);
             await axios
-                .post('/api/v1/login', values)
+                .post(chatContextRoutes.login(), values)
                 .then((response) => {
                     logIn(response.data);
-                    navigate('/');
+                    navigate(appRoutes.chatPagePath());
                 });
         } catch(error) {
             if (error.isAxiosError && error.response.status === 401) {

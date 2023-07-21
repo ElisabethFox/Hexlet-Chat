@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LogoutButton from "../buttons/LogoutButton";
+import { appRoutes } from "../../routes/routes";
 
 import "./style.css";
 
@@ -10,7 +11,7 @@ const NavBar = () => {
     return (
         <nav className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
             <div className="nav-container">
-                <NavLink to="/" className="navbar-brand">
+                <NavLink to={appRoutes.chatPagePath()} className="navbar-brand">
                     {t('navigation.chatName')}
                 </NavLink>
                 <LogoutButton title={t('navigation.exitBtn')} />

@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Title from "../components/title/Title";
+import { appRoutes } from "../routes/routes";
 
 import notFoundImg from "../img/404.png";
 
@@ -13,7 +14,7 @@ const NotFound = () => {
             <Title title={t('notFound.pageNotFound')} />
             <p className="text-muted">
                 <span className="to-main">{t('notFound.youCanGo')} </span>
-                <NavLink to="/" className="link">
+                <NavLink to={appRoutes.chatPagePath()} className="link">
                     {t('notFound.toMainPage')}
                 </NavLink>
             </p>

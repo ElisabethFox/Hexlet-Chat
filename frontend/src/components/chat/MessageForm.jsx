@@ -62,7 +62,7 @@ const MessageForm = () => {
             <BiMessageSquareDetail className="add-icon" />
             <span className="visually-hidden">{t('message.sendMessage')}</span>
           </button>
-      </div>
+        </div>
       </Form>
     </div>
   );

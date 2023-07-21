@@ -1,4 +1,8 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { 
+  BrowserRouter, 
+  Routes, 
+  Route, 
+  Navigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Chat from '../pages/Chat';
 import Login from '../pages/Login';
@@ -27,14 +31,14 @@ const App = () => {
 
   return (
     <BrowserRouter>
-        <NavBar />
-        <Routes>
+      <NavBar />
+      <Routes>
           <Route path={appRoutes.notFoundPagePath()} element={<NotFound />} />
           <Route path={appRoutes.chatPagePath()} element={<ChatPage />} />
           <Route path={appRoutes.loginPagePath()} element={<LoginPage />} />
           <Route path={appRoutes.signupPagePath()} element={<Signup />} />
         </Routes>
-        <ToastContainer
+      <ToastContainer>
           position="top-right"
           autoClose={3000}
           hideProgressBar={false}
@@ -45,8 +49,8 @@ const App = () => {
           draggable
           pauseOnHover
           theme="light"
-        />
-      </BrowserRouter>
+      </ToastContainer>
+    </BrowserRouter>
   );
 };
 

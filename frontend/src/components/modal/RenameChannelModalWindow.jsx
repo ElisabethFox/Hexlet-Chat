@@ -69,7 +69,7 @@ const RenameChannelModalWindow = () => {
                             value={formik.values.name}
                         />
                     <Form.Label htmlFor="name" className="form-label visually-hidden">
-                        {t('modal.newChannelName')}
+                        {t('modal.channelNameInput')}
                     </Form.Label>
                     <Form.Control.Feedback type="invalid" className="invalid-feedback">
                         {formik.errors.name}

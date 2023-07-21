@@ -44,7 +44,6 @@ const ru = {
         },
         modal: {
             createChannel: 'Добавить канал',
-            newChannelName: 'Название нового канала',
             channelNameInput: 'Имя канала',
             cancelBtn: 'Отменить',
             sendBtn: 'Отправить',

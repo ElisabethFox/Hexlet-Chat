@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useChatApi } from '../hooks/hooks';
 import fetchInitialData from '../context/InitialDataThunk';
-import { messagesSelector } from '../selectors/selectors';
-import { currentChannelSelector } from '../selectors/selectors';
+import { messagesSelector, currentChannelSelector } from '../selectors/selectors';
 import ChannelsPanel from '../components/chat/channels-panel/ChannelsPanel';
 import ChatPanel from '../components/chat/chat-panel/ChatPanel';
 import ModalWindow from '../components/modal/ModalWindow';

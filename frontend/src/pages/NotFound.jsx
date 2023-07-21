@@ -14,12 +14,12 @@ const NotFound = () => {
       <Title title={t('notFound.pageNotFound')} />
       <p className="text-muted">
         <span className="to-main">
-          {t('notFound.youCanGo')} 
+          {t('notFound.youCanGo')}
         </span>
         <NavLink to={appRoutes.chatPagePath()} className="link">
           {t('notFound.toMainPage')}
         </NavLink>
-    </p>
+      </p>
     </div>
   );
 };

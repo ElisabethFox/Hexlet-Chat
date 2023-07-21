@@ -11,7 +11,7 @@ const messagesSelector = messagesAdapter.getSelectors((state) => state.messages)
 const modalWindowSelector = modalWindowAdapter.getSelectors((state) => state.modalWindow);
 
 export { channelsSelector,
-    currentChannelSelector,
-    channelsNamesSelector,
-    messagesSelector,
-    modalWindowSelector };
+  currentChannelSelector,
+  channelsNamesSelector,
+  messagesSelector,
+  modalWindowSelector };

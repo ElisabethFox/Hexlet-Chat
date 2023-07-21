@@ -23,12 +23,14 @@ const modalWindowSlice = createSlice({
     setRelevantChannel: (state, { payload }) => {
       state.relevantChannel = payload;
     },
-  }
+  },
 });
 
-export const { openModalWindow,
-    closeModalWindow,
-    setCurrentModalType,
-    setRelevantChannel } = modalWindowSlice.actions;
+export const {
+  openModalWindow,
+  closeModalWindow,
+  setCurrentModalType,
+  setRelevantChannel
+} = modalWindowSlice.actions;
 export { modalWindowAdapter };
 export default modalWindowSlice.reducer;

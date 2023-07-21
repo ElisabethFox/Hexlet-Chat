@@ -1,9 +1,9 @@
 import * as Yup from 'yup';
 
-const signupSchema = (userNameLength, 
-    passwordLength, 
-    requaredField, 
-    passwordMatching) => Yup.object().shape({
+const signupSchema = (userNameLength,
+  passwordLength,
+  requaredField,
+  passwordMatching) => Yup.object().shape({
   username: Yup
     .string()
     .trim()

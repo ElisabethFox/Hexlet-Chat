@@ -11,11 +11,11 @@ const LogoutButton = ({ title }) => {
   const handleLogout = () => {
     navigate(appRoutes.loginPagePath());
     logOut();
-  }
+  };
 
   if (localStorage.getItem('user') !== null) {
     return (
-        <button type="button" className="logout-button" onClick={handleLogout}>{title}</button>
+      <button type="button" className="logout-button" onClick={handleLogout}>{title}</button>
     );
   }
 

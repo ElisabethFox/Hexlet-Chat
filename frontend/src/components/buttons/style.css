@@ -43,7 +43,7 @@
     border-radius: 5px;
 }
 
-.high {
+.high-priority {
     background-color: var(--lilac-middle);
     box-sizing: content-box;
     border: solid 0.8px var(--lilac-dark);

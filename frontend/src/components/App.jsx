@@ -1,11 +1,11 @@
-import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
-import {ToastContainer} from 'react-toastify';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Chat from '../pages/Chat';
 import Login from '../pages/Login';
 import NotFound from '../pages/NotFound';
 import NavBar from './navbar/NavBar';
 import Signup from '../pages/Signup';
-import {appRoutes} from '../routes/routes';
+import { appRoutes } from '../routes/routes';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
@@ -20,14 +20,14 @@ const App = () => {
   const LoginPage = () => {
     if (localStorage.getItem('user') !== null) {
       return <Navigate to={appRoutes.chatPagePath()} />;
-    }  
+    }
 
-      return <Login />;
+    return <Login />;
   };
 
   return (
-      <BrowserRouter>
-      <NavBar />
+    <BrowserRouter>
+        <NavBar />
         <Routes>
           <Route path={appRoutes.notFoundPagePath()} element={<NotFound />} />
           <Route path={appRoutes.chatPagePath()} element={<ChatPage />} />
@@ -35,17 +35,17 @@ const App = () => {
           <Route path={appRoutes.signupPagePath()} element={<Signup />} />
         </Routes>
         <ToastContainer
-              position="top-right"
-              autoClose={3000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="light"
-          />
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </BrowserRouter>
   );
 };

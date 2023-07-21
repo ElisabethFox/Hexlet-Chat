@@ -1,10 +1,10 @@
 import * as Yup from "yup";
 
-const messageShema = Yup.object().shape({
+const messageShema = (requaredField) => Yup.object().shape({
     text: Yup
         .string()
         .trim()
-        .required('Обязательное поле')
+        .required(requaredField)
 });
 
 export default messageShema;

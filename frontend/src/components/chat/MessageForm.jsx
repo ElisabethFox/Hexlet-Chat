@@ -17,7 +17,7 @@ const MessageForm = () => {
 
     const formik = useFormik({
         initialValues: { text: "", username: getUserName() },
-        validationSchema: messageShema,
+        validationSchema: messageShema(t('message.requaredField')),
         onSubmit: ({ text, username }, { resetForm }) => {
             try {
                 const message = {

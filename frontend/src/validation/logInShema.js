@@ -1,14 +1,14 @@
 import * as Yup from "yup";
 
-const logInSchema = Yup.object().shape({
+const loginSchema = (requaredField) => Yup.object().shape({
     username: Yup
         .string()
         .trim()
-        .required('Обязательное поле'),
+        .required(requaredField),
     password: Yup
         .string()
         .trim()
-        .required('Обязательное поле'),
+        .required(requaredField),
 });
 
-export default logInSchema;
+export default loginSchema;

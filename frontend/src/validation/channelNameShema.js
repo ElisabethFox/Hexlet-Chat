@@ -1,12 +1,12 @@
 import * as Yup from "yup";
 
-const channelNameShema = (channelsNames, lengthError, requiredError) => Yup.object().shape({
+const channelNameShema = (channelsNames, channelNameLength, requaredField) => Yup.object().shape({
     name: Yup
         .string()
         .trim()
-        .min(3, lengthError)
-        .max(20, lengthError)
-        .required(requiredError)
+        .min(3, channelNameLength)
+        .max(20, channelNameLength)
+        .required(requaredField)
         .notOneOf(channelsNames),
 });
 

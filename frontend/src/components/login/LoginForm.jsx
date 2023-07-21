@@ -10,7 +10,7 @@ import LoginButton from "../buttons/LoginButton";
 
 import axios from "axios";
 import { toast } from "react-toastify";
-import logInSchema from "../../validation/logInShema";
+import loginSchema from "../../validation/logInShema";
 
 const LoginForm = () => {
     const { t } = useTranslation();
@@ -21,7 +21,7 @@ const LoginForm = () => {
 
     const formik = useFormik({
     initialValues: { username: "", password: "" },
-    validationSchema: logInSchema,
+    validationSchema: loginSchema(t('login.requaredField')),
     onSubmit: async (values) => {
         try {
             setInvalidUserData(false);

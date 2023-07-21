@@ -10,6 +10,7 @@ const ru = {
             password: 'Ваш пароль',
             loginButton: 'Войти',
             loginError: 'Неверные имя пользователя или пароль',
+            requaredField: 'Обязательное поле',
             noAccount: 'Нет аккаунта?',
         },
         registration: {
@@ -39,6 +40,7 @@ const ru = {
             newMessage: 'Новое сообщение',
             messageInput: 'Введите сообщение...',
             sendMessage: 'Отправить',
+            requaredField: 'Обязательное поле'
         },
         modal: {
             createChannel: 'Добавить канал',
@@ -53,6 +55,11 @@ const ru = {
             channelNameLength: 'От 3 до 20 символов',
             requaredField: 'Обязательное поле',
             uniqueNameError: 'Канал с таким именем уже существует'
+        },
+        notFound: {
+            pageNotFound: 'Страница не найдена',
+            youCanGo: 'Но вы можете перейти',
+            toMainPage: 'На главную страницу',
         },
         toast: {
             channelCreation: 'Канал создан',

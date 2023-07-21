@@ -54,9 +54,9 @@ const Channel = ({ channel, onClick }) => {
           {name}
         </button>
 
-    <DropdownToggle variant="channel-menu-btn" type="button" id="dropdown-menu" className={channelMenuBtnClasses}>
+        <DropdownToggle variant="channel-menu-btn" type="button" id="dropdown-menu" className={channelMenuBtnClasses}>
           <span className="visually-hidden">{t('channel.controlChannel')}</span>
-    </DropdownToggle>
+        </DropdownToggle>
 
         <Dropdown.Menu>
           <Dropdown.Item id="dropdown-item" onClick={() => handleRemoveChannel(id)}>{t('channel.removeChannel')}</Dropdown.Item>

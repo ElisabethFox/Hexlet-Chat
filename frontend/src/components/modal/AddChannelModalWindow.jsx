@@ -58,7 +58,6 @@ return (
                     name="name"
                     aria-label={t('modal.newChannelName')}
                     className="p-2 ps-2 form-control"
-                    placeholder={t('modal.channelNameInput')}
                     onChange={formik.handleChange}
                     isInvalid={(formik.errors.name && formik.touched.name)}
                     disabled={formik.isSubmitting}

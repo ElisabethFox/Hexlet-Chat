@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useAuthorization, useChatApi } from "../../hooks/hooks";
 import { currentChannelSelector } from "../../selectors/selectors";
 
-import messageShema from "../../validation/messageShema";
+import messageSchema from "../../validation/messageSchema";
 import leoProfanity from "leo-profanity";
 import { BiMessageSquareDetail } from "react-icons/bi";
 
@@ -17,7 +17,7 @@ const MessageForm = () => {
 
     const formik = useFormik({
         initialValues: { text: "", username: getUserName() },
-        validationSchema: messageShema(t('message.requaredField')),
+        validationSchema: messageSchema(t('message.requaredField')),
         onSubmit: ({ text, username }, { resetForm }) => {
             try {
                 const message = {

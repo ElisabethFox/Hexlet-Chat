@@ -1,10 +1,10 @@
 import * as Yup from "yup";
 
-const messageShema = (requaredField) => Yup.object().shape({
+const messageSchema = (requaredField) => Yup.object().shape({
     text: Yup
         .string()
         .trim()
         .required(requaredField)
 });
 
-export default messageShema;
+export default messageSchema;

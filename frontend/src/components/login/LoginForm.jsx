@@ -12,7 +12,7 @@ import { appRoutes } from "../../routes/routes";
 
 import axios from "axios";
 import { toast } from "react-toastify";
-import loginSchema from "../../validation/loginShema";
+import loginSchema from "../../validation/loginSchema";
 
 const LoginForm = () => {
     const { t } = useTranslation();

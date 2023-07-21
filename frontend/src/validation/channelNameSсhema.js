@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-const channelNameShema = (channelsNames, channelNameLength, requaredField) => Yup.object().shape({
+const channelNameSсhema = (channelsNames, channelNameLength, requaredField) => Yup.object().shape({
     name: Yup
         .string()
         .trim()
@@ -10,4 +10,4 @@ const channelNameShema = (channelsNames, channelNameLength, requaredField) => Yu
         .notOneOf(channelsNames),
 });
 
-export default channelNameShema;
+export default channelNameSсhema;

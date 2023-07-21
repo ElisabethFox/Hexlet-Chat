@@ -10,7 +10,7 @@ import { channelsNamesSelector } from "../../selectors/selectors";
 import ModalButtton from "../buttons/ModalButtton";
 
 import { toast } from "react-toastify";
-import channelNameShema from "../../validation/channelNameShema";
+import channelNameSсhema from "../../validation/channelNameSсhema";
 
 
 const AddChannelModalWindow = () => {
@@ -28,7 +28,7 @@ const AddChannelModalWindow = () => {
 
     const formik = useFormik({
         initialValues: { name: "" },
-        validationSchema: channelNameShema(channelsNames, t('modal.channelNameLength'), t('modal.requaredField')),
+        validationSchema: channelNameSсhema(channelsNames, t('modal.channelNameLength'), t('modal.requaredField')),
         onSubmit: async (values) => {
             try {
                 await addNewChannel(values);

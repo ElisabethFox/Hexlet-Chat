@@ -11,7 +11,7 @@ import { closeModalWindow,setCurrentModalType, setRelevantChannel } from "../../
 import ModalButtton from "../buttons/ModalButtton";
 
 import { toast } from "react-toastify";
-import channelNameShema from "../../validation/channelNameShema";
+import channelNameSсhema from "../../validation/channelNameSсhema";
 
 const RenameChannelModalWindow = () => {
     const { t } = useTranslation();
@@ -32,7 +32,7 @@ const RenameChannelModalWindow = () => {
 
     const formik = useFormik({
         initialValues: { name: relevantChannelName },
-        validationSchema: channelNameShema(channelsNames, t('modal.channelNameLength'), t('modal.requaredField')),
+        validationSchema: channelNameSсhema(channelsNames, t('modal.channelNameLength'), t('modal.requaredField')),
         onSubmit: async (values) => {
             const { name } = values;
             try {

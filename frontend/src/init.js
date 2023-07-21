@@ -39,7 +39,7 @@ const init = async () => {
     },
     captureUncaught: true,
     captureUnhandledRejections: true,
-};
+  };
 
   return (
     <Provider store={store}>

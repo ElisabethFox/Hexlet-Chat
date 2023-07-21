@@ -1,17 +1,17 @@
-import Form from "react-bootstrap/Form";
-import { useFormik } from "formik";
-import { Modal } from "react-bootstrap";
-import { useRollbar } from "@rollbar/react";
-import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
-import { useChatApi } from "../../hooks/hooks";
-import { channelsSelector } from "../../selectors/selectors";
-import { channelsNamesSelector } from "../../selectors/selectors";
-import { closeModalWindow,setCurrentModalType, setRelevantChannel } from "../../slices/modalWindowSlice";
-import ModalButtton from "../buttons/ModalButtton";
+import Form from 'react-bootstrap/Form';
+import { useFormik } from 'formik';
+import { Modal } from 'react-bootstrap';
+import { useRollbar } from '@rollbar/react';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { useChatApi } from '../../hooks/hooks';
+import { channelsSelector } from '../../selectors/selectors';
+import { channelsNamesSelector } from '../../selectors/selectors';
+import { closeModalWindow,setCurrentModalType, setRelevantChannel } from '../../slices/modalWindowSlice';
+import ModalButtton from '../buttons/ModalButtton';
 
-import { toast } from "react-toastify";
-import channelNameSсhema from "../../validation/channelNameSсhema";
+import { toast } from 'react-toastify';
+import channelNameSсhema from '../../validation/channelNameSсhema';
 
 const RenameChannelModalWindow = () => {
     const { t } = useTranslation();
@@ -39,7 +39,7 @@ const RenameChannelModalWindow = () => {
                 await renameSelectedChannel({ id: relevantChannelId, name });
                 handleCloseModalWindow();
                 toast.success(t('toast.channelRenaming'));
-            } catch(error) {
+            } catch (error) {
                 toast.error(t('toast.networkError'));
                 rollbar.error('RemoveChannel', error);
             }

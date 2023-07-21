@@ -1,18 +1,16 @@
-import Form from "react-bootstrap/Form";
-import { useFormik } from "formik";
-import React, { useState } from "react";
-import { useRollbar } from "@rollbar/react";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { useAuthorization } from "../../hooks/hooks";
-import Title from "../title/Title";
-import LoginButton from "../buttons/LoginButton";
-import { chatContextRoutes } from "../../routes/routes";
-import { appRoutes } from "../../routes/routes";
-
-import axios from "axios";
-import { toast } from "react-toastify";
-import signupSchema from "../../validation/signupSchema";
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import Form from 'react-bootstrap/Form';
+import { useFormik } from 'formik';
+import React, { useState } from 'react';
+import { useRollbar } from '@rollbar/react';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { useAuthorization } from '../../hooks/hooks';
+import Title from '../title/Title';
+import LoginButton from '../buttons/LoginButton';
+import { chatContextRoutes, appRoutes } from '../../routes/routes';
+import signupSchema from '../../validation/signupSchema';
 
 const SignupForm = () => {
     const { t } = useTranslation();
@@ -22,10 +20,10 @@ const SignupForm = () => {
     const [isInvalidAuth, setInvalidAuth] = useState(false);
 
     const formik = useFormik({
-    initialValues: { username: "", password: "", passwordConfirmation: "" },
+    initialValues: { username: '', password: '', passwordConfirmation: '' },
     validationSchema: signupSchema(t('registration.userNameLength'), t('registration.passwordLength'), t('registration.requaredField'), t('registration.passwordMatching')),
     onSubmit: async (values) => {
-        const { username, password } = values; 
+        const { username, password } = values;
         try {
             setInvalidAuth(false);
             await axios
@@ -34,7 +32,7 @@ const SignupForm = () => {
                         logIn(response.data);
                         navigate(appRoutes.chatPagePath());
                     });
-        } catch(error) {
+        } catch (error) {
             if (error.isAxiosError && error.response.status === 409) {
                 setInvalidAuth(true);
                 return;

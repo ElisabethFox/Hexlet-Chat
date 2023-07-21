@@ -66,7 +66,7 @@ const ru = {
       channelRemoval: 'Канал удалён',
       networkError: 'Ошибка соединения',
     },
-},
+  },
 };
 
 export default ru;

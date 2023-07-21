@@ -41,28 +41,28 @@ const MessageForm = () => {
   return (
     <div className="mt-auto px-5 py-3">
       <Form onSubmit={formik.handleSubmit} className="py-1 rounded-2">
-        <div className="input-group has-validation">
-            <Form.Control
-              autoFocus
-              id="text"
-              name="text"
-              aria-label={t('message.newMessage')}
-              className="p-2 ps-2 form-control"
-              placeholder={t('message.messageInput')}
-              onChange={formik.handleChange}
-              value={formik.values.text}
-              disabled={formik.isSubmitting}
-            />
+      <div className="input-group has-validation">
+        <Form.Control
+          autoFocus
+          id="text"
+          name="text"
+          aria-label={t('message.newMessage')}
+          className="p-2 ps-2 form-control"
+          placeholder={t('message.messageInput')}
+          onChange={formik.handleChange}
+          value={formik.values.text}
+          disabled={formik.isSubmitting}
+        /> 
             <button
               type="submit"
               style={{ zIndex: 10 }}
               disabled={formik.isSubmitting}
               className="p-0 m-2 btn border-0 position-absolute end-0 me-2 add-button"
             >
-                <BiMessageSquareDetail className="add-icon" />
-                <span className="visually-hidden">{t('message.sendMessage')}</span>
+              <BiMessageSquareDetail className="add-icon" />
+              <span className="visually-hidden">{t('message.sendMessage')}</span>
             </button>
-        </div>
+      </div>
       </Form>
     </div>
   );

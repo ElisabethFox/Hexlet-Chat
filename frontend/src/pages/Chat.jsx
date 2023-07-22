@@ -14,7 +14,7 @@ const Chat = () => {
   const { connectSocket, disconnectSocket, getChannelsData } = useChatApi();
   const messages = useSelector(messagesSelector.selectAll);
   const currentChannelData = useSelector(currentChannel);
-  const currentChannelName = currentChannel?.name;
+  const currentChannelName = currentChannelData?.name;
   const currentChannelMessages = messages.filter(
     (message) => message.сhannelId === currentChannelData?.id,
   );

@@ -43,8 +43,7 @@ const AddChannelModalWindow = () => {
     <Modal show={isModalWindowOpen}>
       <div className="modal-header">
         <div className="modal-title h4">{t('modal.createChannel')}</div>
-        <button type="button" className="btn-close" aria-label="Close" onClick={handleCloseModalWindow}>
-        </button>
+        <button type="button" className="btn-close" aria-label="Close" onClick={handleCloseModalWindow} />
       </div>
 
       <div className="modal-body">

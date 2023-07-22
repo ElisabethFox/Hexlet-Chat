@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import fetchInitialData from '../context/InitialDataThunk';
 
@@ -19,7 +20,7 @@ const channelSlice = createSlice({
       if (state.currentChannelId === payload) {
         state.currentChannelId = defaultCurrentChannelId;
       }
-            
+
       channelsAdapter.removeOne(state, payload);
     },
     renameChannel: channelsAdapter.updateOne,
@@ -36,7 +37,7 @@ export const {
   addChannels,
   setCurrentChannel,
   removeChannel,
-  renameChannel
+  renameChannel,
 } = channelSlice.actions;
 export { channelsAdapter };
 export default channelSlice.reducer;

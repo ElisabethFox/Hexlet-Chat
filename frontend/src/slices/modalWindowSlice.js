@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
 const modalWindowAdapter = createEntityAdapter();
@@ -30,7 +31,7 @@ export const {
   openModalWindow,
   closeModalWindow,
   setCurrentModalType,
-  setRelevantChannel
+  setRelevantChannel,
 } = modalWindowSlice.actions;
 export { modalWindowAdapter };
 export default modalWindowSlice.reducer;

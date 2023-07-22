@@ -27,20 +27,20 @@ const SignupForm = () => {
       try {
         setInvalidAuth(false);
         await axios
-        .post(chatContextRoutes.signup(), { username, password })
-        .then((response) => {
+          .post(chatContextRoutes.signup(), { username, password })
+          .then((response) => {
             logIn(response.data);
             navigate(appRoutes.chatPagePath());
-        });
+          });
       } catch (error) {
         if (error.isAxiosError && error.response.status === 409) {
-            setInvalidAuth(true);
-            return;
+          setInvalidAuth(true);
+          return;
         }
         toast.error(t('toast.networkError'));
         rollbar.error('Signup', error);
       }
-    }
+    },
   });
 
   return (
@@ -55,7 +55,7 @@ const SignupForm = () => {
           placeholder={t('registration.userName')}
           onChange={(e) => {
             setInvalidAuth(false);
-            formik.handleChange(e)
+            formik.handleChange(e);
           }}
           isInvalid={isInvalidAuth || (formik.touched.username && formik.errors.username)}
           required
@@ -101,7 +101,10 @@ const SignupForm = () => {
           className="form-control"
           placeholder={t('registration.passwordConfirmation')}
           onChange={formik.handleChange}
-          isInvalid={isInvalidAuth || (formik.touched.passwordConfirmation && formik.errors.passwordConfirmation)}
+          isInvalid={
+            isInvalidAuth || 
+            (formik.touched.passwordConfirmation && formik.errors.passwordConfirmation)
+          }
           required
         />
         <Form.Label htmlFor="passwordConfirmation" className="form-label">
@@ -119,5 +122,5 @@ const SignupForm = () => {
     </Form>
   );
 };
- 
+
 export default SignupForm;

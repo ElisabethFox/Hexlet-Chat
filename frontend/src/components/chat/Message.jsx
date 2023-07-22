@@ -1,9 +1,14 @@
-const Message = ({ message }) =>
-  <div className="text-break mb-2">
-    <b>{message.username}</b>
+const Message = ({ message }) => {
+  const { username, text } = message;
+
+  return (
+    <div className="text-break mb-2">
+      <b>{username}</b>
       :
       {' '}
-      {message.text}
-  </div>;
+      {text}
+    </div>
+  );
+};
 
 export default Message;

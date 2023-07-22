@@ -1,4 +1,4 @@
-import './style.css'
+import './style.css';
 
 const Message = ({ message }) => {
   const { username, text } = message;

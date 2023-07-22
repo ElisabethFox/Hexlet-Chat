@@ -54,7 +54,7 @@ const ChatContextProvider = ({ socket, children }) => {
 
     dispatch(addChannel(data));
     dispatch(setCurrentChannel(data.id));
-};
+  };
 
   const removeSelectedChannel = async (id) => {
     await socket
@@ -74,7 +74,7 @@ const ChatContextProvider = ({ socket, children }) => {
   };
 
   return (
-    <ChatContext.Provider value={{ 
+    <ChatContext.Provider value={{
       connectSocket,
       disconnectSocket,
       addNewMessage,

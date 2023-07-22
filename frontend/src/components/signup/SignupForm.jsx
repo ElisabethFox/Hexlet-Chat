@@ -102,7 +102,8 @@ const SignupForm = () => {
           placeholder={t('registration.passwordConfirmation')}
           onChange={formik.handleChange}
           isInvalid={
-            isInvalidAuth || 
+            isInvalidAuth
+            ||
             (formik.touched.passwordConfirmation && formik.errors.passwordConfirmation)
           }
           required

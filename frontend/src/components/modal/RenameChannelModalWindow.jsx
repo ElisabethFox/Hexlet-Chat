@@ -75,8 +75,8 @@ const RenameChannelModalWindow = () => {
           </div>
 
           <div className="d-flex justify-content-end">
-            <ModalButtton title={t('modal.cancelBtn')} priority={false} onClick={handleCloseModalWindow} />
-            <ModalButtton title={t('modal.sendBtn')} priority={true} onClick={formik.handleSubmit} />
+            <ModalButtton title={t('modal.cancelBtn')} onClick={handleCloseModalWindow} />
+            <ModalButtton title={t('modal.sendBtn')} onClick={formik.handleSubmit} priority />
           </div>
         </Form>
       </div>

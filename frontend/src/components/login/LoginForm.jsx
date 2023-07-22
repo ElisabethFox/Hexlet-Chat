@@ -44,7 +44,7 @@ const LoginForm = () => {
 
   return (
     <Form onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
-      <Title title="Войти" />
+      <Title title={t('login.loginButton')} />
       <div className="form-floating mb-3">
         <Form.Control
           id="username"

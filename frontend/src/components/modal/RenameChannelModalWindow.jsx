@@ -59,7 +59,7 @@ const RenameChannelModalWindow = () => {
               id="name"
               type="text"
               name="name"
-              aria-label={t('modal.newChannelName')}
+              aria-label={t('modal.channelNameInput')}
               className="p-2 ps-2 form-control"
               placeholder={t('modal.channelNameInput')}
               onChange={formik.handleChange}

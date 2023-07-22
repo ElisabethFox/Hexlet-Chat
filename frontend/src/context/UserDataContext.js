@@ -17,11 +17,10 @@ const UserDataContextProvider = ({ children }) => {
   };
 
   const getUserName = () => userData.username;
-  const getUserToken = () => userData.token;
 
   return (
     <UserDataContext.Provider value={{
-      userData, logIn, logOut, getUserName, getUserToken,
+      userData, logIn, logOut, getUserName,
     }}
     >
       {children}

@@ -38,7 +38,7 @@ const ChannelsPanel = () => {
             key={channel.id}
             onClick={() => handleSetCurrentChannel(channel.id)}
           />
-          ))}
+        ))}
       </ul>
     </div>
   );

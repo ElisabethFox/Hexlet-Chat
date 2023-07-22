@@ -1,0 +1,13 @@
+.message {
+    display: block;
+    width: max-content;
+    padding: 5px 10px;
+  
+    border-radius: 7px;
+    background-color: var(--lilac-super-light);
+    color: var(--grey-light);
+  }
+  
+  .message>b {
+    color: var(--grey-middle);
+  }

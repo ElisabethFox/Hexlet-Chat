@@ -103,8 +103,7 @@ const SignupForm = () => {
           onChange={formik.handleChange}
           isInvalid={
             isInvalidAuth
-            ||
-            (formik.touched.passwordConfirmation && formik.errors.passwordConfirmation)
+            || (formik.touched.passwordConfirmation && formik.errors.passwordConfirmation)
           }
           required
         />

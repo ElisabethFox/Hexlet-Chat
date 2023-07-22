@@ -8,14 +8,11 @@ import {
   removeChannel,
   renameChannel,
 } from '../slices/channelsSlice';
-import { useAuthorization } from '../hooks/hooks';
 import { chatContextRoutes } from '../routes/routes';
 
 export const ChatContext = createContext({});
 
 const ChatContextProvider = ({ socket, children }) => {
-  const { getUserToken } = useAuthorization();
-
   const dispatch = useDispatch();
   const timeout = 4000;
 
@@ -69,7 +66,8 @@ const ChatContextProvider = ({ socket, children }) => {
   };
 
   const getChannelsData = async () => {
-    const response = await axios.get(chatContextRoutes.data(), { headers: { Authorization: `Bearer ${getUserToken()}` } });
+    const user = JSON.parse(localStorage.getItem('user'));
+    const response = await axios.get(chatContextRoutes.data(), { headers: { Authorization: `Bearer ${user.token}` } });
     return response;
   };
 

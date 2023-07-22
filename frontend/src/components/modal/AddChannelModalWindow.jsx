@@ -54,7 +54,7 @@ const AddChannelModalWindow = () => {
               id="name"
               type="text"
               name="name"
-              aria-label={t('modal.newChannelName')}
+              aria-label={t('modal.channelNameInput')}
               className="p-2 ps-2 form-control"
               onChange={formik.handleChange}
               isInvalid={(formik.errors.name && formik.touched.name)}

@@ -10,6 +10,7 @@ const LoginFooter = () => {
       <div className="text-center">
         <span className="no-account">
           {t('login.noAccount')}
+          {' '}
         </span>
         <NavLink to={appRoutes.signupPagePath()} className="link">
           {t('registration.registrationTitle')}

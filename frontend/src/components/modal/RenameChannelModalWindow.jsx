@@ -6,7 +6,7 @@ import { useRollbar } from '@rollbar/react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useChatApi } from '../../hooks/hooks';
-import { channelsSelector, channelsNamesSelector } from '../../selectors/selectors';
+import { channelsSelector, channelsNames } from '../../selectors/selectors';
 import { closeModalWindow, setCurrentModalType, setRelevantChannel } from '../../slices/modalWindowSlice';
 import ModalButtton from '../buttons/ModalButtton';
 import channelNameSсhema from '../../validation/channelNameSсhema';
@@ -16,7 +16,7 @@ const RenameChannelModalWindow = () => {
   const rollbar = useRollbar();
   const dispatch = useDispatch();
   const { renameSelectedChannel } = useChatApi();
-  const channelsNames = useSelector(channelsNamesSelector);
+  const channelsNamesList = useSelector(channelsNames);
   const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
   const relevantChannelId = useSelector((state) => state.modalWindow.relevantChannel);
   const channels = useSelector(channelsSelector.selectAll);
@@ -30,7 +30,7 @@ const RenameChannelModalWindow = () => {
 
   const formik = useFormik({
     initialValues: { name: relevantChannelName },
-    validationSchema: channelNameSсhema(channelsNames, t('modal.channelNameLength'), t('modal.requaredField')),
+    validationSchema: channelNameSсhema(channelsNamesList, t('modal.channelNameLength'), t('modal.requaredField')),
     onSubmit: async (values) => {
       const { name } = values;
       try {
@@ -48,7 +48,8 @@ const RenameChannelModalWindow = () => {
     <Modal show={isModalWindowOpen}>
       <div className="modal-header">
         <div className="modal-title h4">{t('modal.renameChannel')}</div>
-        <button type="button" className="btn-close" aria-label="Close" onClick={handleCloseModalWindow}></button>
+        <button type="button" className="btn-close" aria-label="Close" onClick={handleCloseModalWindow}>
+        </button>
       </div>
 
       <div className="modal-body">

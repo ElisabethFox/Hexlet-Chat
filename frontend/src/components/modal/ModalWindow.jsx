@@ -17,6 +17,8 @@ const ModalWindow = () => {
   if (currentModalWindowType === 'rename') {
     return <RenameChannelModalWindow />;
   }
+
+  return null;
 };
- 
+
 export default ModalWindow;

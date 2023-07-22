@@ -20,26 +20,26 @@ const LoginForm = () => {
   const [isInvalidUserData, setInvalidUserData] = useState(false);
 
   const formik = useFormik({
-  initialValues: { username: '', password: '' },
-  validationSchema: loginSchema(t('login.requaredField')),
-  onSubmit: async (values) => {
-    try {
-      setInvalidUserData(false);
-      await axios
-        .post(chatContextRoutes.login(), values)
-        .then((response) => {
-          logIn(response.data);
-          navigate(appRoutes.chatPagePath());
-        });
-    } catch (error) {
-      if (error.isAxiosError && error.response.status === 401) {
-        setInvalidUserData(true);
-      } else {
-        toast.error(t('toast.networkError'));
-        rollbar.error('Login', error);
-      };
-    };
-  },
+    initialValues: { username: '', password: '' },
+    validationSchema: loginSchema(t('login.requaredField')),
+    onSubmit: async (values) => {
+      try {
+        setInvalidUserData(false);
+        await axios
+          .post(chatContextRoutes.login(), values)
+          .then((response) => {
+            logIn(response.data);
+            navigate(appRoutes.chatPagePath());
+          });
+      } catch (error) {
+        if (error.isAxiosError && error.response.status === 401) {
+          setInvalidUserData(true);
+        } else {
+          toast.error(t('toast.networkError'));
+          rollbar.error('Login', error);
+        }
+      }
+    },
   });
 
   return (
@@ -76,14 +76,15 @@ const LoginForm = () => {
         <Form.Label htmlFor="password" className="form-label">
           {t('login.password')}
         </Form.Label>
-        <Form.Control.Feedback 
-          type="invalid" 
+        <Form.Control.Feedback
+          type="invalid"
           className="invalid-tooltip invalid-feedback"
-          tooltip={isInvalidUserData}>
+          tooltip={isInvalidUserData}
+        >
           {t('login.loginError')}
         </Form.Control.Feedback>
       </div>
-        <LoginButton title={t('login.loginTitle')} />
+      <LoginButton title={t('login.loginTitle')} />
     </Form>
   );
 };

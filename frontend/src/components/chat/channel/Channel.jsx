@@ -3,7 +3,7 @@ import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 import { ButtonGroup, Dropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { currentChannelSelector } from '../../../selectors/selectors';
+import { currentChannel } from '../../../selectors/selectors';
 import { openModalWindow, setCurrentModalType, setRelevantChannel } from '../../../slices/modalWindowSlice';
 
 import './style.css';
@@ -12,8 +12,8 @@ const Channel = ({ channel, onClick }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { id, name, removable } = channel;
-  const currentChannel = useSelector(currentChannelSelector);
-  const isActive = () => id === currentChannel?.id;
+  const currentChannelData = useSelector(currentChannel);
+  const isActive = () => id === currentChannelData?.id;
 
   const channelClasses = cn('w-100 rounded-0 text-start channel-button', {
     'current-channel': isActive(),

@@ -1,9 +1,9 @@
 import { toast } from 'react-toastify';
+import { useRollbar } from '@rollbar/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Modal } from 'react-bootstrap';
 import ModalButtton from '../buttons/ModalButtton';
-import { useRollbar } from '@rollbar/react';
 import { useChatApi } from '../../hooks/hooks';
 import { closeModalWindow, setCurrentModalType, setRelevantChannel } from '../../slices/modalWindowSlice';
 
@@ -36,7 +36,8 @@ const RemoveChannelModalWindow = () => {
     <Modal show={isModalWindowOpen}>
       <div className="modal-header">
         <div className="modal-title h4">{t('modal.removeChannel')}</div>
-        <button type="button" className="btn-close" aria-label="Close" onClick={handleCloseModalWindow}></button>
+        <button type="button" className="btn-close" aria-label="Close" onClick={handleCloseModalWindow}>
+        </button>
       </div>
 
       <div className="modal-body">
@@ -49,5 +50,5 @@ const RemoveChannelModalWindow = () => {
     </Modal>
   );
 };
- 
+
 export default RemoveChannelModalWindow;

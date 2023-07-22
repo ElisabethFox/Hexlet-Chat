@@ -9,12 +9,12 @@ const LoginFooter = () => {
     <div className="card-footer p-4">
       <div className="text-center">
         <span className="no-account">
-          {t('login.noAccount')} 
+          {t('login.noAccount')}
         </span>
         <NavLink to={appRoutes.signupPagePath()} className="link">
           {t('registration.registrationTitle')}
         </NavLink>
-        </div>
+      </div>
     </div>
   );
 };

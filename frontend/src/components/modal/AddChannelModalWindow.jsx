@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useChatApi } from '../../hooks/hooks';
 import { closeModalWindow, setCurrentModalType } from '../../slices/modalWindowSlice';
-import { channelsNamesSelector } from '../../selectors/selectors';
+import { channelsNames } from '../../selectors/selectors';
 import ModalButtton from '../buttons/ModalButtton';
 import channelNameSсhema from '../../validation/channelNameSсhema';
 
@@ -15,7 +15,7 @@ const AddChannelModalWindow = () => {
   const { t } = useTranslation();
   const rollbar = useRollbar();
   const dispatch = useDispatch();
-  const channelsNames = useSelector(channelsNamesSelector);
+  const channelsNamesList = useSelector(channelsNames);
   const { addNewChannel } = useChatApi();
   const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
 
@@ -25,8 +25,8 @@ const AddChannelModalWindow = () => {
   };
 
   const formik = useFormik({
-    initialValues: { name: "" },
-    validationSchema: channelNameSсhema(channelsNames, t('modal.channelNameLength'), t('modal.requaredField')),
+    initialValues: { name: '' },
+    validationSchema: channelNameSсhema(channelsNamesList, t('modal.channelNameLength'), t('modal.requaredField')),
     onSubmit: async (values) => {
       try {
         await addNewChannel(values);
@@ -40,10 +40,11 @@ const AddChannelModalWindow = () => {
   });
 
   return (
-    <Modal show={isModalWindowOpen} >
+    <Modal show={isModalWindowOpen}>
       <div className="modal-header">
         <div className="modal-title h4">{t('modal.createChannel')}</div>
-        <button type="button" className="btn-close" aria-label="Close" onClick={handleCloseModalWindow}></button>
+        <button type="button" className="btn-close" aria-label="Close" onClick={handleCloseModalWindow}>
+        </button>
       </div>
 
       <div className="modal-body">
@@ -77,5 +78,5 @@ const AddChannelModalWindow = () => {
     </Modal>
   );
 };
- 
+
 export default AddChannelModalWindow;

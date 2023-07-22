@@ -17,7 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   const AuthorizationRoute = ({ children }) => {
     const authorization = useAuthorization();
-    return authorization.userData ? children : <Navigate to={appRoutes.loginPagePath()} />
+    return authorization.userData ? children : <Navigate to={appRoutes.loginPagePath()} />;
   };
 
   return (
@@ -25,7 +25,7 @@ const App = () => {
       <NavBar />
       <Routes>
         <Route path={appRoutes.notFoundPagePath()} element={<NotFound />} />
-        <Route 
+        <Route
           path={appRoutes.chatPagePath()}
           element={(
             <AuthorizationRoute>

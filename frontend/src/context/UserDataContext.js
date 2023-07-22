@@ -3,7 +3,7 @@ import { createContext, useState } from 'react';
 export const UserDataContext = createContext({});
 
 const UserDataContextProvider = ({ children }) => {
-  const currentUser = JSON.parse(localStorage.getItem('user'));
+  const currentUser = JSON.parse(localStorage.getItem('user')) ?? null;
   const [userData, setUserData] = useState(currentUser);
 
   const logIn = (data) => {

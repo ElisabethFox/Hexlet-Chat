@@ -6,18 +6,18 @@ import { appRoutes } from '../../routes/routes';
 import './style.css';
 
 const NavBar = () => {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
-    return (
-        <nav className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
-            <div className="nav-container">
-                <NavLink to={appRoutes.chatPagePath()} className="navbar-brand">
-                    {t('navigation.chatName')}
-                </NavLink>
-                <LogoutButton title={t('navigation.exitBtn')} />
-            </div>
-        </nav>
-    );
+  return (
+    <nav className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
+      <div className="nav-container">
+        <NavLink to={appRoutes.chatPagePath()} className="navbar-brand">
+          {t('navigation.chatName')}
+        </NavLink>
+        <LogoutButton title={t('navigation.exitBtn')} />
+      </div>
+    </nav>
+  );
 };
 
 export default NavBar;

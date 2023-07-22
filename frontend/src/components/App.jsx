@@ -11,23 +11,13 @@ import NotFound from '../pages/NotFound';
 import NavBar from './navbar/NavBar';
 import Signup from '../pages/Signup';
 import { appRoutes } from '../routes/routes';
+import { useAuthorization } from '../hooks/hooks';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
-  const ChatPage = () => {
-    if (localStorage.getItem('user') === null) {
-      return <Navigate to={appRoutes.loginPagePath()} />;
-    }
-
-    return <Chat />;
-  };
-
-  const LoginPage = () => {
-    if (localStorage.getItem('user') !== null) {
-      return <Navigate to={appRoutes.chatPagePath()} />;
-    }
-
-    return <Login />;
+  const AuthorizationRoute = ({ children }) => {
+    const authorization = useAuthorization();
+    return authorization.userData ? children : <Navigate to={appRoutes.loginPagePath()} />
   };
 
   return (
@@ -35,8 +25,15 @@ const App = () => {
       <NavBar />
       <Routes>
         <Route path={appRoutes.notFoundPagePath()} element={<NotFound />} />
-        <Route path={appRoutes.chatPagePath()} element={<ChatPage />} />
-        <Route path={appRoutes.loginPagePath()} element={<LoginPage />} />
+        <Route 
+          path={appRoutes.chatPagePath()}
+          element={(
+            <AuthorizationRoute>
+              <Chat />
+            </AuthorizationRoute>
+          )}
+        />
+        <Route path={appRoutes.loginPagePath()} element={<Login />} />
         <Route path={appRoutes.signupPagePath()} element={<Signup />} />
       </Routes>
       <ToastContainer

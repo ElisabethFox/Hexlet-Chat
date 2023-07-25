@@ -16,3 +16,8 @@
 3. npm link
 4. make start
 ```
+
+<span style="color:#59afe1"> **Minimum system requirements:**</span>
+```
+Node.js 13.2.0 or higher
+```

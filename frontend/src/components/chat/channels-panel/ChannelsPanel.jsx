@@ -16,7 +16,7 @@ const ChannelsPanel = () => {
   const refChannels = useRef(null);
 
   useEffect(() => {
-    refChannels.current?.scrollIntoView({ block: "center", behavior: "smooth" })
+    refChannels.current?.lastElementChild?.scrollIntoView({ block: 'center', behavior: 'smooth' });
   }, [channels]);
 
   const handleSetCurrentChannel = (id) => {

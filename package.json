@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/ElisabethFox/frontend-project-12/workflows/hexlet-check/badge.svg)](https://github.com/ElisabethFox/frontend-project-12/actions)",
+  "description": "Hexlet-Chat is a real-time messaging application. It includes registration, authorization, error page and chat page itself.",
   "main": "index.js",
   "scripts": {
     "build": "npm run build --prefix frontend",

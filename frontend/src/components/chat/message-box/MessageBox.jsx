@@ -7,7 +7,7 @@ const MessageBox = ({ currentChannelMessages }) => {
   const refMessages = useRef(null);
 
   useEffect(() => {
-    refMessages.current?.lastElementChild?.scrollIntoView({ block: "center", behavior: "smooth" })
+    refMessages.current?.lastElementChild?.scrollIntoView({ block: 'center', behavior: 'smooth' });
   }, [currentChannelMessages]);
 
   return (

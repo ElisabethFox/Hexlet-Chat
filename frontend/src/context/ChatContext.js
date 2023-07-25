@@ -41,13 +41,14 @@ const ChatContextProvider = ({ socket, children }) => {
   const addNewMessage = async (message) => {
     await socket
       .timeout(timeout)
-      .emit('newMessage', { ...message });
+      .emit('newMessage', message);
+
   };
 
   const addNewChannel = async (channel) => {
     const { data } = await socket
       .timeout(timeout)
-      .emitWithAck('newChannel', { ...channel });
+      .emitWithAck('newChannel', channel);
 
     dispatch(addChannel(data));
     dispatch(setCurrentChannel(data.id));

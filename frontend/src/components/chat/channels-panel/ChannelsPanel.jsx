@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { useEffect, useRef } from 'react';
 import { BiMessageSquareAdd } from 'react-icons/bi';
 import Channel from '../channel/Channel';
 import { channelsSelector } from '../../../selectors/selectors';
@@ -12,6 +13,11 @@ const ChannelsPanel = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const channels = useSelector(channelsSelector.selectAll);
+  const refChannels = useRef(null);
+
+  useEffect(() => {
+    refChannels.current?.scrollIntoView({ block: "center", behavior: "smooth" })
+  }, [channels]);
 
   const handleSetCurrentChannel = (id) => {
     dispatch(setCurrentChannel(id));
@@ -31,7 +37,7 @@ const ChannelsPanel = () => {
           <span className="visually-hidden">{t('channel.addBtn')}</span>
         </button>
       </div>
-      <ul id="channels-box" className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
+      <ul ref={refChannels} id="channels-box" className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
         {channels.map((channel) => (
           <Channel
             channel={channel}

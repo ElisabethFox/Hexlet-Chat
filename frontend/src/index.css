@@ -1,4 +1,5 @@
 @import 'bootstrap';
+@import '../src/components/buttons/style.css';
 
 :root {
   --lilac-dark: #BA68C8;

@@ -43,7 +43,7 @@ const RemoveChannelModalWindow = () => {
         <p className="lead">{t('modal.sure')}</p>
         <div className="d-flex justify-content-end">
           <ModalButtton title={t('modal.cancelBtn')} onClick={handleCloseModalWindow} />
-          <button type="button" className="btn btn-danger w-40 modal-button" onClick={() => handleRemoveChannel(relevantChannelId)}>
+          <button type="button" className="btn btn-danger w-40" onClick={() => handleRemoveChannel(relevantChannelId)}>
             {t('modal.removeBtn')}
           </button>
         </div>

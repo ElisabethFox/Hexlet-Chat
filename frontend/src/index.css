@@ -64,3 +64,10 @@ code {
   border-color: var(--lilac-light);
   box-shadow: 2px 2px 5px 0 var(--lilac-middle);
 }
+
+.btn-danger {
+  padding: 5px 8px;
+  margin: 15px 5px 0;
+
+  border-radius: 5px;
+}

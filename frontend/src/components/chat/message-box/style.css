@@ -1,0 +1,4 @@
+#messages-box {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}

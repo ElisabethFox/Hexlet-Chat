@@ -24,7 +24,7 @@ const App = () => {
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route path={appRoutes.notFoundPagePath()} element={<NotFound />} />
+        <Route path='*' element={<NotFound />} />
         <Route
           path={appRoutes.chatPagePath()}
           element={(

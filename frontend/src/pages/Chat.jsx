@@ -6,7 +6,7 @@ import { messagesSelector, currentChannel } from '../selectors/selectors';
 import ChannelsPanel from '../components/chat/channels-panel/ChannelsPanel';
 import ChatPanel from '../components/chat/chat-panel/ChatPanel';
 import ModalWindow from '../components/modal/ModalWindow';
-import MessageBox from '../components/chat/MessageBox';
+import MessageBox from '../components/chat/message-box/MessageBox';
 import MessageForm from '../components/chat/MessageForm';
 
 const Chat = () => {

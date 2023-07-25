@@ -1,4 +1,6 @@
-import Message from './message/Message';
+import Message from '../message/Message';
+
+import './style.css';
 
 const MessageBox = ({ currentChannelMessages }) => (
   <div id="messages-box" className="chat-messages overflow-auto px-5">

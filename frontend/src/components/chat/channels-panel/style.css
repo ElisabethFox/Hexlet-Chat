@@ -1,3 +1,8 @@
+#channels-box {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
 .add-icon {
     padding: 0;
     margin: 0;

@@ -10,6 +10,7 @@ import UserDataContextProvider from './context/UserDataContext';
 import store from './slices';
 import App from './components/App';
 import resources from './locales/index.js';
+import { appRoutes } from './routes/routes';
 
 const defaultLanguage = 'ru';
 
@@ -27,7 +28,7 @@ const init = async () => {
       },
     });
 
-  const socket = io('/', { autoConnect: false });
+  const socket = io(appRoutes.chatPagePath(), { autoConnect: false });
 
   const profanityFilter = LeoProfanity;
   profanityFilter.add(profanityFilter.getDictionary(defaultLanguage));

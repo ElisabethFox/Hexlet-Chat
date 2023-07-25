@@ -9,7 +9,6 @@ const chatContextRoutes = {
 const appRoutes = {
   chatPagePath: () => '/',
   loginPagePath: () => '/login',
-  notFoundPagePath: () => '*',
   signupPagePath: () => '/signup',
 };
 

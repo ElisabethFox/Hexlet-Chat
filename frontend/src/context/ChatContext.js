@@ -42,7 +42,6 @@ const ChatContextProvider = ({ socket, children }) => {
     await socket
       .timeout(timeout)
       .emit('newMessage', message);
-
   };
 
   const addNewChannel = async (channel) => {

@@ -1,6 +1,10 @@
 import * as Yup from 'yup';
 
-const channelNameSсhema = (channelsNames, channelNameLength, requaredField, uniqueNameError) => Yup.object().shape({
+const channelNameSсhema = (
+  channelsNames,
+  channelNameLength,
+  requaredField,
+  uniqueNameError) => Yup.object().shape({
   name: Yup
     .string()
     .trim()

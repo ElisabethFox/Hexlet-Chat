@@ -1,4 +1,5 @@
 [![Actions Status](https://github.com/ElisabethFox/frontend-project-12/workflows/hexlet-check/badge.svg)](https://github.com/ElisabethFox/frontend-project-12/actions)
+[![ESLint](https://github.com/ElisabethFox/frontend-project-12/actions/workflows/eslint.yml/badge.svg)](https://github.com/ElisabethFox/frontend-project-12/actions/workflows/eslint.yml)
 
 **Hexlet-Chat** is a real-time messaging application.
 

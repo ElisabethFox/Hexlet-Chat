@@ -4,7 +4,7 @@ const channelNameSсhema = (
   channelsNames,
   channelNameLength,
   requaredField,
-  uniqueNameError
+  uniqueNameError,
 ) => Yup.object().shape({
   name: Yup
     .string()

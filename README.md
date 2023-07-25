@@ -6,7 +6,7 @@
 ![RSS-img](./img/banner.jpg)
 
 **About it.** This application includes registration, authorization, error page and chat page itself. Each user has two basic channels and can create, rename and delete their own channels. All registered users can exchange messages, but bad words will be censored.
-<code>[Let's try it!](https://frontend-project-12-production-02f1.up.railway.app/)</code> 
+<code>[Let's try it!](https://frontend-project-12-production-02f1.up.railway.app/login)</code> 
 
 ![RSS-img](./img/demo.png)
 

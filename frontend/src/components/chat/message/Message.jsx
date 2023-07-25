@@ -1,10 +1,18 @@
+import cn from 'classnames';
+import { useAuthorization } from '../../../hooks/hooks';
+
 import './style.css';
 
 const Message = ({ message }) => {
+  const { getUserName } = useAuthorization();
   const { username, text } = message;
 
+  const messageClasses = cn('text-break mb-2 message', {
+    'another-user-message': (getUserName() !== message.username),
+  });
+  
   return (
-    <div className="text-break mb-2 message">
+    <div className={messageClasses}>
       <b>{username}</b>
       :
       {' '}

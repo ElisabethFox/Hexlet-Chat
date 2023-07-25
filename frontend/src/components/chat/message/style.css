@@ -1,13 +1,26 @@
 .message {
-    display: block;
-    width: fit-content;
-    padding: 5px 10px;
+  display: block;
+  width: fit-content;
+  padding: 5px 10px;
   
-    border-radius: 7px;
-    background-color: var(--lilac-super-light);
-    color: var(--grey-light);
-  }
+  border: 1px solid var(--lilac-middle);
+  border-radius: 7px 7px 7px 0px;
+  background-color: var(--lilac-super-light);
+  color: var(--grey-light);
+}
   
-  .message>b {
-    color: var(--grey-middle);
-  }
+.message>b {
+  color: var(--grey-middle);
+}
+
+.another-user-message {
+  display: block;
+  width: fit-content;
+  padding: 5px 10px;
+  margin-left: auto;
+
+  border: 1px solid var(--white-grey-dark);
+  border-radius: 7px 7px 0% 7px;
+  background-color: var(--white-grey-light);
+  color: var(--grey-light);
+}

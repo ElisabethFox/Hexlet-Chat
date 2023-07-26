@@ -1,4 +1,5 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import fetchInitialData from '../context/InitialDataThunk';
 
 const messagesAdapter = createEntityAdapter();
 const initialState = messagesAdapter.getInitialState();
@@ -9,6 +10,11 @@ const messageSlice = createSlice({
   reducers: {
     addMessage: messagesAdapter.addOne,
     addMessages: messagesAdapter.addMany,
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchInitialData.fulfilled, (state, { payload }) => {
+      messagesAdapter.setAll(state, payload.messages);
+    })
   },
 });
 

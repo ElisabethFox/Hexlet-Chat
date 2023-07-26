@@ -28,7 +28,7 @@ const Channel = ({ channel, onClick }) => {
       refChannels?.current?.lastElementChild?.scrollIntoView({ block: 'center', behavior: 'smooth' });
     }
     return;
-  }, [channels.length, offsetHeight, scrollHeight]);
+  }, [channels, offsetHeight, scrollHeight]);
 
   const channelClasses = cn('w-100 rounded-0 text-start channel-button', {
     'current-channel': isActive(),

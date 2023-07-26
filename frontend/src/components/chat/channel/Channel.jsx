@@ -15,20 +15,23 @@ const Channel = ({ channel, onClick }) => {
   const dispatch = useDispatch();
   const refChannels = useRef(null);
   const channels = useSelector(channelsSelector.selectAll);
-  console.log(channels)
+  const last = channels[channels.length - 1];
+  console.log(last)
   const { id, name, removable } = channel;
   const currentChannelData = useSelector(currentChannel);
   const isActive = () => id === currentChannelData?.id;
 
   const offsetHeight = document.getElementById('channels-box')?.offsetHeight;
   const scrollHeight = document.getElementById('channels-box')?.scrollHeight;
+  console.log(offsetHeight)
+  console.log(scrollHeight)
 
   useEffect(() => {
     if (offsetHeight < scrollHeight) {
       refChannels?.current?.lastElementChild?.scrollIntoView({ block: 'center', behavior: 'smooth' });
     }
     return;
-  }, [channels, offsetHeight, scrollHeight]);
+  }, [last]);
 
   const channelClasses = cn('w-100 rounded-0 text-start channel-button', {
     'current-channel': isActive(),

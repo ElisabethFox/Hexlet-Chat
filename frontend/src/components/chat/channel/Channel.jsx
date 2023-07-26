@@ -1,9 +1,11 @@
 import cn from 'classnames';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 import { ButtonGroup, Dropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { currentChannel } from '../../../selectors/selectors';
+import { currentChannel, channelsSelector } from '../../../selectors/selectors';
 import { openModalWindow, setCurrentModalType, setRelevantChannel } from '../../../slices/modalWindowSlice';
 
 import './style.css';
@@ -11,9 +13,21 @@ import './style.css';
 const Channel = ({ channel, onClick }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const refChannels = useRef(null);
+  const channels = useSelector(channelsSelector.selectAll);
   const { id, name, removable } = channel;
   const currentChannelData = useSelector(currentChannel);
   const isActive = () => id === currentChannelData?.id;
+
+  const offsetHeight = document.getElementById('channels-box')?.offsetHeight;
+  const scrollHeight = document.getElementById('channels-box')?.scrollHeight;
+
+  useEffect(() => {
+    if (scrollHeight > offsetHeight) {
+      refChannels?.current?.lastElementChild?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }
+    return;
+  }, [channels, offsetHeight, scrollHeight]);
 
   const channelClasses = cn('w-100 rounded-0 text-start channel-button', {
     'current-channel': isActive(),
@@ -37,7 +51,7 @@ const Channel = ({ channel, onClick }) => {
 
   if (!removable) {
     return (
-      <li className="nav-item channel">
+      <li ref={refChannels} className="nav-item channel">
         <button type="button" className={channelClasses} onClick={onClick}>
           <span className="me-1">{t('channel.prefix')}</span>
           {name}
@@ -47,7 +61,7 @@ const Channel = ({ channel, onClick }) => {
   }
 
   return (
-    <li className="nav-item channel">
+    <li ref={refChannels} className="nav-item channel">
       <Dropdown className="d-flex dropdown btn-group" as={ButtonGroup}>
         <button type="button" className={channelClasses} onClick={onClick}>
           <span className="me-1">{t('channel.prefix')}</span>

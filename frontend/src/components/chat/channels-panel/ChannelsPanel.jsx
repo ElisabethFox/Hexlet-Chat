@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useEffect, useRef } from 'react';
 import { BiMessageSquareAdd } from 'react-icons/bi';
 import Channel from '../channel/Channel';
-import { channelsSelector } from '../../../selectors/selectors';
+import { channelsSelector, currentChannel } from '../../../selectors/selectors';
 import { setCurrentChannel } from '../../../slices/channelsSlice';
 import { openModalWindow, setCurrentModalType } from '../../../slices/modalWindowSlice';
 
@@ -13,11 +13,20 @@ const ChannelsPanel = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const channels = useSelector(channelsSelector.selectAll);
+  const currentChannelData = useSelector(currentChannel);
+  const currentChannelId = currentChannelData?.id;
   const refChannels = useRef(null);
 
-  useEffect(() => {
-    refChannels.current?.lastElementChild?.scrollIntoView({ block: 'center', behavior: 'smooth' });
-  }, [channels]);
+  // const offsetHeight = document.getElementById('channels-box')?.offsetHeight;
+  // const scrollHeight = document.getElementById('channels-box')?.scrollHeight;
+
+  // useEffect(() => {
+  //   if (scrollHeight > offsetHeight) {
+  //     refChannels?.current?.lastElementChild?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  //   }
+
+  //   return;
+  // }, [channels, currentChannelId, offsetHeight, scrollHeight]);
 
   const handleSetCurrentChannel = (id) => {
     dispatch(setCurrentChannel(id));

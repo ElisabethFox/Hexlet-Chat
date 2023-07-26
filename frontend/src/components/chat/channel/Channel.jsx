@@ -15,6 +15,7 @@ const Channel = ({ channel, onClick }) => {
   const dispatch = useDispatch();
   const refChannels = useRef(null);
   const channels = useSelector(channelsSelector.selectAll);
+  console.log(channels)
   const { id, name, removable } = channel;
   const currentChannelData = useSelector(currentChannel);
   const isActive = () => id === currentChannelData?.id;
@@ -23,11 +24,11 @@ const Channel = ({ channel, onClick }) => {
   const scrollHeight = document.getElementById('channels-box')?.scrollHeight;
 
   useEffect(() => {
-    if (scrollHeight > offsetHeight) {
+    if (offsetHeight < scrollHeight) {
       refChannels?.current?.lastElementChild?.scrollIntoView({ block: 'center', behavior: 'smooth' });
     }
     return;
-  }, [channels, offsetHeight, scrollHeight]);
+  }, [channels.length, offsetHeight, scrollHeight]);
 
   const channelClasses = cn('w-100 rounded-0 text-start channel-button', {
     'current-channel': isActive(),
@@ -51,7 +52,7 @@ const Channel = ({ channel, onClick }) => {
 
   if (!removable) {
     return (
-      <li ref={refChannels} className="nav-item channel">
+      <li className="nav-item channel">
         <button type="button" className={channelClasses} onClick={onClick}>
           <span className="me-1">{t('channel.prefix')}</span>
           {name}

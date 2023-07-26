@@ -13,9 +13,9 @@ const ChannelsPanel = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const channels = useSelector(channelsSelector.selectAll);
-  const currentChannelData = useSelector(currentChannel);
-  const currentChannelId = currentChannelData?.id;
-  const refChannels = useRef(null);
+  // const currentChannelData = useSelector(currentChannel);
+  // const currentChannelId = currentChannelData?.id;
+  // const refChannels = useRef(null);
 
   // const offsetHeight = document.getElementById('channels-box')?.offsetHeight;
   // const scrollHeight = document.getElementById('channels-box')?.scrollHeight;
@@ -46,7 +46,7 @@ const ChannelsPanel = () => {
           <span className="visually-hidden">{t('channel.addBtn')}</span>
         </button>
       </div>
-      <ul ref={refChannels} id="channels-box" className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
+      <ul id="channels-box" className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
         {channels.map((channel) => (
           <Channel
             channel={channel}

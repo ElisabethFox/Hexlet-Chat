@@ -15,23 +15,24 @@ const Channel = ({ channel, onClick }) => {
   const dispatch = useDispatch();
   const refChannels = useRef(null);
   const channels = useSelector(channelsSelector.selectAll);
-  const last = channels[channels.length - 1];
-  console.log(last)
   const { id, name, removable } = channel;
   const currentChannelData = useSelector(currentChannel);
+  const currentChannelId = currentChannelData?.id
   const isActive = () => id === currentChannelData?.id;
+
 
   const offsetHeight = document.getElementById('channels-box')?.offsetHeight;
   const scrollHeight = document.getElementById('channels-box')?.scrollHeight;
-  console.log(offsetHeight)
-  console.log(scrollHeight)
+
+  console.log(refChannels?.current?.id)
+  console.log(refChannels?.current)
 
   useEffect(() => {
     if (offsetHeight < scrollHeight) {
-      refChannels?.current?.lastElementChild?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      refChannels?.current?.scrollIntoView({ block: 'center', behavior: 'smooth' });
     }
     return;
-  }, [last]);
+  }, [channels]);
 
   const channelClasses = cn('w-100 rounded-0 text-start channel-button', {
     'current-channel': isActive(),
@@ -55,7 +56,7 @@ const Channel = ({ channel, onClick }) => {
 
   if (!removable) {
     return (
-      <li className="nav-item channel">
+      <li ref={refChannels} className="nav-item channel" id={channel.id}>
         <button type="button" className={channelClasses} onClick={onClick}>
           <span className="me-1">{t('channel.prefix')}</span>
           {name}
@@ -65,7 +66,7 @@ const Channel = ({ channel, onClick }) => {
   }
 
   return (
-    <li ref={refChannels} className="nav-item channel">
+    <li ref={refChannels} className="nav-item channel" id={channel.id}>
       <Dropdown className="d-flex dropdown btn-group" as={ButtonGroup}>
         <button type="button" className={channelClasses} onClick={onClick}>
           <span className="me-1">{t('channel.prefix')}</span>

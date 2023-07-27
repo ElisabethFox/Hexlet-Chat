@@ -13,21 +13,21 @@ const ChannelsPanel = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const channels = useSelector(channelsSelector.selectAll);
-  const currentChannelData = useSelector(currentChannel);
-  const currentChannelId = currentChannelData?.id;
-  const refChannels = useRef({});
-  //console.log(refChannels)
+  const refChannels = useRef();
 
-  // const offsetHeight = document.getElementById('channels-box')?.offsetHeight;
-  // const scrollHeight = document.getElementById('channels-box')?.scrollHeight;
+  const offsetHeight = document.querySelector('#channels-box')?.offsetHeight;
+  const scrollHeight = document.querySelector('#channels-box')?.scrollHeight;
+  const channelOffsetHeight = document.querySelector('.current-channel')?.offsetHeight;
 
-  // useEffect(() => {
-  //   if (scrollHeight > offsetHeight) {
-  //     refChannels?.current?.scrollIntoView({ block: 'center', behavior: 'smooth' });
-  //   }
+  const currentChannelId = useSelector(currentChannel)?.id;
+  const currentChannelIndex = channels.findIndex((channel) => channel?.id === currentChannelId);
+  const currentChannelScrollHeight = currentChannelIndex * channelOffsetHeight;
 
-  //   return;
-  // }, [channels, currentChannelId, offsetHeight, scrollHeight]);
+  useEffect(() => {
+    if (offsetHeight < scrollHeight) {
+      refChannels?.current?.scrollTo(0, currentChannelScrollHeight);
+    }
+  }, [channels]);
 
   const handleSetCurrentChannel = (id) => {
     dispatch(setCurrentChannel(id));

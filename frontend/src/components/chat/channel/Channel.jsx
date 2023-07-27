@@ -1,11 +1,10 @@
 import cn from 'classnames';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
-import { useEffect } from 'react';
 import { useRef } from 'react';
 import { ButtonGroup, Dropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { currentChannel, channelsSelector } from '../../../selectors/selectors';
+import { currentChannel } from '../../../selectors/selectors';
 import { openModalWindow, setCurrentModalType, setRelevantChannel } from '../../../slices/modalWindowSlice';
 
 import './style.css';
@@ -14,25 +13,9 @@ const Channel = ({ channel, onClick }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const refChannels = useRef(null);
-  const channels = useSelector(channelsSelector.selectAll);
   const { id, name, removable } = channel;
   const currentChannelData = useSelector(currentChannel);
-  const currentChannelId = currentChannelData?.id
   const isActive = () => id === currentChannelData?.id;
-
-
-  const offsetHeight = document.getElementById('channels-box')?.offsetHeight;
-  const scrollHeight = document.getElementById('channels-box')?.scrollHeight;
-
-  console.log(refChannels?.current?.id)
-  console.log(refChannels?.current)
-
-  useEffect(() => {
-    if (offsetHeight < scrollHeight) {
-      refChannels?.current?.scrollIntoView({ block: 'center', behavior: 'smooth' });
-    }
-    return;
-  }, [channels]);
 
   const channelClasses = cn('w-100 rounded-0 text-start channel-button', {
     'current-channel': isActive(),
@@ -66,7 +49,7 @@ const Channel = ({ channel, onClick }) => {
   }
 
   return (
-    <li ref={refChannels} className="nav-item channel" id={channel.id}>
+    <li className="nav-item channel" id={channel.id}>
       <Dropdown className="d-flex dropdown btn-group" as={ButtonGroup}>
         <button type="button" className={channelClasses} onClick={onClick}>
           <span className="me-1">{t('channel.prefix')}</span>

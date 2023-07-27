@@ -15,6 +15,7 @@ const NotFound = () => {
       <p className="text-muted">
         <span className="to-main">
           {t('notFound.youCanGo')}
+          {' '}
         </span>
         <NavLink to={appRoutes.chatPagePath()} className="link">
           {t('notFound.toMainPage')}

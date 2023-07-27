@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useRef } from 'react';
@@ -13,12 +14,15 @@ const ChannelsPanel = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const channels = useSelector(channelsSelector.selectAll);
-  const refChannels = useRef();
+  const refChannels = useRef(null);
 
-  const offsetHeight = document.querySelector('#channels-box')?.offsetHeight;
-  const scrollHeight = document.querySelector('#channels-box')?.scrollHeight;
+  const offsetHeight = refChannels?.current?.offsetHeight;
+  const scrollHeight = refChannels?.current?.scrollHeight;
   const channelOffsetHeight = document.querySelector('.current-channel')?.offsetHeight;
 
+  /* Вычисляем высоту, на которую нам нужно доскроллить до текущего элемента - таким образом 
+  скролл будет работать и при удалении, и при добавлении. Скроллим именно до текущего канала, 
+  а не просто до низа */
   const currentChannelId = useSelector(currentChannel)?.id;
   const currentChannelIndex = channels.findIndex((channel) => channel?.id === currentChannelId);
   const currentChannelScrollHeight = currentChannelIndex * channelOffsetHeight;

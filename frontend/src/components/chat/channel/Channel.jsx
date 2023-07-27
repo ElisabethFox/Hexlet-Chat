@@ -1,6 +1,5 @@
 import cn from 'classnames';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
-import { useRef } from 'react';
 import { ButtonGroup, Dropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -12,7 +11,6 @@ import './style.css';
 const Channel = ({ channel, onClick }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const refChannels = useRef(null);
   const { id, name, removable } = channel;
   const currentChannelData = useSelector(currentChannel);
   const isActive = () => id === currentChannelData?.id;
@@ -39,7 +37,7 @@ const Channel = ({ channel, onClick }) => {
 
   if (!removable) {
     return (
-      <li ref={refChannels} className="nav-item channel" id={channel.id}>
+      <li className="nav-item channel" id={channel.id}>
         <button type="button" className={channelClasses} onClick={onClick}>
           <span className="me-1">{t('channel.prefix')}</span>
           {name}

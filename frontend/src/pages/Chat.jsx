@@ -1,6 +1,9 @@
+import { toast } from 'react-toastify';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
-import { useChatApi } from '../hooks';
+import { useRollbar } from '@rollbar/react';
+import { useAuthorization, useChatApi } from '../hooks';
 import fetchInitialData from '../context/InitialDataThunk';
 import { messagesSelector, currentChannel } from '../selectors/selectors';
 import ChannelsPanel from '../components/chat/channels-panel/ChannelsPanel';
@@ -9,9 +12,13 @@ import ModalWindow from '../components/modal/ModalWindow';
 import MessageBox from '../components/chat/message-box/MessageBox';
 import MessageForm from '../components/chat/MessageForm';
 
+
 const Chat = () => {
+  const { t } = useTranslation();
+  const rollbar = useRollbar();
   const dispatch = useDispatch();
   const { connectSocket, disconnectSocket, getServerData } = useChatApi();
+  const { logOut } = useAuthorization();
   const messages = useSelector(messagesSelector.selectAll);
   const currentChannelData = useSelector(currentChannel);
   const currentChannelName = currentChannelData?.name;
@@ -19,6 +26,8 @@ const Chat = () => {
     (message) => message.сhannelId === currentChannelData?.id,
   );
   const currentChannelMessagesCount = currentChannelMessages.length;
+  const loadingStatus = useSelector((state) => state?.loading?.serverData);
+  console.log(loadingStatus)
 
   useEffect(() => {
     dispatch(fetchInitialData(getServerData));
@@ -28,6 +37,22 @@ const Chat = () => {
       disconnectSocket();
     };
   }, [connectSocket, disconnectSocket, dispatch, getServerData]);
+
+  useEffect(() => {
+    if (loadingStatus === 'failed') {
+      logOut();
+      toast.error(t('toast.networkError'));
+      rollbar.error('ChatFailed');
+      return;
+    }
+
+    if (loadingStatus === 'authError') {
+      logOut();
+      toast.error(t('toast.authError'));
+      rollbar.error('AuthFailed');
+      return;
+    }
+  }, [loadingStatus]);
 
   return (
     <div className="container h-100 my-4 overflow-hidden rounded shadow">

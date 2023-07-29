@@ -5,7 +5,7 @@ import fetchInitialData from '../context/InitialDataThunk';
 const channelsAdapter = createEntityAdapter();
 const defaultCurrentChannelId = 1;
 const initialState = channelsAdapter.getInitialState({
-  currentChannelId: defaultCurrentChannelId,
+  currentChannelId: defaultCurrentChannelId
 });
 
 const channelSlice = createSlice({
@@ -25,10 +25,12 @@ const channelSlice = createSlice({
     renameChannel: channelsAdapter.updateOne,
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchInitialData.fulfilled, (state, { payload }) => {
-      channelsAdapter.setAll(state, payload.channels);
-      state.currentChannelId = payload.currentChannelId;
-    });
+    builder
+      .addCase(fetchInitialData.fulfilled, (state, { payload }) => {
+        channelsAdapter.setAll(state, payload.channels);
+        state.currentChannelId = payload.currentChannelId;
+        state.loading = false;
+      });
   },
 });
 

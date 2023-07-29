@@ -58,7 +58,6 @@ const AddChannelModalWindow = () => {
               className="p-2 ps-2 form-control"
               onChange={formik.handleChange}
               isInvalid={(formik.errors.name && formik.touched.name)}
-              disabled={formik.isSubmitting}
             />
             <Form.Label htmlFor="name" className="form-label visually-hidden">
               {t('modal.channelNameInput')}

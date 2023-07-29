@@ -2,9 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const fetchInitialData = createAsyncThunk(
   'fetchInitialData',
-  async (getChannelsData, { rejectWithValue }) => {
+  async (getServerData, { rejectWithValue }) => {
     try {
-      const { data } = await getChannelsData();
+      const { data } = await getServerData();
       return data;
     } catch (error) {
       if (error.isAxiosError) {

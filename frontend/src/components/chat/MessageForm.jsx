@@ -1,15 +1,14 @@
 import leoProfanity from 'leo-profanity';
 import { BiMessageSquareDetail } from 'react-icons/bi';
-
 import Form from 'react-bootstrap/Form';
 import { useFormik } from 'formik';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useRollbar } from '@rollbar/react';
 import { toast } from 'react-toastify';
+import { useEffect, useRef } from 'react';
 import { useAuthorization, useChatApi } from '../../hooks';
 import { currentChannel } from '../../selectors/selectors';
-
 import messageSchema from '../../validation/messageSchema';
 
 const MessageForm = () => {
@@ -18,19 +17,25 @@ const MessageForm = () => {
   const { addNewMessage } = useChatApi();
   const { getUserName } = useAuthorization();
   const currentChannelData = useSelector(currentChannel);
+  const refInput = useRef(null);
+  
+  useEffect(() => {
+    refInput?.current?.focus();
+  }, [currentChannelData]);
 
   const formik = useFormik({
     initialValues: { text: '', username: getUserName() },
     validationSchema: messageSchema(t('message.requaredField')),
-    onSubmit: ({ text, username }, { resetForm }) => {
+    onSubmit: async ({ text, username }) => {
       try {
         const message = {
           username,
           text: leoProfanity.clean(text),
           сhannelId: currentChannelData?.id,
         };
-        addNewMessage(message);
-        resetForm();
+        await addNewMessage(message);
+        formik.resetForm();
+        refInput?.current?.focus();
       } catch (error) {
         toast.error(t('toast.networkError'));
         rollbar.error('MessageSending', error);
@@ -43,7 +48,7 @@ const MessageForm = () => {
       <Form onSubmit={formik.handleSubmit} className="py-1 rounded-2">
         <div className="input-group has-validation">
           <Form.Control
-            autoFocus
+            ref={refInput}
             id="text"
             name="text"
             aria-label={t('message.newMessage')}
@@ -51,7 +56,6 @@ const MessageForm = () => {
             placeholder={t('message.messageInput')}
             onChange={formik.handleChange}
             value={formik.values.text}
-            disabled={formik.isSubmitting}
           />
           <button
             type="submit"

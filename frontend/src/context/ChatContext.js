@@ -1,17 +1,37 @@
 import axios from 'axios';
 import { createContext } from 'react';
 import { useDispatch } from 'react-redux';
+import { addMessage } from '../slices/messagesSlice';
 import {
   addChannel,
   setCurrentChannel,
+  removeChannel,
+  renameChannel,
 } from '../slices/channelsSlice';
 import { chatContextRoutes } from '../routes/routes';
 
 export const ChatContext = createContext({});
 
-const ChatContextProvider = ({ socket, socketApi, children }) => {
+const ChatContextProvider = ({ socket, children }) => {
   const dispatch = useDispatch();
   const timeout = 4000;
+
+  const connectSocket = () => {
+    socket.connect();
+
+    socket.on('newMessage', (message) => {
+      dispatch(addMessage(message));
+    });
+    socket.on('newChannel', (channel) => {
+      dispatch(addChannel(channel));
+    });
+    socket.on('removeChannel', (channel) => {
+      dispatch(removeChannel(channel.id));
+    });
+    socket.on('renameChannel', (channel) => {
+      dispatch(renameChannel({ id: channel.id, changes: { name: channel.name } }));
+    });
+  };
 
   const disconnectSocket = () => {
     socket.off();
@@ -45,7 +65,7 @@ const ChatContextProvider = ({ socket, socketApi, children }) => {
       .emit('renameChannel', updateChannel);
   };
 
-  const getChannelsData = async () => {
+  const getServerData = async () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const response = await axios.get(chatContextRoutes.data(), { headers: { Authorization: `Bearer ${user.token}` } });
     return response;
@@ -53,13 +73,13 @@ const ChatContextProvider = ({ socket, socketApi, children }) => {
 
   return (
     <ChatContext.Provider value={{
-      // connectSocket,
+      connectSocket,
       disconnectSocket,
       addNewMessage,
       addNewChannel,
       removeSelectedChannel,
       renameSelectedChannel,
-      getChannelsData,
+      getServerData,
     }}
     >
       {children}

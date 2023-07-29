@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Modal } from 'react-bootstrap';
 import ModalButtton from '../buttons/ModalButtton';
-import { useChatApi } from '../../hooks/hooks';
+import { useChatApi } from '../../hooks';
 import { closeModalWindow, setCurrentModalType, setRelevantChannel } from '../../slices/modalWindowSlice';
 
 const RemoveChannelModalWindow = () => {

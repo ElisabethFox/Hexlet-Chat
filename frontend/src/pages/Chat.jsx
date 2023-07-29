@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useChatApi } from '../hooks/hooks';
+import { useChatApi } from '../hooks';
 import fetchInitialData from '../context/InitialDataThunk';
 import { messagesSelector, currentChannel } from '../selectors/selectors';
 import ChannelsPanel from '../components/chat/channels-panel/ChannelsPanel';

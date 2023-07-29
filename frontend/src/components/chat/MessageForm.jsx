@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useRollbar } from '@rollbar/react';
 import { toast } from 'react-toastify';
-import { useAuthorization, useChatApi } from '../../hooks/hooks';
+import { useAuthorization, useChatApi } from '../../hooks';
 import { currentChannel } from '../../selectors/selectors';
 
 import messageSchema from '../../validation/messageSchema';

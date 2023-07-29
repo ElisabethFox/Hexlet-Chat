@@ -6,8 +6,7 @@ import React, { useState } from 'react';
 import { useRollbar } from '@rollbar/react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAuthorization } from '../../hooks/hooks';
-import Title from '../title/Title';
+import { useAuthorization } from '../../hooks';
 import LoginButton from '../buttons/LoginButton';
 import { chatContextRoutes, appRoutes } from '../../routes/routes';
 import loginSchema from '../../validation/loginSchema';
@@ -44,7 +43,7 @@ const LoginForm = () => {
 
   return (
     <Form onSubmit={formik.handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
-      <Title title={t('login.loginButton')} />
+      <h1 className="title text-center mb-4">{t('login.loginButton')}</h1>
       <div className="form-floating mb-3">
         <Form.Control
           id="username"

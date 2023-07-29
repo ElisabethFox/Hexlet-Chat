@@ -5,7 +5,7 @@ import { Modal } from 'react-bootstrap';
 import { useRollbar } from '@rollbar/react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { useChatApi } from '../../hooks/hooks';
+import { useChatApi } from '../../hooks';
 import { closeModalWindow, setCurrentModalType } from '../../slices/modalWindowSlice';
 import { channelsNames } from '../../selectors/selectors';
 import ModalButtton from '../buttons/ModalButtton';

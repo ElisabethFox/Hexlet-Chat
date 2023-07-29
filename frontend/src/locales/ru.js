@@ -58,7 +58,7 @@ const ru = {
     notFound: {
       pageNotFound: 'Страница не найдена',
       youCanGo: 'Но вы можете перейти',
-      toMainPage: 'На главную страницу',
+      toMainPage: 'на главную страницу',
     },
     toast: {
       channelCreation: 'Канал создан',

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useAuthorization } from '../../hooks/hooks';
+import { useAuthorization } from '../../hooks';
 import { appRoutes } from '../../routes/routes';
 
 const LogoutButton = ({ title }) => {

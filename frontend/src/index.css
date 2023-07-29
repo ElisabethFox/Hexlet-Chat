@@ -52,6 +52,11 @@ code {
   margin-right: 10px;
 }
 
+.title {
+  color: var(--lilac-dark);
+  font-weight: bold;
+}
+
 .link {
   color: var(--lilac-dark)
 }

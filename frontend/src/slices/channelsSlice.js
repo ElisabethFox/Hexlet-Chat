@@ -5,7 +5,7 @@ import fetchInitialData from '../context/InitialDataThunk';
 const channelsAdapter = createEntityAdapter();
 const defaultCurrentChannelId = 1;
 const initialState = channelsAdapter.getInitialState({
-  currentChannelId: defaultCurrentChannelId
+  currentChannelId: defaultCurrentChannelId,
 });
 
 const channelSlice = createSlice({

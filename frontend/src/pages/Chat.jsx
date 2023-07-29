@@ -12,7 +12,6 @@ import ModalWindow from '../components/modal/ModalWindow';
 import MessageBox from '../components/chat/message-box/MessageBox';
 import MessageForm from '../components/chat/MessageForm';
 
-
 const Chat = () => {
   const { t } = useTranslation();
   const rollbar = useRollbar();
@@ -27,7 +26,6 @@ const Chat = () => {
   );
   const currentChannelMessagesCount = currentChannelMessages.length;
   const loadingStatus = useSelector((state) => state?.loading?.serverData);
-  console.log(loadingStatus)
 
   useEffect(() => {
     dispatch(fetchInitialData(getServerData));
@@ -43,16 +41,14 @@ const Chat = () => {
       logOut();
       toast.error(t('toast.networkError'));
       rollbar.error('ChatFailed');
-      return;
     }
 
     if (loadingStatus === 'authError') {
       logOut();
       toast.error(t('toast.authError'));
       rollbar.error('AuthFailed');
-      return;
     }
-  }, [loadingStatus]);
+  }, [loadingStatus, logOut, rollbar, t]);
 
   return (
     <div className="container h-100 my-4 overflow-hidden rounded shadow">

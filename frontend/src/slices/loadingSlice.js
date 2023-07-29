@@ -1,9 +1,11 @@
+/* eslint-disable no-param-reassign */
+
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import fetchInitialData from '../context/InitialDataThunk';
 
 const loadingAdapter = createEntityAdapter();
 const initialState = loadingAdapter.getInitialState({
-    serverData: 'notLoaded',
+  serverData: 'notLoaded',
 });
 
 const loadingSlice = createSlice({
@@ -11,7 +13,7 @@ const loadingSlice = createSlice({
   initialState,
   reducers: {
     unload: (state) => {
-        state.serverData = 'notLoaded';
+      state.serverData = 'notLoaded';
     },
   },
   extraReducers: (builder) => {

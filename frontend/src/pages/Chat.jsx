@@ -11,7 +11,7 @@ import MessageForm from '../components/chat/MessageForm';
 
 const Chat = () => {
   const dispatch = useDispatch();
-  const { connectSocket, disconnectSocket, getChannelsData } = useChatApi();
+  const { disconnectSocket, getChannelsData } = useChatApi();
   const messages = useSelector(messagesSelector.selectAll);
   const currentChannelData = useSelector(currentChannel);
   const currentChannelName = currentChannelData?.name;
@@ -22,12 +22,12 @@ const Chat = () => {
 
   useEffect(() => {
     dispatch(fetchInitialData(getChannelsData));
-    connectSocket();
+    // connectSocket();
 
     return () => {
       disconnectSocket();
     };
-  }, [connectSocket, disconnectSocket, dispatch, getChannelsData]);
+  }, [disconnectSocket, dispatch, getChannelsData]);
 
   return (
     <div className="container h-100 my-4 overflow-hidden rounded shadow">

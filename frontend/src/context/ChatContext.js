@@ -1,13 +1,7 @@
 import axios from 'axios';
 import { createContext } from 'react';
 import { useDispatch } from 'react-redux';
-import { addMessage } from '../slices/messagesSlice';
-import {
-  addChannel,
-  setCurrentChannel,
-  removeChannel,
-  renameChannel,
-} from '../slices/channelsSlice';
+import { addChannel, setCurrentChannel } from '../slices/channelsSlice';
 import { chatContextRoutes } from '../routes';
 
 export const ChatContext = createContext({});
@@ -15,23 +9,6 @@ export const ChatContext = createContext({});
 const ChatContextProvider = ({ socket, children }) => {
   const dispatch = useDispatch();
   const timeout = 4000;
-
-  // const connectSocket = () => {
-  //   socket.connect();
-
-  //   socket.on('newMessage', (message) => {
-  //     dispatch(addMessage(message));
-  //   });
-  //   socket.on('newChannel', (channel) => {
-  //     dispatch(addChannel(channel));
-  //   });
-  //   socket.on('removeChannel', (channel) => {
-  //     dispatch(removeChannel(channel.id));
-  //   });
-  //   socket.on('renameChannel', (channel) => {
-  //     dispatch(renameChannel({ id: channel.id, changes: { name: channel.name } }));
-  //   });
-  // };
 
   const disconnectSocket = () => {
     socket.off();
@@ -73,7 +50,6 @@ const ChatContextProvider = ({ socket, children }) => {
 
   return (
     <ChatContext.Provider value={{
-      // connectSocket,
       disconnectSocket,
       addNewMessage,
       addNewChannel,

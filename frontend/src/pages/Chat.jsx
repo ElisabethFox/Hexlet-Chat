@@ -16,7 +16,7 @@ const Chat = () => {
   const { t } = useTranslation();
   const rollbar = useRollbar();
   const dispatch = useDispatch();
-  const { connectSocket, disconnectSocket, getServerData } = useChatApi();
+  const { getServerData } = useChatApi();
   const { logOut } = useAuthorization();
   const messages = useSelector(messagesSelector.selectAll);
   const currentChannelData = useSelector(currentChannel);
@@ -29,12 +29,7 @@ const Chat = () => {
 
   useEffect(() => {
     dispatch(fetchInitialData(getServerData));
-    // connectSocket();
-
-    // return () => {
-    //   disconnectSocket();
-    // };
-  }, [connectSocket, disconnectSocket, dispatch, getServerData]);
+  }, [dispatch, getServerData]);
 
   useEffect(() => {
     if (loadingStatus === 'failed') {

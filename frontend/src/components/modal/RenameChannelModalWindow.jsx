@@ -1,6 +1,7 @@
 import { toast } from 'react-toastify';
 import Form from 'react-bootstrap/Form';
 import { useFormik } from 'formik';
+import { useRef, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 import { useRollbar } from '@rollbar/react';
 import { useTranslation } from 'react-i18next';
@@ -21,7 +22,13 @@ const RenameChannelModalWindow = () => {
   const relevantChannelId = useSelector((state) => state.modalWindow.relevantChannel);
   const channels = useSelector(channelsSelector.selectAll);
   const relevantChannelName = channels.find(({ id }) => id === relevantChannelId).name;
+  const refModalInput = useRef(null);
 
+  useEffect(() => {
+    refModalInput?.current?.focus();
+  }, []);
+
+  console.log(refModalInput)
   const handleCloseModalWindow = () => {
     dispatch(closeModalWindow());
     dispatch(setCurrentModalType(null));
@@ -55,7 +62,7 @@ const RenameChannelModalWindow = () => {
         <Form onSubmit={formik.handleSubmit} className="py-1 rounded-2">
           <div className="form-group">
             <Form.Control
-              autoFocus
+              ref={refModalInput}
               id="name"
               type="text"
               name="name"

@@ -19,9 +19,6 @@ const ChannelsPanel = () => {
   const scrollHeight = refChannels?.current?.scrollHeight;
   const channelOffsetHeight = document.querySelector('.current-channel')?.offsetHeight;
 
-  /* Вычисляем высоту, на которую нам нужно доскроллить до текущего элемента - таким образом
-  скролл будет работать и при удалении, и при добавлении. Скроллим именно до текущего канала,
-  а не просто до низа */
   const currentChannelId = useSelector(currentChannel)?.id;
   const currentChannelIndex = channels.findIndex((channel) => channel?.id === currentChannelId);
   const currentChannelScrollHeight = currentChannelIndex * channelOffsetHeight;

@@ -1,6 +1,7 @@
 import { toast } from 'react-toastify';
 import Form from 'react-bootstrap/Form';
 import { useFormik } from 'formik';
+import { useRef, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 import { useRollbar } from '@rollbar/react';
 import { useTranslation } from 'react-i18next';
@@ -18,6 +19,11 @@ const AddChannelModalWindow = () => {
   const channelsNamesList = useSelector(channelsNames);
   const { addNewChannel } = useChatApi();
   const isModalWindowOpen = useSelector((state) => state.modalWindow.isOpen);
+  const refModalInput = useRef(null);
+
+  useEffect(() => {
+    refModalInput?.current?.focus();
+  }, []);
 
   const handleCloseModalWindow = () => {
     dispatch(closeModalWindow());
@@ -50,7 +56,7 @@ const AddChannelModalWindow = () => {
         <Form onSubmit={formik.handleSubmit} className="py-1 rounded-2">
           <div className="form-group">
             <Form.Control
-              autoFocus
+              ref={refModalInput}
               id="name"
               type="text"
               name="name"

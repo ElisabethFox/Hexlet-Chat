@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuthorization } from '../../hooks';
 import LoginButton from '../buttons/LoginButton';
-import { chatContextRoutes, appRoutes } from '../../routes/routes';
+import { chatContextRoutes, appRoutes } from '../../routes';
 import loginSchema from '../../validation/loginSchema';
 
 const LoginForm = () => {

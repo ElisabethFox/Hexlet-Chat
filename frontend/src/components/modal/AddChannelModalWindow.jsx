@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useChatApi } from '../../hooks';
 import { closeModalWindow, setCurrentModalType } from '../../slices/modalWindowSlice';
-import { channelsNames } from '../../selectors/selectors';
+import { channelsNames } from '../../selectors';
 import ModalButtton from '../buttons/ModalButtton';
 import channelNameSсhema from '../../validation/channelNameSсhema';
 

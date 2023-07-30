@@ -10,7 +10,7 @@ import Login from '../pages/Login';
 import NotFound from '../pages/NotFound';
 import NavBar from './navbar/NavBar';
 import Signup from '../pages/Signup';
-import { appRoutes } from '../routes/routes';
+import { appRoutes } from '../routes';
 import { useAuthorization } from '../hooks';
 import 'react-toastify/dist/ReactToastify.css';
 

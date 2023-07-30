@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { appRoutes } from '../../routes/routes';
+import { appRoutes } from '../../routes';
 
 const LoginFooter = () => {
   const { t } = useTranslation();

@@ -10,7 +10,7 @@ import UserDataContextProvider from './context/UserDataContext';
 import store from './slices';
 import App from './components/App';
 import resources from './locales/index.js';
-import { appRoutes } from './routes/routes';
+import { appRoutes } from './routes';
 
 const defaultLanguage = 'ru';
 

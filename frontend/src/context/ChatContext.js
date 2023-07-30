@@ -8,7 +8,7 @@ import {
   removeChannel,
   renameChannel,
 } from '../slices/channelsSlice';
-import { chatContextRoutes } from '../routes/routes';
+import { chatContextRoutes } from '../routes';
 
 export const ChatContext = createContext({});
 

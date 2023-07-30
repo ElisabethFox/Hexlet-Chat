@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuthorization } from '../../hooks';
-import { appRoutes } from '../../routes/routes';
+import { appRoutes } from '../../routes';
 
 const LogoutButton = ({ title }) => {
   const { logOut } = useAuthorization();

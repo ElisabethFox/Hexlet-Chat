@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useEffect, useRef } from 'react';
 import { BiMessageSquareAdd } from 'react-icons/bi';
 import Channel from '../channel/Channel';
-import { channelsSelector, currentChannel } from '../../../selectors/selectors';
+import { channelsSelector, currentChannel } from '../../../selectors';
 import { setCurrentChannel } from '../../../slices/channelsSlice';
 import { openModalWindow, setCurrentModalType } from '../../../slices/modalWindowSlice';
 

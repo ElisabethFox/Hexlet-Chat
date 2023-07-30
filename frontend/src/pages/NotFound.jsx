@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { appRoutes } from '../routes/routes';
+import { appRoutes } from '../routes';
 
 import notFoundImg from '../img/404.png';
 

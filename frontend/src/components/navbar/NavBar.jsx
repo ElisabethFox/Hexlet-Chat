@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LogoutButton from '../buttons/LogoutButton';
-import { appRoutes } from '../../routes/routes';
+import { appRoutes } from '../../routes';
 
 import './style.css';
 

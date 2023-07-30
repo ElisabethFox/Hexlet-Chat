@@ -8,7 +8,7 @@ import { useRollbar } from '@rollbar/react';
 import { toast } from 'react-toastify';
 import { useEffect, useRef } from 'react';
 import { useAuthorization, useChatApi } from '../../hooks';
-import { currentChannel } from '../../selectors/selectors';
+import { currentChannel } from '../../selectors';
 import messageSchema from '../../validation/messageSchema';
 
 const MessageForm = () => {
@@ -18,7 +18,7 @@ const MessageForm = () => {
   const { getUserName } = useAuthorization();
   const currentChannelData = useSelector(currentChannel);
   const refInput = useRef(null);
-  
+
   useEffect(() => {
     refInput?.current?.focus();
   }, [currentChannelData]);

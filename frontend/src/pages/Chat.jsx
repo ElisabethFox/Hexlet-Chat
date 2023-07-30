@@ -1,10 +1,10 @@
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRollbar } from '@rollbar/react';
 import { useAuthorization, useChatApi } from '../hooks';
-import { useNavigate } from 'react-router-dom';
 import fetchInitialData from '../context/InitialDataThunk';
 import { messagesSelector, currentChannel } from '../selectors';
 import ChannelsPanel from '../components/chat/channels-panel/ChannelsPanel';

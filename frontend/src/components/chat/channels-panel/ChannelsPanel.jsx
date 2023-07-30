@@ -7,7 +7,6 @@ import Channel from '../channel/Channel';
 import { channelsSelector, currentChannel } from '../../../selectors';
 import { setCurrentChannel } from '../../../slices/channelsSlice';
 import { openModalWindow, setCurrentModalType } from '../../../slices/modalWindowSlice';
-
 import './style.css';
 
 const ChannelsPanel = () => {

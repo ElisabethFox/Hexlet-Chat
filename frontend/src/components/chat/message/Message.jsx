@@ -1,6 +1,5 @@
 import cn from 'classnames';
 import { useAuthorization } from '../../../hooks';
-
 import './style.css';
 
 const Message = ({ message }) => {

@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { currentChannel } from '../../../selectors';
 import { openModalWindow, setCurrentModalType, setRelevantChannel } from '../../../slices/modalWindowSlice';
-
 import './style.css';
 
 const Channel = ({ channel, onClick }) => {

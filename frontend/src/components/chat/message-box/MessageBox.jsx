@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import Message from '../message/Message';
-
 import './style.css';
 
 const MessageBox = ({ currentChannelMessages }) => {

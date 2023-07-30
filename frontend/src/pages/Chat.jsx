@@ -29,11 +29,11 @@ const Chat = () => {
 
   useEffect(() => {
     dispatch(fetchInitialData(getServerData));
-    connectSocket();
+    // connectSocket();
 
-    return () => {
-      disconnectSocket();
-    };
+    // return () => {
+    //   disconnectSocket();
+    // };
   }, [connectSocket, disconnectSocket, dispatch, getServerData]);
 
   useEffect(() => {

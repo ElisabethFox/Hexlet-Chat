@@ -11,6 +11,8 @@ import store from './slices';
 import App from './components/App';
 import resources from './locales/index.js';
 import { appRoutes } from './routes';
+import { addMessage } from './slices/messagesSlice';
+import { addChannel, removeChannel, renameChannel } from './slices/channelsSlice';
 
 const defaultLanguage = 'ru';
 
@@ -28,7 +30,23 @@ const init = async () => {
       },
     });
 
-  const socket = io(appRoutes.chatPagePath(), { autoConnect: false });
+  const socket = io(appRoutes.chatPagePath(), { autoConnect: true });
+  socket.connect();
+
+  console.log(store)
+
+    socket.on('newMessage', (message) => {
+      store.dispatch(addMessage(message));
+    });
+    socket.on('newChannel', (channel) => {
+      store.dispatch(addChannel(channel));
+    });
+    socket.on('removeChannel', (channel) => {
+      store.dispatch(removeChannel(channel.id));
+    });
+    socket.on('renameChannel', (channel) => {
+      store.dispatch(renameChannel({ id: channel.id, changes: { name: channel.name } }));
+    });
 
   const profanityFilter = LeoProfanity;
   profanityFilter.add(profanityFilter.getDictionary(defaultLanguage));

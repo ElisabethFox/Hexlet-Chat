@@ -16,22 +16,22 @@ const ChatContextProvider = ({ socket, children }) => {
   const dispatch = useDispatch();
   const timeout = 4000;
 
-  const connectSocket = () => {
-    socket.connect();
+  // const connectSocket = () => {
+  //   socket.connect();
 
-    socket.on('newMessage', (message) => {
-      dispatch(addMessage(message));
-    });
-    socket.on('newChannel', (channel) => {
-      dispatch(addChannel(channel));
-    });
-    socket.on('removeChannel', (channel) => {
-      dispatch(removeChannel(channel.id));
-    });
-    socket.on('renameChannel', (channel) => {
-      dispatch(renameChannel({ id: channel.id, changes: { name: channel.name } }));
-    });
-  };
+  //   socket.on('newMessage', (message) => {
+  //     dispatch(addMessage(message));
+  //   });
+  //   socket.on('newChannel', (channel) => {
+  //     dispatch(addChannel(channel));
+  //   });
+  //   socket.on('removeChannel', (channel) => {
+  //     dispatch(removeChannel(channel.id));
+  //   });
+  //   socket.on('renameChannel', (channel) => {
+  //     dispatch(renameChannel({ id: channel.id, changes: { name: channel.name } }));
+  //   });
+  // };
 
   const disconnectSocket = () => {
     socket.off();
@@ -73,7 +73,7 @@ const ChatContextProvider = ({ socket, children }) => {
 
   return (
     <ChatContext.Provider value={{
-      connectSocket,
+      // connectSocket,
       disconnectSocket,
       addNewMessage,
       addNewChannel,

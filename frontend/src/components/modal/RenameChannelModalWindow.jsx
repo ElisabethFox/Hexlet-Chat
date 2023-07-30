@@ -28,7 +28,6 @@ const RenameChannelModalWindow = () => {
     refModalInput?.current?.focus();
   }, []);
 
-  console.log(refModalInput)
   const handleCloseModalWindow = () => {
     dispatch(closeModalWindow());
     dispatch(setCurrentModalType(null));

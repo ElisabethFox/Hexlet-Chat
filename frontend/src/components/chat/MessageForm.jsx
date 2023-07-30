@@ -8,7 +8,7 @@ import { useRollbar } from '@rollbar/react';
 import { toast } from 'react-toastify';
 import { useEffect, useRef } from 'react';
 import { useAuthorization, useChatApi } from '../../hooks';
-import { channelsSelector, currentChannel } from '../../selectors';
+import { currentChannel } from '../../selectors';
 import messageSchema from '../../validation/messageSchema';
 
 const MessageForm = () => {
@@ -17,12 +17,11 @@ const MessageForm = () => {
   const { addNewMessage } = useChatApi();
   const { getUserName } = useAuthorization();
   const currentChannelData = useSelector(currentChannel);
-  const channels = useSelector(channelsSelector.selectAll);
   const refInput = useRef(null);
 
   useEffect(() => {
     refInput?.current?.focus();
-  }, [currentChannelData, channels.length]);
+  }, [currentChannelData?.id]);
 
   const formik = useFormik({
     initialValues: { text: '', username: getUserName() },

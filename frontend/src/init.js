@@ -31,7 +31,6 @@ const init = async () => {
     });
 
   const socket = io(appRoutes.chatPagePath(), { autoConnect: true });
-  socket.connect();
 
   socket.on('newMessage', (message) => {
     store.dispatch(addMessage(message));

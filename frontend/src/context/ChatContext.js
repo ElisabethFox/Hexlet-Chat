@@ -10,11 +10,6 @@ const ChatContextProvider = ({ socket, children }) => {
   const dispatch = useDispatch();
   const timeout = 4000;
 
-  const disconnectSocket = () => {
-    socket.off();
-    socket.disconnect();
-  };
-
   const addNewMessage = async (message) => {
     await socket
       .timeout(timeout)
@@ -50,7 +45,6 @@ const ChatContextProvider = ({ socket, children }) => {
 
   return (
     <ChatContext.Provider value={{
-      disconnectSocket,
       addNewMessage,
       addNewChannel,
       removeSelectedChannel,

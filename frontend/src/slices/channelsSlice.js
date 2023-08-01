@@ -29,7 +29,6 @@ const channelSlice = createSlice({
       .addCase(fetchInitialData.fulfilled, (state, { payload }) => {
         channelsAdapter.setAll(state, payload.channels);
         state.currentChannelId = payload.currentChannelId;
-        state.loading = false;
       });
   },
 });
